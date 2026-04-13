@@ -971,7 +971,7 @@
     @media (max-width: 768px) {
       .app {
         grid-template-columns: 1fr;
-        grid-template-rows: var(--header-height) auto 1fr;
+        grid-template-rows: auto auto 1fr;
       }
 
       .sidebar {
@@ -1023,39 +1023,62 @@
       }
 
       .header {
-        flex-direction: column;
-        align-items: stretch;
-        height: auto;
-        min-height: var(--header-height);
-        padding: 8px 16px;
-        gap: 8px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+        gap: 0 !important;
       }
 
       .app-title {
-        font-size: 15px;
+        font-size: 17px !important;
+        font-weight: 600 !important;
+        padding: 12px 16px !important;
+        border-bottom: 1px solid var(--border) !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        width: auto !important;
       }
 
       .header-row-2 {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        align-items: center;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 10px 16px !important;
+        gap: 10px !important;
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
       }
 
       .search-wrap {
-        flex: 1;
-        max-width: 100%;
-        min-width: 0;
+        flex: 1 !important;
+        min-width: 0 !important;
+        max-width: none !important;
+      }
+
+      .search-input {
+        width: 100% !important;
+        box-sizing: border-box !important;
       }
 
       .header-actions {
-        gap: 4px;
-        flex-shrink: 0;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        flex-shrink: 0 !important;
+        flex-wrap: nowrap !important;
       }
 
       .btn {
-        padding: 5px 10px;
-        font-size: 12px;
+        padding: 6px 10px !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
       }
 
       .stat-cards {
