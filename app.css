@@ -1018,19 +1018,31 @@
 
       .header {
         flex-wrap: wrap;
+        height: auto;
+        min-height: var(--header-height);
+        padding: 8px 16px;
+        gap: 10px;
       }
 
       .app-title {
-        font-size: 16px;
+        font-size: 15px;
+        flex-shrink: 0;
+      }
+
+      .search-wrap {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: 0;
       }
 
       .header-actions {
         gap: 4px;
+        flex-shrink: 0;
       }
 
       .btn {
-        padding: 6px 12px;
-        font-size: 13px;
+        padding: 5px 10px;
+        font-size: 12px;
       }
 
       .stat-cards {
