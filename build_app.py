@@ -67,6 +67,7 @@ MODULE_MAP = {
     81: "Different library versions produce different model behavior. GPU vs CPU environments cause crashes or silent accuracy drops. Reproducibility means anyone can replicate the exact same model.",
     82: "Virtual env isolates Python packages but not system libraries or hardware. Docker packages everything together but images are large and slow to build.",
     95: "Spatial shift occurs when deployment environment differs geographically. Temporal shift occurs when real-world patterns evolve seasonally. Both are ubiquitous in production but often undetected until they cause significant harm.",
+}
 
 
 # ── L4 failure modes ───────────────────────────────────────────────────────
@@ -122,40 +123,6 @@ FAILURES = {
     104: "Without accountability, harmful AI decisions can't be traced to their source. Models trained on third-party data may have no clear owner. Regulation (GDPR, AI Act) increasingly mandates it.",
 }
 
-    # ── fill in gaps ──────────────────────────────────────────────────────────
-    1:  "A system becomes brittle when it over-optimizes for one capability at the expense of others. A robot that learns but can't perceive obstacles will fail catastrophically in new environments.",
-    11: "Skipping preprocessing produces misleading patterns. Skipping interpretation means finding patterns you can't act on. Evaluation without ground truth is impossible for unsupervised mining.",
-    12: "Symbolic systems can't learn from data — they need expert-encoded rules that are hard to maintain. Connectionist systems are black boxes. Evolutionary is computationally expensive.",
-    13: "Directed mining overfits if features leak information. Undirected produces clusters that may not be actionable — discovering 47 customer segments is useless if you can't serve each differently.",
-    14: "CI needs good problem framing by a human expert. Heuristics can get stuck in local optima. Bio-inspired doesn't always transfer from nature to digital implementation.",
-    20: "Wrong problem type means the model solves the wrong task. Classification treated as regression produces meaningless continuous outputs. Recommendation without exploration leads to filter bubbles.",
-    21: "Poor framing locks you into solving the wrong problem efficiently. Unmeasurable objectives create arguments at project end. Hidden constraints cause crises mid-project.",
-    22: "Optimizing an element without understanding its role in the system can harm overall performance — a star player can disrupt team coordination.",
-    23: "Confusion between hierarchy levels causes communication failures. Saying 'fix the component' is meaningless without specifying which level.",
-    24: "Scope creep happens when deployment expectations aren't managed. Integration reveals gaps that requirements didn't catch. EDP is iterative — expect to revisit earlier stages.",
-    25: "Top-down without bottom-up expertise creates unrealistic designs. Bottom-up without top-down coordination leads to incompatible components. Life cycle ignored means expensive late-stage changes.",
-    26: "Skipping stakeholder alignment means building the wrong thing. Weak technical requirements let defects through. Poor logical models cause integration failures.",
-    27: "Skipping retirement planning strands data and users. Systems accumulate technical debt during utilization. Support costs are consistently underestimated.",
-    28: "Architectural debt is the hardest to pay back — changing the foundation of a system is much harder than changing the paint. Poor architecture causes late-stage integration failures.",
-    29: "Without ConOps, developers build based on assumptions about users. Users discover problems at deployment, not design time. ConOps validated only with stakeholders still misses real-world problems.",
-    30: "Missing ICDs cause 'it works on my machine' failures. Ambiguous ICDs cause integration failures during system integration testing — the worst possible time.",
-    34: "Privacy violations expose the organization to legal risk. Label noise degrades model quality silently. Distribution mismatch between training and deployment makes even clean data useless.",
-    47: "Label noise (wrong labels) causes models to learn incorrect patterns. Label inconsistency across annotators produces contradictory training signals. Missing labels waste data.",
-    48: "Crowdsourcing without quality control produces garbage labels. Programmatic labels can propagate errors at scale. Active learning can introduce bias if the model is uncertain in systematically biased ways.",
-    56: "High-cardinality one-hot causes curse of dimensionality. Target encoding without proper cross-validation leaks information. Ordinal encoding without real ordering teaches false ordinal relationships.",
-    57: "Feature crossing explosion — combining many features creates exponentially many new features, causing overfitting without regularization.",
-    66: "Both verification and validation can pass in a test environment but fail in production. Controlled environments can't fully replicate real-world conditions.",
-    67: "Verification doesn't catch wrong requirements. Validation doesn't catch engineering defects. Without both, you're flying blind.",
-    68: "Results from controlled environments may not transfer to the real world. The controlled environment can't capture all real-world complexity.",
-    69: "Reviews without follow-through fix nothing. Inspections become political and fail to catch real issues. Walkthroughs where authors are defensive catch nothing.",
-    70: "High unit test coverage gives false confidence if integration tests are skipped. Integration tests in production-like environments are most valuable but often skipped under time pressure.",
-    71: "Wrong baseline comparison makes real improvement invisible. Comparing to a poor ZeroR is easy but meaningless.",
-    74: "Small slices have high variance — a single bad prediction in a small slice looks like massive failure. You need enough samples per slice to draw statistical conclusions.",
-    75: "Automatic slice discovery without domain guidance finds spurious correlations. Slices must be validated against real-world relevance, not just statistical patterns.",
-    80: "Network latency makes MaaS unacceptable for real-time inference. The model API becomes a single point of failure. More components means more failure modes.",
-    81: "Pinning versions too strictly prevents security updates. Pinning too loosely breaks reproducibility. Hardware changes require full retesting.",
-    82: "Virtual env is lightweight but system-level dependencies can still conflict. Docker images are large and slow to build. GPU Docker requires nvidia-docker setup.",
-    95: "Models degrade silently — performance looks fine because you're comparing against yesterday's model, not today's reality. Both shifts are ubiquitous but often undetected.",
 
 # ── module topics for priority ordering ─────────────────────────────────────
 MODULE_TOPICS = ['AI Foundations', 'ML Systems', 'System Engineering',
