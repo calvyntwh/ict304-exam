@@ -560,6 +560,29 @@
       display: block;
     }
 
+    .md-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    .md-table th {
+      background: rgba(245, 166, 35, 0.12);
+      color: var(--accent);
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 2px solid rgba(245, 166, 35, 0.3);
+    }
+    .md-table td {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .md-table tr:last-child td {
+      border-bottom: none;
+    }
+
     /* ===== .diagram-section ===== */
     .diagram-section {
       margin-top: 12px;

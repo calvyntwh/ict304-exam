@@ -22,9 +22,21 @@ async function initDB() {
 
 function renderMarkdown(text) {
   if (!text) return '';
+  // Process tables first (they contain | chars that would break other patterns)
+  text = text.replace(/(\|.+\|(?:\r?\n|$)+)/g, function(match) {
+    var rows = match.trim().split(/\r?\n/);
+    var html = '<table class="md-table">';
+    rows.forEach(function(row, i) {
+      var cells = row.split('|').filter(function(c) { return c.trim(); });
+      if (i === 1 && /^[-:\s|]+$/.test(cells.join(''))) return; // skip separator row |---|---|
+      var tag = i === 0 ? 'th' : 'td';
+      html += '<tr>';
+      cells.forEach(function(cell) { html += '<' + tag + '>' + cell.trim() + '</' + tag + '>'; });
+      html += '</tr>';
+    });
+    return html + '</table>';
+  });
   return text
-    // Headings: # Heading → <strong>Heading</strong>
-    .replace(/^### (.+)$/gm, '<strong>$1</strong>')
     // Bold: **text** or __text__
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/__(.+?)__/g, '<strong>$1</strong>')
