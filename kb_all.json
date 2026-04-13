@@ -1,0 +1,1252 @@
+{
+  "concepts": [
+    {
+      "id": "Q1",
+      "module": 1,
+      "topic": "Intelligent Systems Characteristics",
+      "layers": {
+        "L1": "You encounter Intelligent Systems Characteristics in a real project. Here's how to think about it: What are the characteristics of Intelligent Systems?",
+        "L2": "An Intelligent System is like a human worker: it senses the environment (perception), learns from mistakes (learning), plans next steps (reasoning), works without constant supervision (autonomy), and adjusts when things change (adaptability).",
+        "L3": "Intelligence emerges from combining five capabilities: perception (data), learning (improvement), reasoning (logic), autonomy (independence), and adaptability (flexibility). Lose any one and you get a brittle or limited system.",
+        "L4": "A system becomes brittle when it over-optimizes for one capability at the expense of others. A robot that learns but can't perceive obstacles will fail catastrophically in new environments.",
+        "L5": "What are the characteristics of Intelligent Systems? Use examples to illustrate them, and link them to the AI techniques you have learned. Characteristics: - Perception \u2013 Ability to sense the environment. - Example: Self-driving cars detect road signs. - AI Technique: Computer Vision, Sensors. - Learning \u2013 Improve with experience or data. - Example: Spotify recommends songs based on listening history. - AI Technique: Machine Learning. - Reasoning \u2013 Makes logical decisions or plans. - Example: AI playing chess plans next moves. - AI Technique: Search Algorithms, Rule-based Systems. - Autonomy \u2013 Operate without human input. - Example: Robot vacuum cleans patterns on guidance. - AI Technique: Robotics, Reinforcement Learning. - Adaptability \u2013 Adjust to new conditions. - Example: Fraud detecti"
+      }
+    },
+    {
+      "id": "Q2",
+      "module": 1,
+      "topic": "AI vs ML vs DL Hierarchy",
+      "layers": {
+        "L1": "You encounter AI vs ML vs DL Hierarchy in a real project. Here's how to think about it: What are the differences between AI, Machine Learning, and Deep Learning?",
+        "L2": "AI is the entire concept of making machines smart. ML is a subset where machines learn from examples. DL is a subset of ML using deep neural networks \u2014 like how mammals are animals, primates are a subset of mammals, and humans are a specific type of primate.",
+        "L3": "AI includes everything from rule-based chatbots to ML. ML includes everything from linear regression to deep learning. DL uses many layers of neural networks to learn hierarchical representations \u2014 each layer learns progressively more abstract features.",
+        "L4": "Confusing the hierarchy leads to using the wrong technology for a problem. Not every AI problem needs DL \u2014 simple ML often works better on small datasets. DL needs massive data and compute that most organizations can't afford.",
+        "L5": "What are the differences between AI, Machine Learning, and Deep Learning? Name | Description | Example AI | Makes machines act smart like humans. | Chatbots, voice assistants Machine Learning (ML) | Subset of AI where machines learn from data. | Email spam filters, recommendations Deep Learning (DL) | Subset of ML using deep neural networks for complex tasks. | Image recognition, self-driving cars"
+      }
+    },
+    {
+      "id": "Q3",
+      "module": 1,
+      "topic": "Turing Test",
+      "layers": {
+        "L1": "You encounter Turing Test in a real project. Here's how to think about it: The Turing Test checks if a machine can act like a human in conversation.",
+        "L2": "Like a text-based game of peek-a-boo \u2014 if a person can't tell they're talking to a machine after 5 minutes, the machine passes.",
+        "L3": "The test works because it operationalizes intelligence as behavioral equivalence \u2014 if you can't tell the difference conversationally, the machine is functionally intelligent on that dimension.",
+        "L4": "Machines can pass the Turing Test by using vague language, manipulation, or following scripts rather than genuinely understanding \u2014 passing the test doesn't prove real intelligence.",
+        "L5": "What is the Turing Test? The Turing Test checks if a machine can act like a human in conversation. If a person cannot tell if they are talking to a machine or a human, the machine passes the test."
+      }
+    },
+    {
+      "id": "Q4",
+      "module": 1,
+      "topic": "Computational Intelligence vs ML",
+      "layers": {
+        "L1": "You encounter Computational Intelligence vs ML in a real project. Here's how to think about it: What are the differences between Computational Intelligence and Machine Learning?",
+        "L2": "CI is like a master craftsman using intuition and hand tools \u2014 learned through experience, works well with incomplete information. ML is like a chef following a recipe calibrated from thousands of past dishes \u2014 needs lots of data but finds patterns humans wouldn't think to look for.",
+        "L3": "CI uses nature-inspired techniques (evolution, neural networks, fuzzy logic) that don't require gradient information. ML uses statistical learning that requires large labeled datasets. CI can handle problems where you can't compute gradients; ML excels when you have abundant data.",
+        "L4": "CI needs expert problem framing \u2014 it can't discover what problem to solve. ML needs large labeled datasets that may not exist. Both can fail when the problem assumptions don't hold.",
+        "L5": "What are the differences between Computational Intelligence and Machine Learning? Feature | Computational Intelligence (CI) | Machine Learning (ML) Basis | Nature-inspired techniques | Statistical learning from data Techniques | Neural networks, fuzzy logic, evolutionary algorithms | Supervised, unsupervised and reinforcement learning Data dependency | Less dependent on large datasets | Highly dependent on large datasets Example | Rules using fuzzy logic to model schedules | Predicting house prices using past data"
+      }
+    },
+    {
+      "id": "Q5",
+      "module": 1,
+      "topic": "Rationality Concepts",
+      "layers": {
+        "L1": "You encounter Rationality Concepts in a real project. Here's how to think about it: - Rationality: Making the best decision based on available knowledge and goals.",
+        "L2": "Thinking rationally is solving a puzzle with formal logic. Acting rationally is choosing the fastest route home using everything you know right now.",
+        "L3": "Rationality requires both the knowledge base AND a decision mechanism. Think rationally uses logic on known facts; act rationally uses logic plus real-time sensing to choose the best action.",
+        "L4": "Rationality assumes the world behaves consistently \u2014 if the knowledge base encodes wrong rules, acting rationally produces consistently wrong decisions. Think rationally needs complete knowledge; act rationally needs accurate sensing of a changing world.",
+        "L5": "What is rationality? What is think rationally? What is act rationally? - Rationality: Making the best decision based on available knowledge and goals. - Thinking Rationally: Using logic and reasoning to make decisions. Example: Solving a math problem step by step. - Acting Rationally: Choosing the best action to achieve goals in a given situation. Example: A delivery drone choosing the shortest and safest route."
+      }
+    },
+    {
+      "id": "Q6",
+      "module": 1,
+      "topic": "DIKI Pyramid",
+      "layers": {
+        "L1": "You encounter DIKI Pyramid in a real project. Here's how to think about it: Describe the steps/stages of going from Data, Information, Knowledge, Intelligence.",
+        "L2": "Data is scattered letters; information is those letters forming readable words; knowledge is understanding what those words mean in context; intelligence is using that understanding to make good decisions.",
+        "L3": "Each level adds interpretation: data is meaningless numbers, information connects numbers to meaning, knowledge recognizes patterns in that meaning, intelligence acts on those patterns to achieve goals.",
+        "L4": "The DIKI pyramid can mislead if applied mechanically \u2014 more data doesn't automatically lead to more knowledge if the connections are wrong. Intelligence without adaptability (AI) produces brittle systems that fail on novel inputs.",
+        "L5": "Describe the steps/stages of going from Data, Information, Knowledge, Intelligence. 1. Data \u2013 Raw facts (e.g., \"30\u00b0C\") 2. Information \u2013 Data with meaning (e.g., \"Room temperature is 30\u00b0C\") 3. Knowledge \u2013 Understanding patterns (e.g., \"30\u00b0C is warm for an office\") 4. Intelligence \u2013 Using knowledge to make decisions (e.g., \"Turn on AC if > 28\u00b0C\")"
+      }
+    },
+    {
+      "id": "Q7",
+      "module": 1,
+      "topic": "Case-based Reasoning",
+      "layers": {
+        "L1": "You encounter Case-based Reasoning in a real project. Here's how to think about it: - Case-Based Reasoning (CBR): Solving new problems by finding solutions from similar past cases.",
+        "L2": "Like a doctor who recalls a similar past patient's case to diagnose a new patient, adapting the old treatment as needed.",
+        "L3": "CBR works because the world is full of similar situations. Instead of deriving a solution from first principles every time, you retrieve a past case and adapt it \u2014 faster and leverages hard-won experience.",
+        "L4": "CBR fails when no past case is similar enough \u2014 the retrieval step is critical. If the case base is small or poorly indexed, revision dominates and accuracy suffers.",
+        "L5": "What is Case-based Reasoning? How can we use it? - Case-Based Reasoning (CBR): Solving new problems by finding solutions from similar past cases. How we use it: - Retrieve past similar examples / solutions. - Match current problem with similar case. - Adapt the solution for the new problem. Example: In medical diagnosis, a system compares a new patient's symptoms to past cases to suggest treatments."
+      }
+    },
+    {
+      "id": "Q8",
+      "module": 1,
+      "topic": "LLM and Generative AI",
+      "layers": {
+        "L1": "You encounter LLM and Generative AI in a real project. Here's how to think about it: What is a Large Language Model (LLM)?",
+        "L2": "An LLM is a librarian who has read millions of books and can discuss any topic fluently. Generative AI is that librarian plus the ability to write new books in the styles they've read. LLMs are specifically text-based generative AI.",
+        "L3": "LLMs are trained on vast text corpora to predict the next word \u2014 this enables fluent text generation. Generative AI includes image synthesis (DALL-E, Stable Diffusion), code generation (CoPilot), and multimodal models. LLMs enabled by transformer architecture that handles long-range context dependencies.",
+        "L4": "LLMs hallucinate \u2014 they generate fluent confident text that sounds right but is factually wrong. They absorb biases from training data. LLMs can't reliably do multi-step reasoning without chain-of-thought prompting.",
+        "L5": "What is a Large Language Model (LLM)? How is that related to Generative AI? - LLM: A type of AI trained on large amounts of text to understand and generate natural language. Examples: ChatGPT, Google Gemini. - Relation to Generative AI: LLMs are a part of Generative AI, which creates new content like text, images, code. LLMs specifically generate text-based content."
+      }
+    },
+    {
+      "id": "Q9",
+      "module": 1,
+      "topic": "AI Fields Overview",
+      "layers": {
+        "L1": "You encounter AI Fields Overview in a real project. Here's how to think about it: Provide an overview of the field of AI and how each area is different from others.",
+        "L2": "AI fields are like departments in a hospital \u2014 Radiology reads images, Surgery operates, GPs diagnose. Each does something specific, and the whole hospital is stronger together.",
+        "L3": "Different AI areas solve fundamentally different problems: ML learns from data, CV reads images/video, NLP understands text, Robotics moves in physical space. The underlying math and algorithms differ \u2014 mixing them up wastes effort.",
+        "L4": "Treating all AI as interchangeable leads to using the wrong technique for the problem. Deep Learning doesn't fix every problem \u2014 small datasets need simpler models. Knowing which field applies saves months of wasted effort.",
+        "L5": "Provide an overview of the field of AI and how each area is different from others. AI (Artificial Intelligence) is a broad field aiming to create machines smart. Key areas include: Area | Description | Example Machine Learning | Machines learn from data to make predictions | Spam detection Deep Learning | Neural networks that handle complex data like images | Face recognition Computer Vision | Understanding images and videos | Self-driving car detecting lanes Natural Language Processing (NLP) | Understanding and generating human language | Chatbots, Google Translate Robotics | Intelligent systems that interact physically with the world | Warehouse robots Expert Systems | Rule-based systems that mimic expert decision-making | Medical diagnosis systems"
+      }
+    },
+    {
+      "id": "Q10",
+      "module": 1,
+      "topic": "Data Mining vs Knowledge Engineering",
+      "layers": {
+        "L1": "You encounter Data Mining vs Knowledge Engineering in a real project. Here's how to think about it: What are the differences between them?",
+        "L2": "Data Mining is a prospector panning for gold in a river of data. Knowledge Engineering is a librarian organizing books using a taxonomy they designed from expertise.",
+        "L3": "Data Mining discovers patterns you didn't know existed \u2014 the data reveals its own structure. Knowledge Engineering encodes patterns that experts already know \u2014 it formalizes existing understanding. DM needs large datasets; KE needs domain experts.",
+        "L4": "Data Mining finds patterns that may be spurious or unactionable. Knowledge Engineering can miss patterns that humans wouldn't think to encode as rules. Both fail when the problem assumptions don't match reality.",
+        "L5": "What is Data Mining? What is Knowledge Engineering? What are the differences between them? - Data Mining: Process of discovering patterns or useful information from large data sets. Example: Finding customer buying patterns from sales data. - Knowledge Engineering: Creating systems that mimic expert reasoning by capturing expert knowledge (rules, facts). Example: Building a medical diagnosis system with expert rules. Aspect | Data Mining | Knowledge Engineering Source | Data-driven | Expert-driven Goal | Discover patterns automatically | Models human expertise into rules Output | Models or patterns | Knowledge base and inference rules"
+      }
+    },
+    {
+      "id": "Q11",
+      "module": 1,
+      "topic": "Data Mining Process Steps",
+      "layers": {
+        "L1": "You encounter Data Mining Process Steps in a real project. Here's how to think about it: List and explain the Data Mining Process.",
+        "L2": "Data mining is like a chef cooking: first pick your ingredients, clean them, chop them, cook them, taste as you go, and finally decide if the dish is worth serving.",
+        "L3": "Selection prevents garbage-in-garbage-out. Preprocessing handles missing values and noise. Transformation makes data compatible with mining algorithms. Interpretation makes patterns actionable.",
+        "L4": "Skipping preprocessing produces misleading patterns. Skipping interpretation means finding patterns you can't act on. Evaluation without ground truth is impossible for unsupervised mining.",
+        "L5": "List and explain the Data Mining Process. 1. Data Collection \u2013 Gather raw data from sources. 2. Data Cleaning \u2013 Remove errors and missing values. 3. Data Integration \u2013 Combine data from different sources. 4. Data Selection \u2013 Choose relevant data for analysis. 5. Data Transformation \u2013 Convert data into suitable format. 6. Data Mining \u2013 Apply algorithms to find patterns. 7. Evaluation \u2013 Interpret the results. 8. Deployment \u2013 Use the results in real applications."
+      }
+    },
+    {
+      "id": "Q12",
+      "module": 1,
+      "topic": "AI Technique Categories",
+      "layers": {
+        "L1": "You encounter AI Technique Categories in a real project. Here's how to think about it: What is the difference between Data-Driven, Model-Driven, and Knowledge-Driven AI techniques?",
+        "L2": "AI techniques are different problem-solving styles \u2014 symbolic is a grandmaster using rules, connectionist is a student learning from examples, evolutionary is trial-and-error keeping what works best.",
+        "L3": "Symbolic methods need expert-encoded rules \u2014 good for well-defined domains but can't learn from data. Connectionist learns from data \u2014 good for perception tasks but is a black box. Evolutionary searches without gradients \u2014 slow but globally optimal.",
+        "L4": "Symbolic systems can't learn from data. Connectionist systems are black boxes \u2014 you can't explain decisions. Evolutionary is computationally expensive. Statistical methods need large datasets.",
+        "L5": "What is the difference between Data-Driven, Model-Driven, and Knowledge-Driven AI techniques? Technique | Description | Example Data-Driven | Learns from data using patterns/statistics | Machine learning (e.g., spam filter) Model-Driven | Uses mathematical/physics models | Simulation, weather forecast Knowledge-Driven | Uses expert rules and logic | Expert systems (e.g., rule-based diagnosis)"
+      }
+    },
+    {
+      "id": "Q13",
+      "module": 1,
+      "topic": "Directed vs Undirected Data Mining",
+      "layers": {
+        "L1": "You encounter Directed vs Undirected Data Mining in a real project. Here's how to think about it: What are Directed and Undirected Data Mining?",
+        "L2": "Directed mining is a teacher grading with an answer key. Undirected mining is a librarian organizing books into natural groups without knowing the categories ahead of time.",
+        "L3": "Directed mining predicts a known target \u2014 you know what you're looking for. Undirected discovers structure \u2014 you let the data reveal its own organization. Both are needed in practice.",
+        "L4": "Directed mining overfits if features leak information. Undirected produces clusters that may not be actionable \u2014 discovering 47 customer segments is useless if you can't serve each differently.",
+        "L5": "What are Directed and Undirected Data Mining? Give an example for each. - Directed Data Mining (Supervised): Has a specific goal or target (e.g., prediction). Example: Predicting loan default using past data. - Undirected Data Mining (Unsupervised): No specific target, used to explore data. Example: Finding customer segments using clustering."
+      }
+    },
+    {
+      "id": "Q14",
+      "module": 1,
+      "topic": "Computational Intelligence Characteristics",
+      "layers": {
+        "L1": "You encounter Computational Intelligence Characteristics in a real project. Here's how to think about it: What is Computational Intelligence?",
+        "L2": "CI is like a survivalist \u2014 adapts without reprogramming, handles missing information gracefully, uses rules of thumb, and copies strategies that work in nature.",
+        "L3": "Adaptivity lets CI systems learn and adjust without explicit reprogramming. Robustness means they work even when inputs are noisy or incomplete. Heuristics trade optimality for speed and feasibility.",
+        "L4": "CI needs good problem framing by a human expert. Heuristics can get stuck in local optima. Bio-inspired doesn't always transfer from nature to digital implementation.",
+        "L5": "What is Computational Intelligence? What are the characteristics of Computational Intelligence? - Computational Intelligence (CI): A set of AI methods inspired by nature to solve complex problems without using exact models. Characteristics: 1. Adaptivity \u2013 Learns and adjusts to changing environments. 2. Robustness \u2013 Handles noisy or incomplete data. 3. Heuristic-based \u2013 Uses trial and error to approximate. 4. Bio-inspired \u2013 Based on natural systems (e.g., evolution, brains). Techniques include: - Neural Networks - Fuzzy Logic - Evolutionary Algorithms"
+      }
+    },
+    {
+      "id": "Q15",
+      "module": 2,
+      "topic": "Types of Machine Learning",
+      "layers": {
+        "L1": "You encounter Types of Machine Learning in a real project. Here's how to think about it: In Machine Learning, what are the different types of learning?",
+        "L2": "Supervised learning is a student with a textbook and answer key. Unsupervised learning is a toddler categorizing toys by type without being told the names. Reinforcement learning is learning chess by playing and remembering what led to winning.",
+        "L3": "Supervised learning needs labeled data \u2014 the answer key restricts what patterns can be learned. Unsupervised discovers structure without labels \u2014 but you don't know if the clusters are meaningful. Reinforcement learns from experience through rewards and penalties.",
+        "L4": "Supervised models fail when labels are noisy. Unsupervised finds clusters that may not correspond to real categories. Reinforcement requires careful reward design \u2014 misspecified rewards create agents that game the system.",
+        "L5": "In Machine Learning, what are the different types of learning? Provide examples of AI techniques for each learning type. 1. Supervised Learning \u2013 Learns from labeled data. Example: Email spam detection. Technique: Decision Trees, SVM, Neural Networks. 2. Unsupervised Learning \u2013 Finds patterns in unlabeled data. Example: Customer segmentation. Technique: Clustering (K-Means), PCA. 3. Reinforcement Learning \u2013 Learns by trial and error through rewards. Example: Game playing AI like AlphaGo. Technique: Q-Learning, Deep Q-Networks. 4. Semi-Supervised Learning \u2013 Uses a small amount of labeled and large amount of unlabeled data. Example: Text/image with partial labels; techniques like Co-training, Self-training. 5. Self-Supervised Learning \u2013 Generates its own labels from raw data. Example: Langua"
+      }
+    },
+    {
+      "id": "Q16",
+      "module": 2,
+      "topic": "ML Research vs Production",
+      "layers": {
+        "L1": "You encounter ML Research vs Production in a real project. Here's how to think about it: What are the differences between Machine Learning in Production and Research?",
+        "L2": "Research ML is a chef experimenting in a test kitchen \u2014 creativity, new recipes, doesn't matter if it takes all day. Production ML is a restaurant kitchen \u2014 consistent quality, fast service, every dish identical.",
+        "L3": "Research optimizes for model accuracy. Production optimizes for reliability, latency, and cost simultaneously. These goals conflict \u2014 a model that's 1% more accurate but 10x slower is useless in production. Research underestimates real-world data messiness.",
+        "L4": "A model that works in research fails in production when it encounters data distributions it wasn't trained on. Research ignores inference cost. Models that were state-of-the-art 3 years ago may be deployed with outdated library dependencies.",
+        "L5": "What are the differences between Machine Learning in Production and Research? Aspect | Research | Production Goal | Explore new ideas, improve accuracy | Deliver stable, usable products Data | Clean, curated datasets | Messy, real-world data Speed | Slow/iterative | Fast, reliable, low latency Concerns | Novelty and scientific rigor, accuracy | Speed, scalability, reliability Updates | Frequent model changes | Stable, secure controlled models"
+      }
+    },
+    {
+      "id": "Q17",
+      "module": 2,
+      "topic": "AI Production Stakeholders",
+      "layers": {
+        "L1": "You encounter AI Production Stakeholders in a real project. Here's how to think about it: Identify the different stakeholders involved in bringing an AI system to production.",
+        "L2": "AI production is like staging a theatre production \u2014 the director (PM) shapes the vision, actors (DS) perform, stage crew (MLE) handles lighting and sets, audience analysts (BA) study reactions.",
+        "L3": "Each stakeholder has different success criteria: DS wants accuracy, MLE wants uptime, PM wants user engagement, BA wants business metrics. These can conflict \u2014 a highly accurate model that no one uses has zero business value.",
+        "L4": "Without alignment, teams optimize for different goals and produce inconsistent systems. BA requirements may conflict with fairness constraints. MLE may reject models that are statistically sound but operationally complex.",
+        "L5": "Identify the different stakeholders involved in bringing an AI system to production. Provide example of objectives of each stakeholder. Stakeholder | Objective Data Scientist | Build accurate, well-tested models ML Engineer | Deploy and maintain models in production Software Developer | Integrate AI into user-facing apps Product Manager | Ensure AI solves real business needs Business Analyst | Align AI outputs with business goals End Users | Use the system for better decision-making or usability"
+      }
+    },
+    {
+      "id": "Q18",
+      "module": 2,
+      "topic": "Research vs Production Computational Priority",
+      "layers": {
+        "L1": "You encounter Research vs Production Computational Priority in a real project. Here's how to think about it: In Computational Priority, what are the main differences between Research and Production stage?",
+        "L2": "Research compute is a scientist's desktop \u2014 powerful for one person, slow iteration, experiments run overnight. Production compute is a factory floor \u2014 optimized assembly line, fast throughput, every unit identical.",
+        "L3": "Research uses compute for experimentation and exploration \u2014 GPU clusters, jupyter notebooks, many iterations. Production uses compute for inference at scale \u2014 optimized serving, batch prediction, cost per query matters. Research wastes resources; production is resource-constrained.",
+        "L4": "Training a model in research and deploying it in production requires re-engineering the entire compute path. Research models assume unlimited compute; production models must fit latency budgets. Hardware differences (GPU vs CPU) cause silent accuracy drops.",
+        "L5": "In Computational Priority, what are the main differences between Research and Production stage? Aspect | Research Stage | Production Stage Goal | Accuracy, exploring, testing new models | Efficiency, speed, and reliability Resource Used | More compute for experimentation | Optimized compute for cost and speed Scalability | Not a priority | Must scale to handle real users Model Updates | Frequent | Controlled and tested before release"
+      }
+    },
+    {
+      "id": "Q19",
+      "module": 2,
+      "topic": "Research vs Production Data",
+      "layers": {
+        "L1": "You encounter Research vs Production Data in a real project. Here's how to think about it: What are the main differences between the Data used in Research and Production?",
+        "L2": "Research data is a library with perfectly organized, labeled books. Production data is the real world \u2014 library books with torn pages, coffee stains, missing chapters, and someone using the books as doorstops.",
+        "L3": "Research uses curated historical data. Production uses live real-time streams that arrive at unpredictable rates, with noise, missing values, and adversarial inputs. Research data is static; production data evolves as the world changes.",
+        "L4": "Training on clean research data and deploying on messy production data causes distribution shift failures. Data pipelines that worked in research break in production under load. Label quality that was acceptable in research becomes a fairness liability in production.",
+        "L5": "What are the main differences between the Data used in Research and Production? Aspect | Research Data | Production Data Source | Historical or sample datasets | Live, real-time data Cleanliness | Often cleaned and preprocessed | Can be messy or inconsistent Volume | Smaller manageable sets | Large-scale and continuous Labeling | Labeled and curated | May be unlabeled or noisy Purpose | For training and testing | For real-time predictions or decision-making"
+      }
+    },
+    {
+      "id": "Q20",
+      "module": 2,
+      "topic": "7 Main AI Problem Types",
+      "layers": {
+        "L1": "You encounter 7 Main AI Problem Types in a real project. Here's how to think about it: What are 7 main typical problems that can be addressed by AI systems?",
+        "L2": "Classification is sorting mail into categories. Regression is predicting tomorrow's temperature. Clustering is grouping customers by buying behavior. Association is finding that people who buy diapers also buy beer.",
+        "L3": "Classification and regression are supervised \u2014 you have labeled examples. Clustering and association are unsupervised \u2014 patterns emerge from data. Sequence analysis handles time-ordered data. Optimization finds the best solution from a space of possibilities.",
+        "L4": "Wrong problem type means the model is solving the wrong task. Classification treated as regression produces meaningless continuous outputs. Recommendation without exploration leads to filter bubbles.",
+        "L5": "What are 7 main typical problems that can be addressed by AI systems? Provide examples and also an AI technique used to solve such problems. AI Problem Type | Example | AI Technique 1. Classification | Email spam detection | Decision Trees, CNN, Neural Networks 2. Regression | Predicting house prices | Linear Regression, Random Forest 3. Clustering | Customer segmentation | K-Means, DBSCAN 4. Recommendation | Movie suggestions on Netflix | Collaborative Filtering, Deep Learning 5. Natural Language Processing (NLP) | Chatbots, translation | Transformers, RNN 6. Computer Vision | Face recognition | CNN (Convolutional Neural Networks) 7. Anomaly Detection | Fraud detection | Autoencoders, Isolation Forest"
+      }
+    },
+    {
+      "id": "Q21",
+      "module": 3,
+      "topic": "AI Project Considerations",
+      "layers": {
+        "L1": "You encounter AI Project Considerations in a real project. Here's how to think about it: When developing an AI system, the following are some project consideration factors: 1.",
+        "L2": "Framing is choosing which puzzle to solve. Objectives define what winning looks like. Constraints are knowing your time and budget. Phases are chapters in a project story.",
+        "L3": "Framing the problem wrong means solving the wrong thing efficiently. Undefined objectives can't be measured. Unstated constraints surprise you mid-project. Phases that skip steps create compounding errors expensive to fix later.",
+        "L4": "Poor framing locks you into solving the wrong problem efficiently. Unmeasurable objectives create arguments at project end. Hidden constraints cause crises mid-project. Skipped phases make everything cost more to fix later.",
+        "L5": "When developing an AI system, the following are some project consideration factors: 1. Framing; 2. Objectives; 3. Constraints; 4. Phases. Provide discussions for each of them. Discuss the phases in detail. Framing Defining the problem clearly \u2013 What are we solving? Example: Are we predicting sales or classifying products? Objectives What is the goal of the system? Example: Increase customer retention by 10%, or reduce fraud rates. Constraints Limitations like time, budget, data availability, and ethics. Example: Limited labeled data, or real-time processing requirement. Phases (Discussed in Detail) Phase | Description a. Problem Understanding | Define the business problem, success criteria. b. Data Collection | Gather and assess data from various sources. c. Data Preparation | Clean, trans"
+      }
+    },
+    {
+      "id": "Q22",
+      "module": 3,
+      "topic": "Systems Elements Results",
+      "layers": {
+        "L1": "You encounter Systems Elements Results in a real project. Here's how to think about it: What are systems, elements, and results?",
+        "L2": "A football team is the system, individual players are elements, wins and losses are results \u2014 each level only makes sense in context of the others.",
+        "L3": "Elements are only meaningful in context of the system they serve \u2014 a star quarterback means nothing in a chess team. Results measure whether the system achieves its goal, not whether individual parts are optimal.",
+        "L4": "Optimizing an element without understanding its role in the system can harm overall performance \u2014 a star player can disrupt team coordination.",
+        "L5": "What are systems, elements, and results? - System: A group of interacting parts working together to achieve a goal. Example: A car is a system. - Elements: The individual parts that make up a system. Example: Engine, wheels, brakes of a car. - Results: The output or outcome the system produces. Example: Transportation from one place to another."
+      }
+    },
+    {
+      "id": "Q23",
+      "module": 3,
+      "topic": "System Hierarchy Terms",
+      "layers": {
+        "L1": "You encounter System Hierarchy Terms in a real project. Here's how to think about it: What are systems, elements, sub-systems, components, parts?",
+        "L2": "Like a university: the whole university is the system, a faculty is a sub-system, a course is a component, a lecture is a part.",
+        "L3": "Parts make up components, components make up sub-systems, sub-systems make up the system. Each level inherits properties from above while adding its own structure.",
+        "L4": "Confusion between hierarchy levels causes communication failures. Saying 'fix the component' is meaningless without specifying which level you're referring to.",
+        "L5": "What are systems, elements, sub-systems, components, parts? - System: Complete functioning unit with a goal. Example: Computer system. - Sub-System: A smaller system within a system. Example: CPU is a sub-system of a computer. - Components: Functional parts of sub-systems. Example: ALU in a CPU. - Parts: Physical or logical units of components. Example: Transistors on a chip. - Elements: General term for any part of a system."
+      }
+    },
+    {
+      "id": "Q24",
+      "module": 3,
+      "topic": "Engineering Design Process Stages",
+      "layers": {
+        "L1": "You encounter Engineering Design Process Stages in a real project. Here's how to think about it: What are the stages in EDP (Engineering Design Process)?",
+        "L2": "EDP is like writing an essay: understand the question, outline your argument, write drafts, edit sections together, check it answers the prompt, then submit.",
+        "L3": "EDP is iterative \u2014 you cycle back through stages as you learn. Skipping stages compounds errors: wrong problem definition makes everything downstream futile. The spiral model allows revisiting earlier phases as understanding deepens.",
+        "L4": "Scope creep happens when deployment expectations aren't managed. Integration reveals gaps that requirements didn't catch. EDP is iterative \u2014 expect to revisit earlier stages as you learn.",
+        "L5": "What are the stages in EDP (Engineering Design Process)? The Engineering Design Process (EDP) includes the following stages: 1. Project Definition - Meet with stakeholders. - Define the initial objectives and understand the problem. 2. Requirements Definition and Engineering Specifications - Develop clear and detailed requirements. - Document and get stakeholder approval before proceeding. 3. Conceptual Design - Brainstorm and generate multiple ideas. - Use trade studies, models, or prototypes to compare. - Select the best concept to move forward. 4. Product Design, Fabrication, and Test - Complete detailed design and testing. - Test performance; if requirements are met, move to manufacturing."
+      }
+    },
+    {
+      "id": "Q25",
+      "module": 3,
+      "topic": "Three Main System Engineering Processes",
+      "layers": {
+        "L1": "You encounter Three Main System Engineering Processes in a real project. Here's how to think about it: What are three main processes in system engineering?",
+        "L2": "System design is an architect's blueprint. Product realization is the construction crew building. Product life cycle is managing the entire building lifespan from planning to demolition.",
+        "L3": "Top-down design ensures all parts fit before building starts. Bottom-up realization enables parallel work and independent testing. Life cycle management prevents shipping before understanding support costs.",
+        "L4": "Top-down without bottom-up expertise creates unrealistic designs. Bottom-up without top-down coordination leads to incompatible components. Life cycle ignored means expensive late-stage changes.",
+        "L5": "What are three main processes in system engineering? Use examples to explain them. The three main processes in system engineering are: System Design Processes - Collect stakeholder expectations and convert them into technical requirements. - Decompose requirements into smaller, well-defined entities. - Applies top-down from system level to sub-systems and components. Example: For a self-driving car system design: define high-level needs (e.g., obstacle detection) and breaks them down into sub-systems like sensors, AI vision models, and control systems. Product Realization Processes - Build or acquire components (buy, code, reuse). - Unit test, and validate each product. - Allows bottom-up by integrating components into higher-level systems. Example: Assembling and testing the AI module and"
+      }
+    },
+    {
+      "id": "Q26",
+      "module": 3,
+      "topic": "Four System Design Processes",
+      "layers": {
+        "L1": "You encounter Four System Design Processes in a real project. Here's how to think about it: What are the four system design processes?",
+        "L2": "Like planning a wedding: agree with families on expectations first, translate to budget and guest list, plan the day timeline, then choose venue and caterer.",
+        "L3": "Without stakeholder alignment upfront, requirements constantly change. Without translating to technical specs, designers can't verify they've met expectations. Without logical models, components won't interface correctly.",
+        "L4": "Skipping stakeholder alignment means building the wrong thing. Weak technical requirements let defects through. Poor logical models cause integration failures. Architectural changes late in development are the most expensive kind.",
+        "L5": "What are the four system design processes? Use examples to explain them. The four system design processes are: Define and Baseline Stakeholder Expectations - Understand what stakeholders need and expect from the system. - Document their expectations and get approval. Example: An autonomous drone stakeholders may require it to fly 20 minutes and avoid obstacles. Generate and Baseline Technical Requirements - Translate stakeholder needs into measurable technical requirements. - Use these to guide system design. Example: From the drone example, this may include GPS accuracy of 1.5 meters and battery life of 25 minutes. Decompose the Requirements into Logical and Behavioral Models - Break down system functions and interactions visually. - Use models like flowcharts or state diagrams. Example: "
+      }
+    },
+    {
+      "id": "Q27",
+      "module": 3,
+      "topic": "Product Life Cycle Phases",
+      "layers": {
+        "L1": "You encounter Product Life Cycle Phases in a real project. Here's how to think about it: What are the Product Life Cycle Phases?",
+        "L2": "Like a product in a store \u2014 goes from idea to shelf to being actively sold to clearance to discontinued.",
+        "L3": "Early phases (concept, development) are where changes are cheapest. Later phases (utilization, support) are where changes are most expensive. Retirement must be planned \u2014 data migration takes real effort.",
+        "L4": "Skipping retirement planning strands data and users. Systems accumulate technical debt during utilization. Support costs are consistently underestimated.",
+        "L5": "What are the Product Life Cycle Phases? The Product Life Cycle Phases describe the stages from idea to deployment of a system or product. They include: Pre-Phase A: Concept Studies - Explore a wide range of ideas and feasible alternatives. - Goal: Understand possible solutions. Phase A: Concept and Technology Development - Develop and select a major system architecture. - Define system-level requirements through analysis and trade studies. Phase B: Preliminary Design - Create a preliminary system design. - Define subsystem responsibilities and interfaces. - Resolve key technology issues. Phase C: Detailed Design - Complete detailed drawings, specifications, and software coding. - Ready for manufacturing or purchase construction. Phase D: System Assembly, Integration, Test, and Launch - Ass"
+      }
+    },
+    {
+      "id": "Q28",
+      "module": 3,
+      "topic": "Architectural Design",
+      "layers": {
+        "L1": "You encounter Architectural Design in a real project. Here's how to think about it: What is an Architectural Design?",
+        "L2": "Like a city plan showing where roads, water pipes, and power lines go before any building starts.",
+        "L3": "Good architecture makes integration easier because interfaces are defined upfront. It enables parallel work on subsystems. Architectural changes late are catastrophically expensive.",
+        "L4": "Architectural debt is the hardest to pay back \u2014 changing the foundation of a system is much harder than changing the paint. Poor architecture causes late-stage integration failures.",
+        "L5": "What is an Architectural Design? Architectural Design is a high-level description of a system's main elements, their interfaces, and their logical and physical layout."
+      }
+    },
+    {
+      "id": "Q29",
+      "module": 3,
+      "topic": "ConOps Purpose",
+      "layers": {
+        "L1": "You encounter ConOps Purpose in a real project. Here's how to think about it: - ConOps (Concept of Operations): A document that describes how a system will be used from the user's perspective.",
+        "L2": "ConOps is a restaurant's service manual \u2014 how reservations work, how orders reach the kitchen, how complaints are handled, from the customer's view.",
+        "L3": "ConOps translates stakeholder needs into operational language \u2014 who does what, when, where, how. It catches gaps between user expectations and technical capability before design begins.",
+        "L4": "Without ConOps, developers build based on assumptions about users. Users discover problems at deployment, not design time. ConOps validated only with stakeholders still misses real-world problems.",
+        "L5": "What is ConOps? And why is this important? - ConOps (Concept of Operations): A document that describes how a system will be used from the user's perspective. Importance: - Aligns stakeholders. - Clarifies goals and expectations. - Guides design and development."
+      }
+    },
+    {
+      "id": "Q30",
+      "module": 3,
+      "topic": "Interface Control Document",
+      "layers": {
+        "L1": "You encounter Interface Control Document in a real project. Here's how to think about it: - ICD (Interface Control Document): Defines how different systems or components interact (data, format, etc).",
+        "L2": "ICD is the rulebook for how trains change drivers at border crossings between countries \u2014 making every interface decision explicit and agreed upon.",
+        "L3": "ICDs prevent integration failures by making every interface decision explicit. When one team changes their component, the ICD tells them what downstream effects to check.",
+        "L4": "Missing ICDs cause 'it works on my machine' failures. Ambiguous ICDs cause integration failures during system integration testing \u2014 the worst possible time.",
+        "L5": "What is ICD used for? - ICD (Interface Control Document): Defines how different systems or components interact (data, format, etc). Used for: - Ensuring compatibility. - Reducing integration problems. - Avoiding integration issues."
+      }
+    },
+    {
+      "id": "Q31",
+      "module": 3,
+      "topic": "Hashed Feature Design Pattern",
+      "layers": {
+        "L1": "You encounter Hashed Feature Design Pattern in a real project. Here's how to think about it: What is Hashed Feature Design Pattern and how can this be used?",
+        "L2": "Like assigning lockers at a gym using a name tag system \u2014 everyone with the same locker number shares a space, even if they didn't mean to.",
+        "L3": "Hashing solves the memory problem for high-cardinality features (e.g., millions of product IDs) by mapping them to a fixed number of buckets. The hash function is deterministic so the same input always maps to the same bucket. Binary encoding bits: bits = ceil(log2 N) where N = number of categories.",
+        "L4": "Hash collisions: two different categories map to the same bucket, creating noisy features. Hash functions can also be reversible if not using cryptographic hashing, leaking category information.",
+        "L5": "What is Hashed Feature Design Pattern and how can this be used? What problems can this help to solve? - Hashed Feature Design Pattern: A method where features like text or categories are mapped into a fixed-size vector using a hash function. - Use Case: Manage high-cardinality categorical features (e.g., millions of user IDs or product names) into a fixed-size numeric input. Problems it Solves: - Reduces memory usage. - Handles unknown or new categories. - Simplifies high-cardinality features."
+      }
+    },
+    {
+      "id": "Q32",
+      "module": 3,
+      "topic": "Hashed Feature Disadvantages",
+      "layers": {
+        "L1": "You encounter Hashed Feature Disadvantages in a real project. Here's how to think about it: What are the disadvantages of using Hashed Feature?",
+        "L2": "It's like two different people accidentally getting the same phone number \u2014 calls get mixed up and nobody knows which person the call was really for.",
+        "L3": "Hash collisions mean two different categories land in the same bucket \u2014 the model gets noisy mixed signals. And you can never reverse the hash to see what the original category was.",
+        "L4": "Irreversible: you can never recover the original categories from the hash. Collisions corrupt feature representations. Fixed bucket count limits scalability \u2014 too few buckets means too many collisions.",
+        "L5": "What are the disadvantages of using Hashed Feature? - Collision: Multiple values can map to the same hash, leading to loss of information. - Interpretability: Hard to understand after a hashed feature what categories represent. - Irreversibility: After hashing, you cannot recover the original values (no original categories)."
+      }
+    },
+    {
+      "id": "Q33",
+      "module": 3,
+      "topic": "Embedding Design Pattern",
+      "layers": {
+        "L1": "You encounter Embedding Design Pattern in a real project. Here's how to think about it: What is the purpose of using Embedding Design Pattern?",
+        "L2": "It's like giving every word in a language its own GPS coordinate \u2014 similar words end up near each other on the map, so the model can navigate meaning.",
+        "L3": "Embeddings are learned representations where geometric distance captures semantic similarity. Words appearing in similar contexts get similar vectors \u2014 'king' and 'queen' cluster together because they appear in similar sentence patterns.",
+        "L4": "Embeddings require large amounts of training data to learn meaningful geometry. Out-of-vocabulary words at inference time have no representation. The geometry may not transfer across languages.",
+        "L5": "What is the purpose of using Embedding Design Pattern? What are the advantages of using embedding? - Purpose: Converts high-dimensional categorical data into low-dimensional dense vectors learned during model training. Advantages: - Captures similarity between categories (e.g., \"cat\" and \"dog\" vectors may be close). - Reduces dimensionality and improves efficiency. - Models used in deep learning models like RNNs and recommender systems."
+      }
+    },
+    {
+      "id": "Q34",
+      "module": 4,
+      "topic": "ML Data Considerations",
+      "layers": {
+        "L1": "You encounter ML Data Considerations in a real project. Here's how to think about it: What are the considerations of using data for machine learning?",
+        "L2": "ML data is like cooking for guests \u2014 quality ingredients matter, you need enough food, it has to be edible, you can't serve things people are allergic to, and dietary restrictions must be respected.",
+        "L3": "Quality garbage in means garbage out. Quantity must match model complexity. Relevance means training data must match deployment data. Bias in training data gets amplified by the model.",
+        "L4": "Privacy violations expose the organization to legal risk. Label noise degrades model quality silently. Distribution mismatch between training and deployment makes even clean data useless.",
+        "L5": "What are the considerations of using data for machine learning? - Quality: Ensure clean, accurate, and consistent data. - Quantity: Enough data to train the model without overfitting. - Relevance: Data should reflect the problem being solved. - Bias: Avoid biased data that leads to unfair results. - Privacy and Security: Handle sensitive data responsibly. - Labeling: Accurate labels for supervised training."
+      }
+    },
+    {
+      "id": "Q35",
+      "module": 4,
+      "topic": "Model Selection Baselines",
+      "layers": {
+        "L1": "You encounter Model Selection Baselines in a real project. Here's how to think about it: One of the strategies of model selection is the use of baseline.",
+        "L2": "It's like setting a baseline time for a race \u2014 ZeroR always finishes in the same slow time, Random just guesses, Previous Best is your personal record to beat.",
+        "L3": "ZeroR sets a minimum performance bar \u2014 any useful model must beat it. Random shows whether the model is better than guessing. Previous Best is what you're actually trying to improve on.",
+        "L4": "Wrong baseline choice misleads development. Always predict majority class is a trivially beatable baseline. Previous Best requires careful version tracking to ensure fair comparison.",
+        "L5": "One of the strategies of model selection is the use of baseline. What are the three different baselines and when should you use each of them? 1. Zero Rule (ZeroR) \u2013 Predicts the most frequent class (for classification) or mean (for regression). Use When: You need a simple benchmark to beat. 2. Random Baseline \u2013 Predicts labels at random, usually based on class distribution. Use When: You want to check if your model is better than pure guessing. 3. Previous Best Model \u2013 Uses an older model's performance as a baseline. Use When: You are trying to improve or replace an existing system."
+      }
+    },
+    {
+      "id": "Q36",
+      "module": 4,
+      "topic": "Data Serialization Formats",
+      "layers": {
+        "L1": "You encounter Data Serialization Formats in a real project. Here's how to think about it: Explain the different formats and how they fit into the characteristics of Data Serialization.",
+        "L2": "Data serialization is how you pack a suitcase for moving. JSON puts everything in labelled zip-lock bags \u2014 easy to see what's inside but takes up space. Protobuf vacuum-seals everything \u2014 compact but you need the key to know what anything is. Pickle is custom packaging that only works between the same kind of moving truck.",
+        "L3": "JSON is human-readable and language-agnostic but verbose and slow to parse. XML is self-describing but verbose. CSV is compact but can't represent nested structures. Protocol Buffers are compact and fast but require schema definitions. Pickle is Python-specific, fast, but unsafe with untrusted data.",
+        "L4": "Using Pickle for cross-language systems is impossible. JSON's parsing overhead makes it unsuitable for high-throughput systems. Protocol Buffers require schema migrations when data models change. CSV can't represent missing values or nested structures.",
+        "L5": "What is Data Serialization? Explain the different formats and how they fit into the characteristics of Data Serialization. - Data Serialization: The process of converting data into a format that can be easily stored or transmitted and later reconstructed. Common Formats & Characteristics: Format | Characteristics JSON | Human-readable, widely used in web APIs, supports nested structures XML | Self-descriptive and hierarchical, but more verbose than JSON CSV | Lightweight, easy to read for tabular data, lacks nesting capability Protocol Buffers | Binary format, fast and compact, good for large-scale data exchange Pickle (Python) | Python-specific, serializes Python objects, not language-independent"
+      }
+    },
+    {
+      "id": "Q37",
+      "module": 4,
+      "topic": "Row-Major vs Column-Major Format",
+      "layers": {
+        "L1": "You encounter Row-Major vs Column-Major Format in a real project. Here's how to think about it: Explain the differences between Row-Major Versus Column-Major Format.",
+        "L2": "Row-major is reading a book page by page from top to bottom. Column-major is reading one column at a time across pages \u2014 useful if you only care about specific words but need to flip around a lot.",
+        "L3": "Row-major stores consecutive memory addresses for adjacent rows \u2014 fast for reading entire rows (like CSV processing). Column-major stores consecutive addresses for adjacent columns \u2014 fast for reading entire columns (like aggregations). The storage order determines cache performance for different access patterns.",
+        "L4": "Using row-major storage for column-heavy analytics is slow \u2014 you're jumping around memory. Pandas uses row-major by default, which is why column-wise operations on large DataFrames are slower than expected.",
+        "L5": "Explain the differences between Row-Major Versus Column-Major Format. Aspect | Row-Major Format | Column-Major Format Storage | Stores row by row (e.g., CSV) | Stores column by column (e.g., Parquet, ORC) Languages | Used by C, Python (NumPy default) | Used by Fortran, R Use Case | Better for row-wise operations | Better for column-wise operations (e.g., analytics)"
+      }
+    },
+    {
+      "id": "Q38",
+      "module": 4,
+      "topic": "Three Data Models",
+      "layers": {
+        "L1": "You encounter Three Data Models in a real project. Here's how to think about it: What are the 3 different types of data models?",
+        "L2": "Hierarchical is a family tree \u2014 parents above children. Relational is a spreadsheet with labeled columns. Graph is a social network \u2014 people as dots, friendships as lines.",
+        "L3": "Hierarchical model organizes data in trees \u2014 fast for one-to-many relationships, rigid structure. Relational model uses tables with foreign keys \u2014 flexible, SQL, great for many-to-many. Graph model uses nodes and edges \u2014 excels at relationships and traversals.",
+        "L4": "Hierarchical can't easily represent many-to-many relationships. Relational models become slow for deep joins. Graph models require specialized query languages and can use enormous storage for sparse graphs.",
+        "L5": "What are the 3 different types of data models? Use examples to explain each of them. 1. Hierarchical Model \u2013 Data is organized in a tree-like structure. Example: XML files, file system directory. 2. Relational Model \u2013 Data is stored in tables with rows and columns. Example: SQL databases like MySQL, PostgreSQL. 3. Graph Model \u2013 Data is stored in nodes and edges. Example: Social networks, Neo4j databases."
+      }
+    },
+    {
+      "id": "Q39",
+      "module": 4,
+      "topic": "Structured vs Unstructured Data",
+      "layers": {
+        "L1": "You encounter Structured vs Unstructured Data in a real project. Here's how to think about it: What are the differences between Structured and Unstructured Data?",
+        "L2": "Structured data is a library card catalog \u2014 every book has the same fields in the same order. Unstructured data is a library of all human creative output \u2014 videos, paintings, manuscripts, recordings, none organized the same way.",
+        "L3": "Structured data has a predefined schema \u2014 easy to query with SQL, indexes work well. Unstructured data has no schema \u2014 requires ML (CV, NLP) to extract meaning. Most enterprise data (80%+) is unstructured.",
+        "L4": "Treating unstructured data as structured fails \u2014 there's no schema to query. Structured data's schema can become a straightjacket when data doesn't fit neatly into predefined columns. Both require different analysis tools.",
+        "L5": "What are the differences between Structured and Unstructured Data? Example? Structured Data | Unstructured Data Organized in tables or schemas | No fixed format or schema Easy to query (SQL) | Harder to search/analyze Example: Customer databases | Example: Emails, images, videos"
+      }
+    },
+    {
+      "id": "Q40",
+      "module": 4,
+      "topic": "Data Warehouse vs Data Lake",
+      "layers": {
+        "L1": "You encounter Data Warehouse vs Data Lake in a real project. Here's how to think about it: What is Data Warehouse and Data Lake?",
+        "L2": "A data warehouse is a library with curated, organized books organized by subject. A data lake is the author's raw manuscripts, emails, voice recordings, and everything else \u2014 organized by who knows what, useful if you're willing to search through everything.",
+        "L3": "Data warehouse stores structured, processed data optimized for analytical queries \u2014 OLAP workloads benefit from columnar storage and pre-aggregation. Data lake stores raw data at any scale \u2014 structured, semi-structured, unstructured \u2014 enabling ML on diverse data sources.",
+        "L4": "Data lakes without governance become data swamps \u2014 raw data with no quality control, impossible to find anything useful. Data warehouses require expensive preprocessing before analysis. Both need clear governance or they become liabilities.",
+        "L5": "What is Data Warehouse and Data Lake? - Data Warehouse: Centralized storage for structured data optimized for analysis and reporting. Example: Used in BI dashboards. - Data Lake: Storage for raw, unstructured, semi-structured data at scale. Example: Used for big data and machine learning."
+      }
+    },
+    {
+      "id": "Q41",
+      "module": 4,
+      "topic": "Transactional Processing and ACID",
+      "layers": {
+        "L1": "You encounter Transactional Processing and ACID in a real project. Here's how to think about it: What is Transactional Processing?",
+        "L2": "Transactional processing is a bank teller making one withdrawal at a time \u2014 immediate, consistent, nothing is ever half-updated. ACID is what ensures a $100 withdrawal doesn't result in -$20 or $80 disappearing.",
+        "L3": "Atomicity ensures partial transactions don't exist. Consistency ensures the database rules are never violated. Isolation means concurrent transactions don't see each other's intermediate states. Durability means committed transactions survive crashes.",
+        "L4": "ACID trades off performance \u2014 full isolation is expensive. Weaker isolation levels (read uncommitted) allow dirty reads but are faster. Not all systems need full ACID \u2014 analytical systems (OLAP) often sacrifice consistency for speed.",
+        "L5": "What is Transactional Processing? What are ACID? - Transactional Processing: Handles day-to-day operations (insert, update, delete) in databases. Example: Banking systems. - ACID properties of transactions: - A \u2013 Atomicity: All-or-nothing. - C \u2013 Consistency: Keeps database rules valid. - I \u2013 Isolation: Transactions are independent. - D \u2013 Durability: Changes are saved permanently."
+      }
+    },
+    {
+      "id": "Q42",
+      "module": 4,
+      "topic": "Analytical Processing",
+      "layers": {
+        "L1": "You encounter Analytical Processing in a real project. Here's how to think about it: - Analytical Processing (OLAP): Used to analyze large volumes of historical data for decision-making.",
+        "L2": "Analytical processing is reading a historian's synthesis of decades of events \u2014 slow to produce, long views, patterns across time. Transactional is today's news \u2014 fast, current, each story independent.",
+        "L3": "OLAP (analytical) reads large historical snapshots for trends and aggregations \u2014 queries scan millions of rows. OLTP (transactional) processes individual operations with immediate consistency. Analytical queries are typically read-heavy; transactional are write-heavy.",
+        "L4": "Running analytical queries on a transactional database under load causes performance collapse \u2014 OLAP and OLTP have fundamentally different access patterns and should use separate systems.",
+        "L5": "What is Analytical Processing? - Analytical Processing (OLAP): Used to analyze large volumes of historical data for decision-making. Example: Sales trend analysis, business intelligence reports."
+      }
+    },
+    {
+      "id": "Q43",
+      "module": 4,
+      "topic": "Batch vs Stream Processing",
+      "layers": {
+        "L1": "You encounter Batch vs Stream Processing in a real project. Here's how to think about it: What are the differences between Batch Processing and Stream Processing?",
+        "L2": "Batch processing is doing your laundry once a week \u2014 you collect everything, wash it all together, takes time but efficient per item. Stream processing is having a washing machine that runs continuously as each item arrives \u2014 lower latency but more complex setup.",
+        "L3": "Batch processing accumulates data and processes it in groups \u2014 efficient for large analytical jobs, simple to implement, but introduces latency. Stream processing handles data as it arrives \u2014 low latency but can't do aggregations across the full dataset, requires complex infrastructure (Kafka, Flink).",
+        "L4": "Batch processing's high latency means you might make decisions based on yesterday's data. Stream processing's complexity leads to more infrastructure failures. Getting exactly-once semantics in stream processing is notoriously hard.",
+        "L5": "What are the differences between Batch Processing and Stream Processing? Feature | Batch Processing | Stream Processing Data Handling | Processes data in chunks or batches | Processes data continuously in real-time Latency | High latency | Low latency Use Case | Payroll systems, data warehousing | Fraud detection, live monitoring Tools | Hadoop, Spark (batch mode) | Apache Kafka, Apache Flink, Spark Streaming"
+      }
+    },
+    {
+      "id": "Q44",
+      "module": 4,
+      "topic": "Training Validation Testing Datasets",
+      "layers": {
+        "L1": "You encounter Training Validation Testing Datasets in a real project. Here's how to think about it: What are training, validation and testing data sets?",
+        "L2": "Training data is your textbook with practice problems. Validation data is the mid-term exam you use to calibrate your study strategy. Test data is the final exam you haven't seen \u2014 the only honest measure of whether you actually learned.",
+        "L3": "Training data fits the model \u2014 optimizes parameters to minimize training loss. Validation data tunes hyperparameters and detects overfitting \u2014 used to select the best model architecture. Test data evaluates generalization \u2014 must remain unseen during all development to be a valid measure.",
+        "L4": "If test data leaks into training (data leakage), your 'exam score' is meaningless. Time-based splits where train contains future data give false confidence. Validation data used too many times for hyperparameter tuning causes overfitting to the validation set itself.",
+        "L5": "What are training, validation and testing data sets? Explain what are the purposes of these data sets. - Training Set: Used to train the model, learn patterns. - Validation Set: Used to fine-tune the model and prevent overfitting. - Test Set: Used to evaluate final model performance on unseen data."
+      }
+    },
+    {
+      "id": "Q45",
+      "module": 4,
+      "topic": "Two Families of Sampling",
+      "layers": {
+        "L1": "You encounter Two Families of Sampling in a real project. Here's how to think about it: What are the two families of sampling?",
+        "L2": "Probability sampling is a lottery where everyone in a hat has a known chance of being picked. Non-probability sampling is a researcher choosing people from the street corner because they're convenient.",
+        "L3": "Probability sampling allows statistical inference \u2014 you can calculate confidence intervals and know how representative your sample is. Non-probability sampling is faster and cheaper but introduces selection bias that can't be corrected with statistics alone.",
+        "L4": "Non-probability sampling silently introduces bias \u2014 convenience samples over-represent accessible populations. Probability sampling can still fail if the sampling frame (who's in the hat) doesn't match the target population.",
+        "L5": "What are the two families of sampling? 1. Probability Sampling (Random Sampling) \u2013 Every item has a known chance of being selected. 2. Non-Probability Sampling \u2013 Items are selected based on non-random criteria (e.g., convenience or judgment)."
+      }
+    },
+    {
+      "id": "Q46",
+      "module": 4,
+      "topic": "Sampling Techniques",
+      "layers": {
+        "L1": "You encounter Sampling Techniques in a real project. Here's how to think about it: What are the sampling techniques under Non-Probability Sampling and Random Sampling?",
+        "L2": "Simple random is pulling names from a hat with equal probability. Stratified is dividing the population into age brackets first, then randomly sampling within each \u2014 ensures every age group is represented. Cluster is sampling entire schools and surveying everyone in them.",
+        "L3": "Stratified sampling reduces variance by ensuring rare subgroups are represented. Cluster sampling is efficient when populations are geographically spread \u2014 you sample clusters, not individuals. Systematic sampling (choosing every kth item) is simple but can miss periodic patterns.",
+        "L4": "Stratified sampling requires knowing the strata upfront \u2014 wrong stratification keys miss the real divisions. Cluster sampling can produce high variance if clusters are internally homogeneous. Systematic sampling silently fails when the data has a periodic pattern matching the sampling interval.",
+        "L5": "What are the sampling techniques under Non-Probability Sampling and Random Sampling? When do you use each of them? Sampling Type | Techniques | When to Use Random (Probability) | Simple random, stratified, cluster, systematic | When data must represent the entire population statistically Non-Probability | Convenience, judgmental, snowball, quota | When random sampling is not possible or practical"
+      }
+    },
+    {
+      "id": "Q47",
+      "module": 4,
+      "topic": "Data Labelling",
+      "layers": {
+        "L1": "You encounter Data Labelling in a real project. Here's how to think about it: What is Data Labelling and what is the purpose of data labelling?",
+        "L2": "Data labeling is like a teacher grading homework \u2014 the marks show the student where they went wrong and what the right answer was.",
+        "L3": "Labels provide the supervised signal that lets models learn. Without labels, you're limited to unsupervised methods. Label quality directly determines the upper bound of model performance.",
+        "L4": "Label noise (wrong labels) causes models to learn incorrect patterns. Label inconsistency across annotators produces contradictory training signals. Missing labels waste data.",
+        "L5": "What is Data Labelling and what is the purpose of data labelling? - Data Labelling: Tagging raw data (e.g., images, text) with meaningful information like categories or values. - Purpose: Helps supervised learning models to learn from labeled examples."
+      }
+    },
+    {
+      "id": "Q48",
+      "module": 4,
+      "topic": "Data Labelling Methods",
+      "layers": {
+        "L1": "You encounter Data Labelling Methods in a real project. Here's how to think about it: Describe the different methods of doing Data Labelling.",
+        "L2": "Manual labeling is handwriting your own notes. Crowdsourcing is asking a room of people to each write notes. Programmatic is using spell-check. Active learning is asking a teacher to check only the answers you're unsure about.",
+        "L3": "Manual labeling is high-quality but slow and expensive. Crowdsourcing scales but introduces annotator variability. Programmatic is fast but can encode rules that don't generalize. Active learning optimizes the labeling budget.",
+        "L4": "Crowdsourcing without quality control produces garbage labels. Programmatic labels can propagate errors at scale. Active learning can introduce bias if the model is uncertain in systematically biased ways.",
+        "L5": "Describe the different methods of doing Data Labelling. 1. Manual Labelling \u2013 Humans label data by hand (accurate but time-consuming). 2. Crowdsourcing \u2013 Using platforms like Amazon Mechanical Turk to label at scale. 3. Programmatic Labelling \u2013 Using rules or models to auto-label data. 4. Active Learning \u2013 The model selects uncertain data to be labeled by humans. 5. Pre-Labeling with AI \u2013 AI does first pass; humans correct the labels."
+      }
+    },
+    {
+      "id": "Q49",
+      "module": 4,
+      "topic": "Data Lineage",
+      "layers": {
+        "L1": "You encounter Data Lineage in a real project. Here's how to think about it: - Data Lineage: Describes the origin, movement, and transformation of data through the system.",
+        "L2": "Data lineage is a food ingredient's journey from farm to table \u2014 where it was grown, how it was processed, who transported it, what was added at each step.",
+        "L3": "Data lineage tracks data transformations through pipelines \u2014 enables root cause analysis when quality degrades. Critical for compliance (GDPR requires knowing where data came from). Helps reproduce results by replaying the exact data pipeline.",
+        "L4": "Without lineage, debugging data quality issues is forensic detective work. Lineage tracking adds pipeline overhead. Lineage that doesn't include all transformations (e.g., manual SQL updates) gives false confidence.",
+        "L5": "What is Data Lineage? - Data Lineage: Describes the origin, movement, and transformation of data through the system. - Purpose: Helps in tracing data sources, understanding data flow, and ensuring data quality and compliance."
+      }
+    },
+    {
+      "id": "Q50",
+      "module": 4,
+      "topic": "Class Imbalance",
+      "layers": {
+        "L1": "You encounter Class Imbalance in a real project. Here's how to think about it: - Class Imbalance: When one class appears much more frequently than others in classification problems.",
+        "L2": "Imagine a fire alarm that only goes off for 1 in 1000 fires \u2014 technically it detects fires, but it would miss real emergencies.",
+        "L3": "Models optimize for what they can measure. If 99% of cases are negative, the model minimizes error by always predicting negative \u2014 without being told this is wrong, it never learns the rare positive patterns.",
+        "L4": "Naive models achieve high accuracy by always predicting the majority class. SMOTE can create synthetic samples in feature space that don't represent real cases. Class weights require careful tuning.",
+        "L5": "What is Class Imbalance? How do you deal with this? - Class Imbalance: When one class appears much more frequently than others in classification problems. Solutions: - Oversampling: Duplicate/generate minority or undersampling majority class. - Use SMOTE (Synthetic Minority Over-sampling Technique). - Use balanced algorithms or adjust class weights."
+      }
+    },
+    {
+      "id": "Q51",
+      "module": 4,
+      "topic": "Data Augmentation",
+      "layers": {
+        "L1": "You encounter Data Augmentation in a real project. Here's how to think about it: Why do you need data augmentation?",
+        "L2": "Data augmentation is practicing for a driving test by doing parallel parking, three-point turns, and night driving \u2014 not just highway driving where you're already comfortable.",
+        "L3": "Augmentation increases effective data diversity without collecting new samples. Geometric transforms (rotations, flips) preserve labels for images. Domain-specific augmentations (adding noise, changing lighting) teach models to be robust to real-world variation.",
+        "L4": "Augmentation that changes the label corrupts training \u2014 flipping a '6' to '9' in digit recognition without relabeling teaches the model wrong. Over-augmentation teaches the model to rely on augmentation artifacts rather than genuine features. Augmentation doesn't fix fundamentally small datasets.",
+        "L5": "What is Data Augmentation? Why do you need data augmentation? - Data Augmentation: Creating new data samples from existing ones by applying transformations. Need: - Increase data size. - Reduce overfitting. - Improve model robustness. Example: Flipping or rotating images in image datasets."
+      }
+    },
+    {
+      "id": "Q52",
+      "module": 4,
+      "topic": "Learned vs Engineered Features",
+      "layers": {
+        "L1": "You encounter Learned vs Engineered Features in a real project. Here's how to think about it: What are the differences between Learned Features and Engineered Features?",
+        "L2": "Engineered features are a chef's mise en place \u2014 pre-chopped, measured, organized. Learned features are what the cooking produces itself \u2014 the aroma, texture, taste that emerges from the process.",
+        "L3": "Engineered features require domain expertise \u2014 human-defined transformations that capture known relationships. Learned features are automatically discovered during training \u2014 CNNs learning edge detectors rather than being told what edges are. Learned features scale with data; engineered features scale with expertise.",
+        "L4": "Engineered features can encode human biases or miss patterns humans wouldn't think to check. Learned features can learn spurious patterns if training data has confounders. Deep learned features are unreadable to humans \u2014 debugging why a model uses a feature is impossible.",
+        "L5": "What are the differences between Learned Features and Engineered Features? Feature Type | Definition | Example Engineered | Manually created using domain knowledge | Computing \"age group\" from date of birth Learned | Automatically learned by the model during training | CNN learning edge patterns in images"
+      }
+    },
+    {
+      "id": "Q53",
+      "module": 4,
+      "topic": "Types of Missing Values",
+      "layers": {
+        "L1": "You encounter Types of Missing Values in a real project. Here's how to think about it: What are three main types of missing values?",
+        "L2": "MCAR is pages randomly torn from a book. MAR is skipping the boring chapters. MNAR is skipping the chapters that would have corrected your wrong assumptions.",
+        "L3": "MCAR can be safely dropped without biasing results. MAR allows modelling the missingness pattern using other features. MNAR is systematically biased \u2014 the missing values differ from observed values in ways you can't correct without the missing data itself.",
+        "L4": "Treating MNAR as MCAR and dropping missing values introduces systematic bias \u2014 the missing values are systematically different and dropping them changes the learned distribution.",
+        "L5": "What are three main types of missing values? And how do you deal with them? 1. MCAR (Missing Completely at Random) \u2013 Missing without any pattern. Solution: Drop or impute with mean/median. 2. MAR (Missing at Random) \u2013 Missing depends on observed data. Solution: Impute based on related features. 3. MNAR (Missing Not at Random) \u2013 Missing depends on unobserved data. Solution: Advanced modeling, or treat missing as a separate category."
+      }
+    },
+    {
+      "id": "Q54",
+      "module": 4,
+      "topic": "Feature Scaling",
+      "layers": {
+        "L1": "You encounter Feature Scaling in a real project. Here's how to think about it: What are the common methods of performing feature scaling?",
+        "L2": "Scaling features is like making sure all ingredients in a recipe are measured in the same unit \u2014 otherwise salt (tiny amount) gets lost next to flour (cups).",
+        "L3": "Min-Max: X_norm = (X - X_min) / (X_max - X_min). Z-Score: X_z = (X - mean) / std. Normalization is essential for distance-based models (k-NN, SVM) and neural networks \u2014 large-magnitude features would otherwise dominate the learning. Min-Max: X_norm = (X - X_min) / (X_max - X_min). Z-Score: X_z = (X - mean) / std.",
+        "L4": "Outliers compress most values into a tiny range in Min-Max scaling. Z-Score assumes normal distribution \u2014 skewed data misleads. Robust scaling uses median and IQR instead.",
+        "L5": "What is Feature Scaling? What are the common methods of performing feature scaling? - Feature Scaling: Transforms features to a similar scale for better model performance. Common Methods: 1. Normalization (Min-Max Scaling) \u2013 Scales values between 0 and 1. 2. Standardization (Z-score) \u2013 Transforms to mean = 0 and std = 1. 3. Robust Scaling \u2013 Uses median and IQR, good for outliers."
+      }
+    },
+    {
+      "id": "Q55",
+      "module": 4,
+      "topic": "Discretization",
+      "layers": {
+        "L1": "You encounter Discretization in a real project. Here's how to think about it: - Discretization: Converting continuous features into categories or bins.",
+        "L2": "Grouping ages into brackets (18-25, 26-35) instead of exact ages \u2014 like grouping people by life stage rather than birthday.",
+        "L3": "Equal-width binning divides the range into N intervals of equal size. Equal-frequency puts equal numbers of samples in each bin. Decision tree binning finds optimal split points that best separate the target class.",
+        "L4": "Bins at the wrong boundaries split genuinely similar values into different categories. Too few bins lose information; too many overfit to noise.",
+        "L5": "What is Discretization? When do you need this? - Discretization: Converting continuous features into categories or bins. When Needed: - Some models/algorithms that work better with categorical data. - To improve interpretability or meet specific requirements (like decision trees). Example: Grouping ages into age brackets (18\u201325, 26\u201335, etc.)."
+      }
+    },
+    {
+      "id": "Q56",
+      "module": 4,
+      "topic": "Categorical Feature Encoding",
+      "layers": {
+        "L1": "You encounter Categorical Feature Encoding in a real project. Here's how to think about it: How do you encode Categorical Features?",
+        "L2": "One-hot is individual checkboxes. Label encoding is a dropdown with numbers. Ordinal encoding is a dropdown where 3 means more than 2. Target encoding replaces categories with their average outcome.",
+        "L3": "One-hot creates sparse high-dimensional space but ensures no ordinal assumption. Label encoding imposes false ordinality \u2014 the model learns that 2 is between 1 and 3. Target encoding captures predictive power but risks leakage.",
+        "L4": "High-cardinality one-hot causes curse of dimensionality. Target encoding without proper cross-validation leaks information. Ordinal encoding without real ordering teaches false ordinal relationships.",
+        "L5": "How do you encode Categorical Features? - One-Hot Encoding: Converts categories into binary columns (0 or 1). Use when number of categories is small. - Label Encoding: Assigns each category an integer value. Use when categories have no order. - Ordinal Encoding: Like label encoding but maintains order. Low = 1, Medium = 2, High = 3. - Target Encoding: Replaces category with average of target value. Use with caution: risk of data leakage. - Hash Encoding: Uses a hash function to map categories into fixed-size vectors. Use when high cardinality features (e.g., many product IDs)."
+      }
+    },
+    {
+      "id": "Q57",
+      "module": 4,
+      "topic": "Feature Crossing",
+      "layers": {
+        "L1": "You encounter Feature Crossing in a real project. Here's how to think about it: What could be the problem of Feature Crossing?",
+        "L2": "Feature crossing is combining 'tomato' and 'Italian' to create 'Italian tomato dish' \u2014 neither ingredient alone captures the cuisine.",
+        "L3": "Linear models can't learn feature interactions without crossing \u2014 the model can't discover that 'young + urban' behaves differently from either feature alone. Feature crossing gives the model this interaction explicitly.",
+        "L4": "Feature crossing explosion \u2014 combining many features creates exponentially many new features, causing overfitting without regularization. Some crossings are pure noise.",
+        "L5": "What is Feature Crossing? Why do you need this? What could be the problem of Feature Crossing? - Feature Crossing: Creating new features by combining two or more existing features. Example: Combine \"city\" with \"device type\" \u2192 \"New York_Mobile\". Why Needed: - Captures interactions between features. - Improves models that can't learn feature relationships. Problems: - Can lead to high dimensionality. - May cause overfitting if too many crossed features are added."
+      }
+    },
+    {
+      "id": "Q58",
+      "module": 5,
+      "topic": "Data Leakage Problem",
+      "layers": {
+        "L1": "You encounter Data Leakage Problem in a real project. Here's how to think about it: What could be the cause of this problem and how can you deal with this problem?",
+        "L2": "Like studying with the answer key taped under your exam paper \u2014 you seem brilliant in practice, but fail completely when the real questions arrive.",
+        "L3": "If the model learns from information it shouldn't have access to during training (future data, test data, target information), it exploits those correlations at evaluation time. Since those correlations don't exist in real new data, performance collapses.",
+        "L4": "Most dangerous because it's invisible \u2014 validation metrics look great. Common sources: including test data in training, target encoding before splitting, using future information as features. Must build any joins on the full dataset before splitting.",
+        "L5": "What is Data Leakage Problem? What could be the cause of this problem and how can you deal with this problem? - Data Leakage: When information from outside the training data (usually from test or future data) is accidentally used to train the model. Causes: - Using future data in training. - Improper data splitting (e.g., not separating train/test correctly). - Leaking target variable into features. Solutions: - Carefully split train, validation, and test sets. - Build any target-related joins in feature engineering. - Use pipelines to prevent contamination (separate after splitting)."
+      }
+    },
+    {
+      "id": "Q59",
+      "module": 5,
+      "topic": "Feature Importance",
+      "layers": {
+        "L1": "You encounter Feature Importance in a real project. Here's how to think about it: Why is knowing the Feature Importance useful?",
+        "L2": "Feature importance is a teacher's marking scheme \u2014 showing which questions matter most for the final grade, not just which answers were right.",
+        "L3": "Feature importance identifies which inputs drive predictions most. Enables model simplification \u2014 drop unimportant features and reduce overfitting. Critical for trust \u2014 if the most important feature for a loan decision is zip code (proxy for race), the model is discriminatory even without explicit race inputs.",
+        "L4": "Feature importance can be misleading \u2014 two correlated features split importance between them, masking that one is critical. Importance in training may differ from importance in production if data distributions shift. Permutation importance is more reliable than model-based importance for complex models.",
+        "L5": "Why is knowing the Feature Importance useful? - Helps understand which features impact model predictions the most. - Improves interpretability and trust in models. - Can be used for feature selection to reduce complexity. - Useful for debug models by identifying irrelevant or misleading features."
+      }
+    },
+    {
+      "id": "Q60",
+      "module": 5,
+      "topic": "Model Deployment Design Considerations",
+      "layers": {
+        "L1": "You encounter Model Deployment Design Considerations in a real project. Here's how to think about it: In model deployment, what are the system design key considerations that need to be taken care of?",
+        "L2": "Deployment design is like building a restaurant \u2014 you need to know how many covers (throughput), how fast food comes out (latency), how to handle food safety (security), and whether the kitchen can expand for rush hour (scaling).",
+        "L3": "Scalability ensures the system handles increased load \u2014 horizontal (more machines) vs vertical (bigger machines). Latency must meet user expectations \u2014 100ms is perceptible, 1 second is unacceptable for most applications. Security must protect both data and model IP.",
+        "L4": "Underestimating latency causes poor user experience even with accurate predictions. Over-provisioning for scale wastes resources. Security breaches can steal the model itself (model extraction attacks). Monitoring that only tracks operational metrics misses model degradation.",
+        "L5": "In model deployment, what are the system design key considerations that need to be taken care of? - Scalability: Can the model handle large-scale/more loads? - Latency: How fast are predictions returned? - Security: Are data and model endpoints secure? - Monitoring: Can you track model performance and errors? - Integration: Can the model be integrated with existing systems?"
+      }
+    },
+    {
+      "id": "Q61",
+      "module": 5,
+      "topic": "Technical Requirements for Deployment",
+      "layers": {
+        "L1": "You encounter Technical Requirements for Deployment in a real project. Here's how to think about it: Why is technical requirements important to be taken care of in deployment?",
+        "L2": "Technical requirements are the building code for an architect \u2014 electrical capacity, structural load limits, fire exits \u2014 without them buildings collapse or become unsafe.",
+        "L3": "Technical requirements define what 'working' means in the deployment environment: hardware specs (GPU memory, CPU), software dependencies (library versions), API contracts, data formats. Without them, integration failures appear at the worst possible time.",
+        "L4": "Requirements that don't match production reality cause deployment failures. Missing GPU requirements cause out-of-memory crashes. Underestimated latency budgets make accurate models unusable. Changing requirements late in development is catastrophically expensive.",
+        "L5": "Why is technical requirements important to be taken care of in deployment? - Ensures the system works in the real-world environment. - Defines required hardware, software, APIs, training, and data formats. - Prevents integration failures and unexpected costs. - Aligns model capabilities with business needs."
+      }
+    },
+    {
+      "id": "Q62",
+      "module": 5,
+      "topic": "Human Systems Function Allocation",
+      "layers": {
+        "L1": "You encounter Human Systems Function Allocation in a real project. Here's how to think about it: What is Human/Systems Function Allocation?",
+        "L2": "Function allocation is deciding who drives on a highway \u2014 the human monitors and takes over in emergencies, the automation handles routine driving. Getting this wrong is how Tesla Autopilot crashes happen.",
+        "L3": "Automation handles routine, well-defined tasks consistently. Humans handle novel situations, exceptions, and ethical decisions. The right allocation depends on task complexity, stakes, and human capacity to maintain attention during low-workload periods.",
+        "L4": "Over-automation causes automation complacency \u2014 humans stop monitoring and can't take over in time. Under-automation wastes expensive human time on tasks machines could do. In critical systems (medical, automotive), wrong allocation has caused fatalities.",
+        "L5": "What is Human/Systems Function Allocation? And why is this important for deployment? - Definition: Deciding which tasks will be done by humans and which by the AI system. Importance: - Ensures efficiency and safety in operations. - Helps design user interfaces and human-in-the-loop systems. - Avoids over-reliance on automation or critical tasks."
+      }
+    },
+    {
+      "id": "Q63",
+      "module": 5,
+      "topic": "Validation of Requirements",
+      "layers": {
+        "L1": "You encounter Validation of Requirements in a real project. Here's how to think about it: What is validation in this stage?",
+        "L2": "It's like getting the blueprint inspected before building: does this design match what the customer actually asked for?",
+        "L3": "Validation checks whether the final system meets the user's needs described in the ConOps document \u2014 focus on 'are we building the right system?' The 6 steps (Review \u2192 Test Scenarios \u2192 Success Criteria \u2192 Conduct Tests \u2192 Analyze \u2192 Document) ensure systematic coverage. Six steps: Review Requirements \u2192 Define Test Scenarios \u2192 Establish Success Criteria \u2192 Conduct Tests \u2192 Analyze Results \u2192 Document.",
+        "L4": "If ConOps doesn't reflect actual user needs, validation passes for the wrong system. Success criteria must be measurable and agreed upfront \u2014 vague criteria lead to arguments at the end.",
+        "L5": "What is validation in this stage? And what are the 6 steps in validating the requirements? Validation checks whether the final system meets the user's needs and the mission goals as described in the ConOps (Concept of Operations) document. It is to verify the system satisfies all operational conditions. - Is the system usable, effective, and performs as expected in the intended environment. - Focuses on \"Are we building the right system?\" 6 Steps in Validating the Requirements: 1. Review Requirements \u2013 Ensure clarity, completeness, and alignment with mission goals. 2. Define Test Scenarios \u2013 Create models or simulated use cases for validation. 3. Establish Success Criteria \u2013 Set measurable metrics to determine if the system passes. 4. Conduct Validation Tests \u2013 Perform tests using actual o"
+      }
+    },
+    {
+      "id": "Q64",
+      "module": 5,
+      "topic": "ML Model Selection Tips",
+      "layers": {
+        "L1": "You encounter ML Model Selection Tips in a real project. Here's how to think about it: What are the 6 tips on ML model selection?",
+        "L2": "Model selection is choosing between a bicycle, a car, and a helicopter for a journey. The helicopter is most powerful but needs a runway and pilot license. The bicycle needs no fuel but is slow. The right choice depends on distance, terrain, and urgency.",
+        "L3": "Simple models (linear, logistic) are interpretable and fast but may underfit complex patterns. Complex models (trees, neural nets) fit better but are slower and less interpretable. Model selection must consider: data size, feature types, latency requirements, and maintenance burden.",
+        "L4": "Chasing state-of-the-art benchmarks selects models that are hard to deploy and maintain. Simple models with good features often beat complex models. The best model on a leaderboard may be the worst choice for a resource-constrained production environment.",
+        "L5": "What are the 6 tips on ML model selection? Explain each of these clearly. 1. Understand the Problem Type \u2013 Classification, regression, clustering, etc. 2. Consider Data Size & Quality \u2013 Choose models that match the available data. 3. Start with Simple Models \u2013 Easier to interpret and debug. 4. Check Computational Resources \u2013 Some models need more time/memory. 5. Try Multiple Models \u2013 Compare several algorithms for best performance. 6. Evaluate with Metrics \u2013 Use proper metrics (accuracy, F1, RMSE) for the problem."
+      }
+    },
+    {
+      "id": "Q65",
+      "module": 5,
+      "topic": "Ensemble ML Methods",
+      "layers": {
+        "L1": "You encounter Ensemble ML Methods in a real project. Here's how to think about it: Explain the differences between Bagging, Boosting, and Stacking.",
+        "L2": "A jury of 12 people debating a verdict \u2014 each sees different evidence, makes different reasoning errors, and the majority vote cancels out individual mistakes.",
+        "L3": "Bagging reduces variance by training diverse models on random subsets and averaging \u2014 the errors cancel out. Boosting reduces bias by training models sequentially that fix predecessor errors. Stacking uses a meta-learner to optimally combine diverse base models.",
+        "L4": "If base models are too similar (all Decision Trees), ensembling provides little benefit. Boosting can overfit noisy data by repeatedly correcting outliers. Stacking can overfit if the meta-learner is too complex.",
+        "L5": "What is Ensemble ML Method? Explain the differences between Bagging, Boosting, and Stacking. - Ensemble Method: Combines multiple models to improve performance. Method | Description | Example Bagging | Trains models in parallel on random data subsets | Random Forest Boosting | Trains models sequentially, each fixing the previous model's errors | XGBoost, AdaBoost Stacking | Combines different models and feeds their outputs into a final model | Blend of logistic regression + trees"
+      }
+    },
+    {
+      "id": "Q66",
+      "module": 5,
+      "topic": "Product Evaluation Processes",
+      "layers": {
+        "L1": "You encounter Product Evaluation Processes in a real project. Here's how to think about it: What are two main processes in product evaluation?",
+        "L2": "Verification is the chef tasting each dish during cooking. Validation is the customer saying whether the meal was what they wanted.",
+        "L3": "Verification happens during development against technical specs. Validation happens at the end against user needs. Both are required \u2014 verification without validation means perfect spec wrong product.",
+        "L4": "Both verification and validation can pass in a test environment but fail in production. Controlled environments can't fully replicate real-world conditions.",
+        "L5": "What are two main processes in product evaluation? 1. Verification \u2013 Checks if the product was built correctly (meets specifications). 2. Validation \u2013 Checks if the right product was built for the user's needs."
+      }
+    },
+    {
+      "id": "Q67",
+      "module": 5,
+      "topic": "Verification vs Validation",
+      "layers": {
+        "L1": "You encounter Verification vs Validation in a real project. Here's how to think about it: What are the differences between Verification and Validation?",
+        "L2": "Verification is the editor checking spelling and grammar. Validation is the reader saying whether the book was worth reading.",
+        "L3": "Verification is process-oriented \u2014 did you follow the right steps? Validation is outcome-oriented \u2014 did you achieve the right goal? Both catch different defect types and both are necessary.",
+        "L4": "Verification doesn't catch wrong requirements. Validation doesn't catch engineering defects. Without both, you're flying blind.",
+        "L5": "What are the differences between Verification and Validation? Aspect | Verification | Validation Goal | Are we building the product right? | Are we building the right product? Focus | Technical requirements | User requirements When | During development | After product is built Example | Code reviews and testing | User acceptance testing"
+      }
+    },
+    {
+      "id": "Q68",
+      "module": 5,
+      "topic": "Controlled Environment",
+      "layers": {
+        "L1": "You encounter Controlled Environment in a real project. Here's how to think about it: What is Controlled Environment?",
+        "L2": "A crash-test dummy lab \u2014 every variable is known, results are repeatable, nothing unexpected can interfere.",
+        "L3": "Controlled environments enable reproducible experiments and isolate specific variables. They allow edge case testing that would be dangerous or expensive in the real world.",
+        "L4": "Results from controlled environments may not transfer to the real world. The lab can't capture all real-world complexity.",
+        "L5": "What is Controlled Environment? How does this help with product evaluation? - Controlled Environment: A safe, test-specific setup where variables can be managed and monitored. Helps by: - Reducing external factors. - Ensuring repeatable and reliable test results. - Simulating real-world conditions without real-world risk."
+      }
+    },
+    {
+      "id": "Q69",
+      "module": 5,
+      "topic": "Product Verification Approaches",
+      "layers": {
+        "L1": "You encounter Product Verification Approaches in a real project. Here's how to think about it: What are the different approaches in Product Verification?",
+        "L2": "Reviews are reading a draft and making notes. Inspections are a formal meeting dissecting every paragraph. Walkthroughs are the author presenting while peers ask questions. Testing is running the code and checking outputs.",
+        "L3": "Reviews catch design issues early. Inspections catch requirement gaps. Walkthroughs catch logical errors. Testing catches runtime failures. Each approach finds different defect types.",
+        "L4": "Reviews without follow-through fix nothing. Inspections become political and fail to catch real issues. Walkthroughs where authors are defensive catch nothing. Testing can't verify what you didn't think to test.",
+        "L5": "What are the different approaches in Product Verification? 1. Reviews \u2013 Manual checking of documents and code. 2. Inspections \u2013 Formal evaluation of design/development. 3. Walkthroughs \u2013 Step-by-step peer discussions of code or design. 4. Testing \u2013 Running the system in various modes (e.g., unit testing)."
+      }
+    },
+    {
+      "id": "Q70",
+      "module": 5,
+      "topic": "Software Testing Types",
+      "layers": {
+        "L1": "You encounter Software Testing Types in a real project. Here's how to think about it: Explain the different types of testing in Software Engineering.",
+        "L2": "Unit testing checks each ingredient. Integration testing tastes as you cook. System testing evaluates the full dish. Acceptance testing is the customer trying it. Regression testing re-tastes after changing the recipe.",
+        "L3": "Unit tests catch local bugs fast and cheaply. Integration catches interface bugs between modules. System tests catch emergent behavior. Acceptance tests validate user needs. Regression tests prevent old bugs from returning.",
+        "L4": "High unit test coverage gives false confidence if integration tests are skipped. Integration tests in production-like environments are most valuable but often skipped under time pressure.",
+        "L5": "Explain the different types of testing in Software Engineering. - Unit Testing \u2013 Tests individual functions or components. - Integration Testing \u2013 Tests interactions between modules. - System Testing \u2013 Tests the entire system as a whole. - Acceptance Testing \u2013 Tests if the system meets user requirements. - Regression Testing \u2013 Checks if new changes break existing features. - Performance Testing \u2013 Measures speed, scalability, and capacity. - Security Testing \u2013 Checks for vulnerabilities and threats."
+      }
+    },
+    {
+      "id": "Q71",
+      "module": 5,
+      "topic": "ML Model Evaluation Baselines",
+      "layers": {
+        "L1": "You encounter ML Model Evaluation Baselines in a real project. Here's how to think about it: For ML Model Evaluation, what are the different types of baselines?",
+        "L2": "ZeroR always says the traffic light is green. Random guesses. Previous Best is comparing to last week's accuracy.",
+        "L3": "ZeroR sets the absolute floor \u2014 if you can't beat always predicting the majority class, your model adds zero value. Random shows whether the model beats chance. Previous Best tracks genuine improvement over time.",
+        "L4": "Wrong baseline comparison makes real improvement invisible. Comparing to a poor ZeroR is easy but meaningless. Comparing to a strong Previous Best requires genuine improvement.",
+        "L5": "For ML Model Evaluation, what are the different types of baselines? 1. Zero Rule (ZeroR) \u2013 Always predicts the most common class or mean. Use \"to set a simple performance benchmark.\" 2. Random Baseline \u2013 Makes random predictions. Use \"to check if your model performs better than chance.\" 3. Previous Model \u2013 Compares with an older or existing model. Use \"when improving or replacing a production model.\""
+      }
+    },
+    {
+      "id": "Q72",
+      "module": 5,
+      "topic": "ML Evaluation Methods",
+      "layers": {
+        "L1": "You encounter ML Evaluation Methods in a real project. Here's how to think about it: Explain the different evaluation methods.",
+        "L2": "ML evaluation is like a driving test with different exercises \u2014 perturbation tests check if you react appropriately to a child running into the road, invariance tests check you don't panic at a billboard moving past, directional tests check you turn the right direction.",
+        "L3": "Perturbation tests check robustness \u2014 small input changes shouldn't cause dramatic prediction swings. Invariance tests check the model ignores irrelevant changes. Directional expectation tests check the model responds correctly to meaningful changes.",
+        "L4": "Perturbation thresholds are arbitrary \u2014 too sensitive and everything fails, too lenient and real problems are missed. Some perturbations are natural variation, not failures.",
+        "L5": "Explain the different evaluation methods. Here are six key evaluation methods used to assess machine learning models: Perturbation Tests - Slightly change the input to see if the model reacts as expected. - Purpose: Test the model's robustness to changes. - Example: Test that a blurred image still gets the correct label; if classification stays the same. Invariance Tests - Apply changes that shouldn't affect the prediction (e.g., reformatting text). - Purpose: Ensure the model is consistent. - Example: Changing \"this was a VERY\" or \"this was a very\" should give the same result. Directional Expectation Tests - A small change in a value should change the output in a known direction. - Purpose: Test logical model behavior. - Example: Increasing age or a health risk model should increase predi"
+      }
+    },
+    {
+      "id": "Q73",
+      "module": 5,
+      "topic": "Click Through Rate",
+      "layers": {
+        "L1": "You encounter Click Through Rate in a real project. Here's how to think about it: What is Click Through Rate (CTR)?",
+        "L2": "Like a dating app showing your profile to 100 people and 7 actually swipe right \u2014 your CTR is 7%.",
+        "L3": "CTR = (Number of Clicks / Number of Impressions) \u00d7 100. Higher CTR means more users are engaging with the recommended content. Used to optimize recommendation systems, ads, and search rankings. Formula: CTR = (Clicks / Impressions) \u00d7 100.",
+        "L4": "High CTR can mean users are clicking on misleading content. Always pair CTR with engagement quality and satisfaction metrics \u2014 users might click out of curiosity but regret it.",
+        "L5": "What is Click Through Rate (CTR)? - CTR: The percentage of users who click on a link or ad after seeing it. Formula: $$CTR = \\frac{Number\\ of\\ Clicks}{Number\\ of\\ Impressions} \\times 100$$ Used in websites, recommendation systems, ads, search engines."
+      }
+    },
+    {
+      "id": "Q74",
+      "module": 5,
+      "topic": "Slice-Based Testing for Imbalanced Data",
+      "layers": {
+        "L1": "You encounter Slice-Based Testing for Imbalanced Data in a real project. Here's how to think about it: How does Slice-Based Testing help to deal with imbalanced data and data with many subgroups?",
+        "L2": "Slice-based testing checks if a medicine works not just on average, but specifically on men, women, older adults \u2014 catching hidden failures in minority groups.",
+        "L3": "Models can perform well overall but fail dramatically on minority subgroups \u2014 a model with 90% accuracy might have 30% on women. Slice-based testing catches these hidden failures essential for fairness and safety.",
+        "L4": "Small slices have high variance \u2014 a single bad prediction in a small slice looks like massive failure. You need enough samples per slice to draw statistical conclusions.",
+        "L5": "How does Slice-Based Testing help to deal with imbalanced data and data with many subgroups? - Slice-Based Testing evaluates model performance on specific subgroups (slices) of the data (e.g., gender, age, location). Benefits: - Detects bias or underperformance in minority groups. - Helps ensure fairness and robustness across all user segments."
+      }
+    },
+    {
+      "id": "Q75",
+      "module": 5,
+      "topic": "Slice Identification Methods",
+      "layers": {
+        "L1": "You encounter Slice Identification Methods in a real project. Here's how to think about it: What are the methods that can help to identify the slices in Slice-Based Testing?",
+        "L2": "Manual slicing is a doctor knowing to check by gender. Decision tree slicing asks the data which groups have unusual outcomes. Error analysis reads through failures noticing patterns. Clustering finds natural patient groups.",
+        "L3": "Manual is fast but requires domain expertise. Decision trees automate slice discovery but find only what the tree can represent. Error analysis finds failures but not all failure modes. Clustering finds groups but doesn't guarantee those groups are actionable.",
+        "L4": "Automatic slice discovery without domain guidance finds spurious correlations. Slices must be validated against real-world relevance, not just statistical patterns.",
+        "L5": "What are the methods that can help to identify the slices in Slice-Based Testing? 1. Manual Slicing \u2013 Use domain knowledge to define groups (e.g., age range). 2. Decision Tree Splitting \u2013 Use trees to find data where model errors are high. 3. Error Analysis \u2013 Look at misclassifications and group common causes. 4. Clustering \u2013 Use unsupervised learning to find natural subgroups in data. 5. Fairness Auditing Tools \u2013 Use tools like Fairlearn or What-If Tool to detect biased slices."
+      }
+    },
+    {
+      "id": "Q76",
+      "module": 6,
+      "topic": "Model Deployment Steps",
+      "layers": {
+        "L1": "You encounter Model Deployment Steps in a real project. Here's how to think about it: What are the four main steps in model deployment?",
+        "L2": "Pack the model like catering food, ship it like a shipping container via Docker, expose it like a restaurant buffet via API, automate like a catering company with MLOps.",
+        "L3": "Package (Docker + ONNX) \u2192 Deploy to cloud (Kubernetes) \u2192 Serve via API (REST/GRPC) \u2192 Automate with MLOps (monitoring, retraining, scaling). Each step enables the next.",
+        "L4": "Missing dependency versions cause silent accuracy drops (different library versions produce slightly different model behavior). Environment must exactly match between training and serving.",
+        "L5": "What are the four main steps in model deployment? The four main steps in model deployment are: Package the Model - Bundle the model, dependencies, and code into a container (e.g., Docker). - Use formats like ONNX or PMML for portability. Deploy to Cloud Infrastructure - Launch the container in a cloud environment (e.g., AWS, GCP, Azure). - Tools like Docker or Kubernetes help automate this. Serve the Model as a Service - Expose the model via an API (REST/GRPC) for real-time predictions. - Use the Stateless Serving Function Pattern to support auto-scaling based on demand. Automate with MLOps Infrastructure - Use MLOps tools to manage deployment, updates, monitoring, and scaling. - Example: Seldon Core for Kubernetes, Cortex for AWS, TFX for TensorFlow."
+      }
+    },
+    {
+      "id": "Q77",
+      "module": 6,
+      "topic": "Model-in-Service Architecture",
+      "layers": {
+        "L1": "You encounter Model-in-Service Architecture in a real project. Here's how to think about it: What is Model-in-Service Architecture?",
+        "L2": "Like a chef who works inside the restaurant kitchen. Simple, but if the chef gets sick the whole restaurant closes.",
+        "L3": "Embedding the model in the main app is simple and low-latency but makes the model hard to update independently and it can't scale separately from the app.",
+        "L4": "Can't scale model independently from the app. Updating the model requires redeploying the entire application. All serving infrastructure must match the main app's technology stack.",
+        "L5": "What is Model-in-Service Architecture? What are the advantages and disadvantages of this architecture? - Model-in-Service: The model is embedded directly within the main application or service. Advantages: - Simple to deploy. - Low latency for internal calls. Disadvantages: - Hard to scale independently. - Updating the model requires redeploying the entire app. - Limited flexibility."
+      }
+    },
+    {
+      "id": "Q78",
+      "module": 6,
+      "topic": "Separating UI and Model",
+      "layers": {
+        "L1": "You encounter Separating UI and Model in a real project. Here's how to think about it: Why is it good to separate the UI and the model?",
+        "L2": "Separating UI and model is like a restaurant having a delivery entrance \u2014 customers don't see the kitchen, kitchen doesn't know customer's face, but meals flow cleanly between them.",
+        "L3": "Decoupling UI from model enables independent updates \u2014 redesign the interface without retraining the model. Enables multiple UIs (web, mobile, API) to share one model. Makes A/B testing easier \u2014 swap models without changing the interface.",
+        "L4": "Network calls between UI and model add latency. Error handling across service boundaries is more complex. Version skew between UI and model can cause subtle compatibility issues. More infrastructure (API servers, load balancers) means more failure modes.",
+        "L5": "Why is it good to separate the UI and the model? - Easier to update model without affecting UI. - Improves scalability (each part can scale independently). - Allows the same model to serve multiple applications. - Enhances security and maintainability."
+      }
+    },
+    {
+      "id": "Q79",
+      "module": 6,
+      "topic": "Model-as-a-Service",
+      "layers": {
+        "L1": "You encounter Model-as-a-Service in a real project. Here's how to think about it: And how is it different from Model-in-Service?",
+        "L2": "Like a catering company that delivers food to many restaurants \u2014 the model can serve multiple apps from one kitchen, and can be updated without closing any restaurant.",
+        "L3": "MaaS separates the model as its own service via API, enabling independent scaling, versioning, and reuse across multiple applications \u2014 but adds network latency.",
+        "L4": "Network latency between the API and the model service adds overhead. Requires robust API design, authentication, and rate limiting. More complex than in-service deployment.",
+        "L5": "What is Model-as-a-Service? And how is it different from Model-in-Service? - Model-as-a-Service: The model is deployed as a separate service (e.g., via REST API). Differences: - Unlike Model-in-Service, it allows the model to be updated, scaled, or reused independently from the main app."
+      }
+    },
+    {
+      "id": "Q80",
+      "module": 6,
+      "topic": "Model-as-a-Service Pros Cons",
+      "layers": {
+        "L1": "You encounter Model-as-a-Service Pros Cons in a real project. Here's how to think about it: What are the advantages and disadvantages of Model-as-a-Service?",
+        "L2": "MaaS is like a laundromat \u2014 use machines without owning them (scalable), serve many customers (multi-app), but travel there (latency), and shared machines mean coordination complexity.",
+        "L3": "MaaS decouples model lifecycle from application lifecycle \u2014 models update independently, multiple apps share one model deployment, reducing duplication.",
+        "L4": "Network latency makes MaaS unacceptable for real-time inference. The model API becomes a single point of failure. More components means more failure modes.",
+        "L5": "What are the advantages and disadvantages of Model-as-a-Service? Advantages: - Easy to update or replace the model. - Supports scalable, modular architecture. - Can serve multiple applications. Disadvantages: - Higher latency due to network calls. - More complex to set up and manage. - Requires robust API design and security."
+      }
+    },
+    {
+      "id": "Q81",
+      "module": 6,
+      "topic": "Dependency Management for Model Servers",
+      "layers": {
+        "L1": "You encounter Dependency Management for Model Servers in a real project. Here's how to think about it: What are the factors that need to be considered for dependency management for model servers?",
+        "L2": "Dependency management is like ensuring every chef uses the same recipe book, same kitchen equipment, same ingredients \u2014 otherwise dishes come out differently.",
+        "L3": "Different library versions produce different model behavior. GPU vs CPU environments cause crashes or silent accuracy drops. Reproducibility means anyone can replicate the exact same model.",
+        "L4": "Pinning versions too strictly prevents security updates. Pinning too loosely breaks reproducibility. Hardware changes require full retesting.",
+        "L5": "What are the factors that need to be considered for dependency management for model servers? 1. Library Versions \u2013 Ensure consistent versions of ML libraries (e.g., TensorFlow, PyTorch). 2. Environment Isolation \u2013 Use containers (e.g., Docker) or virtual environments. 3. Hardware Compatibility \u2013 Match dependencies with hardware (e.g., GPU support). 4. Reproducibility \u2013 Pin dependencies and configuration for consistent setup. 5. Security Updates \u2013 Keep dependencies up to date to patch vulnerabilities."
+      }
+    },
+    {
+      "id": "Q82",
+      "module": 6,
+      "topic": "Dependency Strategies",
+      "layers": {
+        "L1": "You encounter Dependency Strategies in a real project. Here's how to think about it: What are two strategies to deal with dependencies?",
+        "L2": "Virtual env gives each project its own medicine cabinet. Docker puts each project in its own fully-equipped kitchen.",
+        "L3": "Virtual env isolates Python packages per project but not system libraries or hardware. Docker packages code, runtime, system tools, and settings together \u2014 ensuring it works everywhere Docker runs.",
+        "L4": "Virtual env is lightweight but system-level dependencies can still conflict. Docker images are large and slow to build. GPU Docker requires nvidia-docker setup.",
+        "L5": "What are two strategies to deal with dependencies? 1. Virtual Environments \u2013 Use tools like venv or conda to isolate Python libraries for each project. 2. Containerization (e.g., Docker) \u2013 Package the model, code, and all dependencies into a container for consistent deployment."
+      }
+    },
+    {
+      "id": "Q83",
+      "module": 6,
+      "topic": "VM vs Docker",
+      "layers": {
+        "L1": "You encounter VM vs Docker in a real project. Here's how to think about it: What are the differences between VM and Docker (Container)?",
+        "L2": "VMs are separate houses on separate plots of land \u2014 fully independent but expensive. Docker containers are apartments sharing the building's infrastructure \u2014 efficient but less isolated.",
+        "L3": "Docker containers share the host OS kernel so they start in seconds and use less memory. VMs include a full guest OS so they're slower to start but provide complete isolation \u2014 useful when you need strict security boundaries.",
+        "L4": "Docker containers share the host kernel \u2014 a kernel vulnerability affects all containers. VMs provide complete isolation at the cost of higher resource overhead and slower startup.",
+        "L5": "What are the differences between VM and Docker (Container)? Aspect | VM (Virtual Machine) | Docker (Container) Startup Time | Slow (minutes) | Fast (seconds) Size | Large (includes full OS) | Lightweight (shares host OS kernel) Resource Usage | High | Low Isolation | Full OS isolation | Process-level isolation Use Case | Complete system virtualization | Microservices, app-level development"
+      }
+    },
+    {
+      "id": "Q84",
+      "module": 6,
+      "topic": "Model Deployment Optimization",
+      "layers": {
+        "L1": "You encounter Model Deployment Optimization in a real project. Here's how to think about it: In model deployment, how do you optimize the performance?",
+        "L2": "Quantization is compressing a high-resolution photo into a smaller file \u2014 some quality is lost but it's much faster to send.",
+        "L3": "Quantization reduces weights from 32-bit float to 8-bit integers, dramatically reducing model size and inference time. Pruning removes low-importance weights entirely. Both trade some accuracy for speed.",
+        "L4": "Aggressive quantization causes significant accuracy drops for some model architectures. Pruning without careful validation destroys important weights. Compression must preserve the model's decision boundaries.",
+        "L5": "In model deployment, how do you optimize the performance? - Use batching to process multiple inputs at once. - Use model quantization + pruning to shrink model size. - Use GPUs or TPUs to accelerate inference. - Cache results for repeated inputs. - Load balance with horizontal scaling."
+      }
+    },
+    {
+      "id": "Q85",
+      "module": 6,
+      "topic": "Horizontal Scaling",
+      "layers": {
+        "L1": "You encounter Horizontal Scaling in a real project. Here's how to think about it: - Horizontal Scaling: Adding more machines/instances to handle increased load.",
+        "L2": "Adding more delivery trucks to your fleet instead of making each truck drive faster.",
+        "L3": "Horizontal scaling adds more instances behind a load balancer \u2014 each handles a fraction of requests simultaneously. This handles increased traffic linearly and provides fault tolerance.",
+        "L4": "Stateless serving is required for horizontal scaling \u2014 if each request needs session state, that state must be stored externally (Redis, database), adding complexity and latency.",
+        "L5": "What is Horizontal Scaling? - Horizontal Scaling: Adding more machines/instances to handle increased load. Example: Deploying more servers behind a load balancer."
+      }
+    },
+    {
+      "id": "Q86",
+      "module": 6,
+      "topic": "Cloud vs Edge Computing",
+      "layers": {
+        "L1": "You encounter Cloud vs Edge Computing in a real project. Here's how to think about it: What are the differences between Cloud Computing and Edge Computing?",
+        "L2": "Cloud computing is a restaurant that cooks food in a central kitchen and delivers it. Edge computing is a food truck that cooks right at the event venue.",
+        "L3": "Cloud has virtually unlimited compute but network latency. Edge processes locally near the data source \u2014 near-zero latency and works offline \u2014 but has limited compute and is harder to update.",
+        "L4": "Edge devices have limited compute \u2014 large models can't run on IoT sensors. Harder to update models on thousands of distributed devices. Security at the device level is harder to manage.",
+        "L5": "What are the differences between Cloud Computing and Edge Computing? What are the advantages and disadvantages of Edge Computing? Feature | Cloud Computing | Edge Computing Location | Centralized data centers | Near the data source (e.g., devices) Latency | Higher (network delay) | Lower (local processing) Scalability | Very high | Limited Example | Google Cloud, AWS | Smart cameras, IoT devices Advantages of Edge Computing: - Low latency. - Reduced bandwidth usage. - Works offline or with poor connectivity. Disadvantages: - Limited computing power. - Harder to update models. - Security concerns at the device level."
+      }
+    },
+    {
+      "id": "Q87",
+      "module": 6,
+      "topic": "Operational vs ML Metrics",
+      "layers": {
+        "L1": "You encounter Operational vs ML Metrics in a real project. Here's how to think about it: Explain the differences between operational metrics and ML metrics when used to determine the success of a ML system.",
+        "L2": "Operational metrics are whether the delivery driver arrives on time. ML metrics are whether the food is actually what you ordered.",
+        "L3": "Operational metrics (latency, throughput, uptime) measure system health. ML metrics (accuracy, F1, RMSE) measure prediction quality. Both are needed \u2014 a system can be healthy but make terrible predictions, or accurate but crawl.",
+        "L4": "Optimizing ML metrics without tracking operational metrics means you can deploy an accurate model that's too slow or crashes constantly. Optimizing operational metrics without ML metrics means a fast system that makes terrible predictions.",
+        "L5": "Explain the differences between operational metrics and ML metrics when used to determine the success of a ML system. Metric Type | Purpose | Examples ML Metrics | Measure model performance | Accuracy, Precision, Recall, F1 Score, RMSE Operational Metrics | Measure system health and user impact | Latency, Uptime, Throughput, Error Rate - ML metrics focus on how well the model predicts. - Operational metrics focus on how well the system runs in production."
+      }
+    },
+    {
+      "id": "Q88",
+      "module": 6,
+      "topic": "Dependency and Deployment Failures",
+      "layers": {
+        "L1": "You encounter Dependency and Deployment Failures in a real project. Here's how to think about it: What are Dependency Failures and Deployment Failures?",
+        "L2": "Dependency failure is the delivery truck's engine breaking down. Deployment failure is sending the food to the wrong address.",
+        "L3": "Dependency failures happen when external packages, libraries, or services are missing, outdated, or incompatible. Deployment failures happen when the deployment environment (OS, drivers, configs) doesn't match the training environment.",
+        "L4": "Missing library versions cause import errors. Deprecated API calls silently use fallback behavior. Deployment to wrong environment (e.g., GPU machine vs CPU) causes crashes.",
+        "L5": "What are Dependency Failures and Deployment Failures? - Dependency Failures: Failures caused by missing, outdated, or incompatible external packages, libraries, or services. Example: A broken API or missing Python library. - Deployment Failures: Errors that occur when moving a model or system into production. Example: Incorrect environment setup, failed container builds, or missing configuration files."
+      }
+    },
+    {
+      "id": "Q89",
+      "module": 6,
+      "topic": "Operational Failure Causes",
+      "layers": {
+        "L1": "You encounter Operational Failure Causes in a real project. Here's how to think about it: What are the causes for Operational Failures?",
+        "L2": "Operational failures are like a restaurant kitchen collapsing \u2014 equipment breaks (hardware), the delivery truck never arrived (network), wrong recipe was followed (config), health inspector shut you down (security).",
+        "L3": "Operational failures stem from hardware (disk full, GPU crash), infrastructure (network outage), or configuration (wrong environment variables) \u2014 the software stack itself has a problem.",
+        "L4": "Single points of failure in infrastructure (database, load balancer). Hardware failures (disk full, RAM exhausted). Configuration errors (wrong environment variables).",
+        "L5": "What are the causes for Operational Failures? - Network outages or delays. - Hardware failures (disk, GPU crashes). - Poor system scaling (e.g., high traffic overload). - Incorrect configurations. - Security breaches or access issues."
+      }
+    },
+    {
+      "id": "Q90",
+      "module": 6,
+      "topic": "ML-Specific Failures",
+      "layers": {
+        "L1": "You encounter ML-Specific Failures in a real project. Here's how to think about it: What are the causes for ML-Specific Failures?",
+        "L2": "Like training a dog for a specific scent in a clean training room, then deploying it in a busy city \u2014 the real world has too many new smells.",
+        "L3": "ML failures happen even when the system is technically running correctly \u2014 the model encounters patterns (covariate shift, label shift, concept drift) it wasn't trained on. Unlike software bugs, no error is thrown \u2014 predictions are silently wrong.",
+        "L4": "Production data differs from training in ways not seen in development. Edge cases in safety-critical systems (autonomous vehicles, medical AI). Feedback loops where model predictions influence future training data.",
+        "L5": "What are the causes for ML-Specific Failures? ML-specific failures happen when the machine learning model does not meet performance expectations, even if the system is running correctly. These failures often appear during or after deployment. Causes of ML-Specific Failures: Production Data Differs from Training Data - The model has not seen patterns or formats it wasn't trained on. - Example: A chatbot trained on formal text fails on social media slang. Edge Cases - Rare but critical inputs where the model performs poorly. - Example: A self-driving car encountering unusual road signs. Degenerate Feedback Loops - Model output influences future input, reinforcing biased or narrow patterns. - Example: A recommender system only shows popular items, ignoring diverse content."
+      }
+    },
+    {
+      "id": "Q91",
+      "module": 6,
+      "topic": "Edge Case vs Outlier",
+      "layers": {
+        "L1": "You encounter Edge Case vs Outlier in a real project. Here's how to think about it: What is Edge Case and how is this different from Outlier?",
+        "L2": "An edge case is a valid input the model handles poorly but should handle (a self-driving car encountering an unusual road sign). An outlier is a data entry error (age=500) that's simply wrong.",
+        "L3": "Edge cases are valid inputs that a model handles poorly but should handle \u2014 critical for safety systems. Outliers are anomalous data points that may indicate measurement errors or genuinely rare events.",
+        "L4": "Edge cases in safety-critical systems can cause catastrophic failures \u2014 always test with real-world conditions. Outliers may be data entry errors that should be corrected rather than modelled.",
+        "L5": "What is Edge Case and how is this different from Outlier? How do you handle this? Edge Case: - A scenario where a model performs poorly, even though the input is valid. - Often rare but critical, especially in safety-focused systems (e.g., self-driving cars). - Difficult to detect during development \u2013 rare, but needs correct response. - Can be expected or ignored in some models, but is a problem if ML is in a safety-critical domain. - Must be handled carefully \u2013 cannot be ignored or removed. Outlier: - A data point that is far from other examples in the dataset. - May be due to errors or rare conditions. - Example: An age value of 500 in a dataset. - Can be removed or ignored in some cases to improve model performance. Handling Edge Cases: - Add more training data for rare scenarios. - Use"
+      }
+    },
+    {
+      "id": "Q92",
+      "module": 6,
+      "topic": "Degenerate Feedback",
+      "layers": {
+        "L1": "You encounter Degenerate Feedback in a real project. Here's how to think about it: What is Degenerate Feedback and how can you deal with this?",
+        "L2": "A music app that keeps recommending pop music because that's what everyone clicked before \u2014 the recommendations create the data that confirms the recommendations.",
+        "L3": "When model predictions influence what data is collected for future training, a feedback loop forms \u2014 the model becomes increasingly biased toward its own predictions, reinforcing its existing beliefs and reducing diversity.",
+        "L4": "Rich-get-richer loops: popular content gets recommended, gets clicked, gets more data, gets recommended more. Niche content never gets shown so never gets clicks so never gets recommended. Gradually destroys recommendation diversity.",
+        "L5": "What is Degenerate Feedback and how can you deal with this? - Degenerate Feedback: When the system's predictions influence future data, creating biased loops. Example: A recommender system keeps showing the same popular items, reinforcing their popularity. Solutions: - Introduce exploration (e.g., show new or random items). - Use diverse labels (e.g., not just click-level feedback). - Monitor for feedback loops and retrain with balanced data."
+      }
+    },
+    {
+      "id": "Q93",
+      "module": 6,
+      "topic": "Data Distribution Shifts",
+      "layers": {
+        "L1": "You encounter Data Distribution Shifts in a real project. Here's how to think about it: What are the 3 types of data distribution shifts?",
+        "L2": "Covariate shift: everyone starts speaking with an accent you don't recognize. Label shift: the topics people ask about change. Concept shift: the language itself changes \u2014 words that meant one thing now mean another.",
+        "L3": "Covariate shift: input distribution changes (older spam formats). Label shift: outcome distribution changes (new disease prevalence). Concept shift: the mapping itself changes (economic patterns shift after regulation).",
+        "L4": "Covariate shift: model processes novel patterns it wasn't trained on. Label shift: model predicts outdated label distributions. Concept shift: the fundamental relationship between inputs and outputs changes \u2014 model is solving yesterday's problem.",
+        "L5": "What are the 3 types of data distribution shifts? Provide examples to differentiate them. 1. Covariate Shift \u2013 The input data (X) changes, but the label distribution (Y|X) stays the same. Example: A spam filter trained on emails 5 years old fails to filter new-era emails (with crypto scams). 2. Label Shift \u2013 The distribution of labels (Y) changes, but input features (X|Y) stay the same. Example: A disease becomes more common, but symptoms stay the same. 3. Concept Shift \u2013 The relationship between input and label (Y|X) changes. Example: A stock market model stops working after a policy change because the patterns are no longer valid."
+      }
+    },
+    {
+      "id": "Q94",
+      "module": 6,
+      "topic": "Distribution Shift Detection",
+      "layers": {
+        "L1": "You encounter Distribution Shift Detection in a real project. Here's how to think about it: What are the two methods used to detect distribution shifts?",
+        "L2": "Distribution shift detection is like a doctor monitoring your vital signs over time \u2014 statistical tests are blood panels comparing today's results to your historical baseline, model metrics are whether you're getting better or worse at living.",
+        "L3": "Statistical tests (KL divergence, KS test) compare the distribution of production data against training data. Monitoring model metrics for drops catches the consequence \u2014 statistical tests catch the cause.",
+        "L4": "Statistical tests detect distributional differences but can't tell you whether those differences matter for your specific model's predictions. Thresholds for significance are arbitrary.",
+        "L5": "What are the two methods used to detect distribution shifts? 1. Statistical Tests \u2013 Use tests like KL divergence, Chi-square, or Kolmogorov-Smirnov to compare distributions. 2. Monitoring Model Performance \u2013 Watch for drops in accuracy, F1 score, to spot/detect changes in production patterns."
+      }
+    },
+    {
+      "id": "Q95",
+      "module": 6,
+      "topic": "Spatial vs Temporal Shifts",
+      "layers": {
+        "L1": "You encounter Spatial vs Temporal Shifts in a real project. Here's how to think about it: What is the difference between Spatial Shifts and Temporal Shifts?",
+        "L2": "Spatial shift is a self-driving car trained in Texas failing in Tokyo. Temporal shift is a retail model trained before COVID failing during COVID.",
+        "L3": "Spatial shift occurs when deployment environment differs geographically. Temporal shift occurs when real-world patterns evolve seasonally. Both are ubiquitous in production.",
+        "L4": "Models degrade silently \u2014 performance looks fine because you're comparing against yesterday's model, not today's reality. Both shifts are ubiquitous but often undetected until they cause significant harm.",
+        "L5": "What is the difference between Spatial Shifts and Temporal Shifts? - Spatial Shift: Changes in data across locations or environments. Example: A model trained in one country is used in another. - Temporal Shift: Changes in data over time. Example: Consumer behavior changes during holiday seasons."
+      }
+    },
+    {
+      "id": "Q96",
+      "module": 6,
+      "topic": "Monitoring vs Observability",
+      "layers": {
+        "L1": "You encounter Monitoring vs Observability in a real project. Here's how to think about it: What is Monitoring vs Observability?",
+        "L2": "Monitoring is a smoke alarm \u2014 it goes off for known fire patterns. Observability is a detective reconstructing exactly what happened from the crime scene evidence.",
+        "L3": "Monitoring watches known failure modes (latency spike, accuracy drop). Observability understands unknown failures by examining internal state from external outputs \u2014 needed when the failure mode wasn't anticipated.",
+        "L4": "Monitoring without observability can't diagnose novel failures. Observability without monitoring misses obvious known issues. Both operational and ML-specific metrics are needed.",
+        "L5": "What is Monitoring vs Observability? Why are these important and how do these relate to operational metrics and ML-specific metrics? Aspect | Monitoring | Observability Definition | Tracking known issues using metrics and alerts | Understanding internal system state from outputs What | Known issues, dashboards | Debug, explain unexpected behaviors Relation to Metrics | Relies on operational metrics (like latency, uptime) | Uses ML and operational metrics to diagnose issues - Helps maintain system health and detect problems early. - Ensures both technical issues and model drift/quality are managed in production."
+      }
+    },
+    {
+      "id": "Q97",
+      "module": 6,
+      "topic": "Logs Dashboards Alerts",
+      "layers": {
+        "L1": "You encounter Logs Dashboards Alerts in a real project. Here's how to think about it: How can you use Logs, Dashboards, and Alerts?",
+        "L2": "Logs are security camera footage (detailed but hard to watch live). Dashboards are the control room monitors showing key gauges. Alerts are the alarm that goes off when something crosses a threshold.",
+        "L3": "Logs record what happened in detail for debugging. Dashboards visualize key metrics in real-time for at-a-glance monitoring. Alerts trigger notifications when metrics cross thresholds.",
+        "L4": "Logs without structure are hard to search. Dashboards without context are misleading. Alerts without clear thresholds cause alert fatigue. Each serves a different purpose.",
+        "L5": "How can you use Logs, Dashboards, and Alerts? - Logs: Record detailed events for debugging and audits. Use: Find root cause of errors or model issues. - Dashboards: Visualize key metrics in real-time. Use: Monitor system and model performance at a glance. - Alerts: Notify when a metric crosses a threshold. Use: Get immediate warnings on failures or performance drops."
+      }
+    },
+    {
+      "id": "Q98",
+      "module": 6,
+      "topic": "Responsible AI",
+      "layers": {
+        "L1": "You encounter Responsible AI in a real project. Here's how to think about it: What is Responsible AI and why is this important to be adopted for developing an AI system?",
+        "L2": "Building a bridge that's safe for everyone to cross, doesn't discriminate against pedestrians vs cyclists, and doesn't collapse after 5 years.",
+        "L3": "AI systems make consequential decisions about people's lives. Without responsibility built in, they can perpetuate biases, invade privacy, and cause harm at scale before anyone notices.",
+        "L4": "Biased training data produces biased models. Black-box models can't explain decisions. Lack of accountability makes it impossible to fix problems when they occur. Privacy breaches expose sensitive data.",
+        "L5": "What is Responsible AI and why is this important to be adopted for developing an AI system? - Responsible AI: The practice of designing and using AI systems that are fair, safe, transparent, and ethical. Importance: - Prevents bias, discrimination, and harm. - Builds trust with users and stakeholders. - Ensures AI aligns with human values and legal standards."
+      }
+    },
+    {
+      "id": "Q99",
+      "module": 6,
+      "topic": "Responsible AI Key Areas",
+      "layers": {
+        "L1": "You encounter Responsible AI Key Areas in a real project. Here's how to think about it: What are the key areas of Responsible AI?",
+        "L2": "Responsible AI is like building public infrastructure \u2014 fairness ensures no neighborhood is neglected, transparency lets citizens understand decisions, accountability assigns who fixes problems, privacy protects personal data, security prevents sabotage, reliability means the bridge doesn't collapse.",
+        "L3": "Fairness prevents discrimination. Transparency enables accountability. Accountability assigns responsibility. Privacy protects individuals. Security prevents attacks. Reliability ensures the system works correctly under varying conditions.",
+        "L4": "Fairness has competing definitions \u2014 optimizing for one may hurt another. What's fair in one context may not be in another. Bias can enter at any stage: data, labels, features, or model architecture.",
+        "L5": "What are the key areas of Responsible AI? Provide details for each area and examples on how you can address them. Fairness - Avoid bias and discrimination. - Example: Use balanced datasets and test for subgroup accuracy. Transparency - Make AI decisions understandable. - Example: Use explainable AI tools like SHAP or LIME. Accountability - Assign responsibility for model decisions. - Example: Keep documentation of who trained and approved the model. Privacy - Protect user data from misuse. - Example: Apply data anonymization or differential privacy. Security - Prevent attacks on or misuse of AI systems. - Example: Secure APIs and monitor for adversarial inputs. Reliability & Safety - Ensure AI works correctly under different conditions. - Example: Test edge cases and monitor model performa"
+      }
+    },
+    {
+      "id": "Q100",
+      "module": 6,
+      "topic": "Fairness Measurement Stages",
+      "layers": {
+        "L1": "You encounter Fairness Measurement Stages in a real project. Here's how to think about it: Provide the stages of measuring fairness in the AI system.",
+        "L2": "Fairness is measured like a doctor's check-up across three stages: preparation (is the data healthy?), analysis (is the model healthy?), and monitoring (does it stay healthy in production?).",
+        "L3": "Preparation: audit data for bias and representation. Analysis: measure model fairness across subgroups. Monitoring: track fairness metrics continuously in production.",
+        "L4": "Fairness metrics can conflict: demographic parity vs equalized odds vs calibration. Auditing only at deployment misses problems in data preparation and labeling stages.",
+        "L5": "Provide the stages of measuring fairness in the AI system. Fairness in AI systems is measured across different stages of the AI lifecycle, divided into three phases: Preparation, Analysis, and Measurement. Data Integrity (Preparation Phase) - Ensure the data is representative, high quality, and includes intersectional diversity (e.g., age \u00d7 gender). - Remove data with historical and known biases. Label Quality (Preparation Phase) - Check for the meaning and coverage of labels. - Verify that labelers are unbiased and consistent. Model Integrity (Analysis Phase) - Evaluate the power of features: check for unfair correlations and ensure interpretability. - Avoid biased features that lead to unfair outcomes. Model Effect (Analysis Phase) - Use fairness metrics like: - Calibration - Demographic"
+      }
+    },
+    {
+      "id": "Q101",
+      "module": 6,
+      "topic": "AI Safety and Reliability",
+      "layers": {
+        "L1": "You encounter AI Safety and Reliability in a real project. Here's how to think about it: How do you enable safety and reliability of the AI system?",
+        "L2": "AI safety is like the seatbelt and airbag system \u2014 the car is designed to be as safe as possible when things go wrong, not just when everything goes right.",
+        "L3": "Reliability means the AI performs correctly under a wide range of conditions including edge cases. Safety adds the constraint that failures must not cause harm. This requires extensive testing across the input distribution and graceful degradation when the model encounters out-of-distribution inputs.",
+        "L4": "Safety testing can't cover all possible inputs \u2014 adversarial examples show models can fail on tiny perturbations humans don't notice. Models that are reliable on training and validation data can fail catastrophically on distribution-shifted production data. Regularization and robustness techniques trade off against pure accuracy.",
+        "L5": "How do you enable safety and reliability of the AI system? - Perform extensive testing (unit, integration, stress tests). - Use fallback mechanisms in case of failure. - Monitor performance metrics over time. - Retrain models regularly to adapt to new data. - Use robust algorithms that handle unexpected inputs."
+      }
+    },
+    {
+      "id": "Q102",
+      "module": 6,
+      "topic": "Privacy Security Standards",
+      "layers": {
+        "L1": "You encounter Privacy Security Standards in a real project. Here's how to think about it: How do you ensure privacy and security is taken care of?",
+        "L2": "GDPR is like having a patient's consent before any medical procedure. HIPAA is medical confidentiality laws. ISO 27001 is the hospital's information security protocol.",
+        "L3": "GDPR requires consent before data collection and gives individuals the right to explanation. HIPAA protects health information with strict access controls. ISO 27001 is the international standard for information security management.",
+        "L4": "Encryption at rest only protects stored data \u2014 data in transit needs TLS. Anonymization can be reversed with auxiliary data. Compliance doesn't equal ethics.",
+        "L5": "How do you ensure privacy and security is taken care of? Is there any standards or policies? How to Ensure Privacy & Security: - Encrypt sensitive data. - Use proper methods of authentication. - Apply differential privacy or data minimization. - Anonymize personal data of end users. Standards/Policies: - GDPR (EU General Data Protection Regulation) - HIPAA (Health data privacy \u2013 US) - ISO/IEC 27001 (Information security) - NIST AI Risk Management Framework (US)"
+      }
+    },
+    {
+      "id": "Q103",
+      "module": 6,
+      "topic": "AI Transparency",
+      "layers": {
+        "L1": "You encounter AI Transparency in a real project. Here's how to think about it: Why is transparency important for AI systems?",
+        "L2": "Like a doctor explaining not just what medicine they prescribed but why \u2014 so you understand and can challenge it if needed.",
+        "L3": "Transparency enables affected parties to understand and challenge decisions. Without it, AI systems can perpetuate hidden biases and erode public trust \u2014 especially when decisions affect credit, employment, or healthcare.",
+        "L4": "XAI tools like SHAP and LIME give post-hoc explanations that may not reflect the actual decision mechanism. Explanations can be gamed to appear fair while the model remains biased.",
+        "L5": "Why is transparency important for AI systems? What are different approaches that can ensure transparency? Why Transparency is Important: - Builds trust with users and stakeholders. - Helps understand how decisions are made. - Makes it easier to debug errors and detect bias. - Supports ethical and legal compliance. Approaches to Ensure Transparency: 1. Explainable AI (XAI) \u2013 Use tools like SHAP or LIME to explain model outputs. 2. Model Documentation \u2013 Clearly describe how the model was built and trained. 3. Data Lineage Tracking \u2013 Show where data came from and how it was processed. 4. User Interfaces \u2013 Present explanations to confidence scores alongside predictions."
+      }
+    },
+    {
+      "id": "Q104",
+      "module": 6,
+      "topic": "AI Accountability",
+      "layers": {
+        "L1": "You encounter AI Accountability in a real project. Here's how to think about it: Why is accountability important?",
+        "L2": "If the AI wrongly approves a loan and you get denied, accountability means there's someone you can ask 'why?' and get an answer.",
+        "L3": "Accountability ensures someone is responsible for model outcomes \u2014 critical for regulatory compliance (GDPR, AI Act) and for building trust that AI systems can be corrected when they fail.",
+        "L4": "Without accountability, harmful AI decisions can't be traced to their source. Models trained on third-party data may have no clear owner. Regulation (GDPR, AI Act) increasingly mandates it.",
+        "L5": "Why is accountability important? Importance of Accountability: - Ensures someone is responsible for the model's behavior. - Helps track and fix issues when mistakes happen. - Required for regulations and compliance (e.g., GDPR, AI Act). - Promotes trust and continued transparency of AI systems."
+      }
+    }
+  ]
+}
