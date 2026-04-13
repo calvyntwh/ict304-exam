@@ -6,7 +6,7 @@ async function initDB() {
     initSqlJs({
       locateFile: function(file) { return 'sql-wasm/' + file; }
     }).then(function(SQL) {
-      fetch('kb_all.db').then(function(resp) {
+      fetch('kb_all.db?t=' + Date.now()).then(function(resp) {
         if (!resp.ok) throw new Error('kb_all.db not found — make sure it is in the same directory as index.html');
         return resp.arrayBuffer();
       }).then(function(buf) {
