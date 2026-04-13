@@ -109,6 +109,12 @@
       gap: 8px;
     }
 
+    .header-row-2 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
     /* ===== .sidebar STYLES ===== */
     .sidebar {
       border-right: 1px solid var(--border);
@@ -1017,20 +1023,27 @@
       }
 
       .header {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: stretch;
         height: auto;
         min-height: var(--header-height);
         padding: 8px 16px;
-        gap: 10px;
+        gap: 8px;
       }
 
       .app-title {
         font-size: 15px;
-        flex-shrink: 0;
+      }
+
+      .header-row-2 {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
       }
 
       .search-wrap {
-        flex: 1 1 100%;
+        flex: 1;
         max-width: 100%;
         min-width: 0;
       }
