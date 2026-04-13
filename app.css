@@ -977,18 +977,39 @@
 
       .sidebar-inner {
         display: flex;
+        flex-direction: row;
         gap: 8px;
         overflow-x: auto;
+      }
+
+      .module-list {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        overflow-x: auto;
+        min-width: 0;
+      }
+
+      .module-btn {
+        width: auto;
+        flex-shrink: 0;
+        white-space: nowrap;
       }
 
       .sidebar-divider {
         width: 1px;
         height: auto;
         margin: 0 12px;
+        flex-shrink: 0;
       }
 
       .progress-section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
         padding: 0;
+        flex-shrink: 0;
       }
 
       .main {
