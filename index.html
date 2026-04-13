@@ -1214,7 +1214,8 @@ function attachNavListeners() {
     quizBtn.onclick = function() {
       var state = loadState();
       var concept = currentConcepts[conceptIndex];
-      state.quiz = { queue: [concept.id], index: 0, sessionSize: 1 };
+      // Isolate "Quiz This" from the main quiz session
+      state.singleQuizId = concept.id;
       saveState(state);
       showQuizOverlay();
       renderQuizCard();
@@ -1268,6 +1269,8 @@ function shuffle(arr) {
 function startQuiz() {
   var kb = JSON.parse(document.getElementById('kb').textContent);
   var state = loadState();
+  // Clear any stray "Quiz This" state before starting a full session
+  delete state.singleQuizId;
   var low = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'low'; });
   var med = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'med'; });
   var unvisited = kb.concepts.filter(function(c) { return !(state.confidence && state.confidence[c.id]); });
@@ -1291,6 +1294,65 @@ function renderQuizCard() {
   var state = loadState();
   var kb = JSON.parse(document.getElementById('kb').textContent);
   var overlay = document.getElementById('quiz-overlay');
+
+  // "Quiz This" mode — single concept, no session tracking
+  if (state.singleQuizId) {
+    var singleConcept = kb.concepts.find(function(c) { return c.id === state.singleQuizId; });
+    if (!singleConcept) {
+      closeQuiz();
+      return;
+    }
+    var answerText = [singleConcept.layers.L1, singleConcept.layers.L2,
+      singleConcept.layers.L3, singleConcept.layers.L4].filter(Boolean).join('\n---\n');
+    if (singleConcept.layers.L5) {
+      answerText += '\n\n[ EXAM ANSWER ]\n' + singleConcept.layers.L5;
+    }
+    overlay.innerHTML =
+      '<div class="quiz-header">' +
+        '<div><div class="quiz-progress-label">Quiz This</div></div>' +
+        '<button class="nav-btn" id="quiz-close-btn">&#x2715; Close</button>' +
+      '</div>' +
+      '<div class="quiz-card">' +
+        '<div class="quiz-topic"></div>' +
+        '<div class="quiz-meta">Module ' + singleConcept.module + ' &middot; ' + singleConcept.id + '</div>' +
+        '<div class="quiz-reveal-area" id="quiz-reveal-area">' +
+          '<button class="quiz-reveal-btn" id="quiz-reveal-btn">Try to recall before revealing!</button>' +
+        '</div>' +
+        '<div class="quiz-answer" id="quiz-answer">' +
+          '<div class="quiz-answer-text" id="quiz-answer-text"></div>' +
+          '<div class="confidence-row">' +
+            '<span style="font-size:13px;color:var(--text-secondary)">Your confidence:</span>' +
+            '<button class="confidence-btn" data-qcf="low">&#x1F534; Low</button>' +
+            '<button class="confidence-btn" data-qcf="med">&#x1F7E1; Med</button>' +
+            '<button class="confidence-btn" data-qcf="high">&#x1F7E2; High</button>' +
+          '</div>' +
+          '<div class="quiz-actions">' +
+            '<button class="quiz-reveal-btn" id="quiz-next-btn">Done — Back to Explorer</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    overlay.querySelector('.quiz-topic').textContent = singleConcept.topic;
+    overlay.querySelector('.quiz-answer-text').textContent = answerText;
+    document.getElementById('quiz-close-btn').onclick = closeQuiz;
+    document.getElementById('quiz-reveal-btn').onclick = function() {
+      document.getElementById('quiz-reveal-area').style.display = 'none';
+      document.getElementById('quiz-answer').classList.add('visible');
+    };
+    document.getElementById('quiz-next-btn').onclick = function() {
+      var selected = overlay.querySelector('[data-qcf].selected');
+      if (selected) saveConfidence(singleConcept.id, selected.dataset.qcf);
+      closeQuiz();
+    };
+    overlay.querySelectorAll('[data-qcf]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        overlay.querySelectorAll('[data-qcf]').forEach(function(b) {
+          b.classList.remove('selected','low','med','high');
+        });
+        btn.classList.add('selected', btn.dataset.qcf);
+      });
+    });
+    return;
+  }
 
   if (!state.quiz || state.quiz.index >= state.quiz.queue.length) {
     overlay.innerHTML =
@@ -1380,6 +1442,10 @@ function advanceQuiz() {
 }
 
 function closeQuiz() {
+  var state = loadState();
+  delete state.singleQuizId;
+  delete state.quiz;
+  saveState(state);
   document.getElementById('quiz-overlay').classList.add('hidden');
   renderModuleList();
   updateProgress();
@@ -1618,6 +1684,13 @@ function initApp() {
   updateProgress();
   var state = loadState();
   selectModule(state.lastModule || 5);
+
+  // Resume any in-progress quiz session (user left mid-quiz)
+  // Skip sessionSize===1 — those are "Quiz This" sessions, not resumable
+  if (state.singleQuizId || (state.quiz && state.quiz.queue && state.quiz.queue.length > 0 && state.quiz.sessionSize !== 1)) {
+    showQuizOverlay();
+    renderQuizCard();
+  }
 
   document.getElementById('btn-quiz').onclick = startQuiz;
   document.getElementById('btn-stats').onclick = renderStatsModal;
