@@ -18,6 +18,25 @@ async function initDB() {
   });
 }
 
+// ─── Markdown Renderer ────────────────────────────────────────────────────────
+
+function renderMarkdown(text) {
+  if (!text) return '';
+  return text
+    // Headings: # Heading → <strong>Heading</strong>
+    .replace(/^### (.+)$/gm, '<strong>$1</strong>')
+    // Bold: **text** or __text__
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/__(.+?)__/g, '<strong>$1</strong>')
+    // Italic: *text* or _text_ (not inside words)
+    .replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>')
+    .replace(/(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, '<em>$1</em>')
+    // Inline code: `code`
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // Line breaks
+    .replace(/\n/g, '<br>');
+}
+
 function dbQuery(sql, params) {
   if (!DB) throw new Error('DB not initialized');
   var stmt = DB.prepare(sql);
@@ -397,7 +416,7 @@ function renderConceptCard(concept) {
   // L5 exam answer content
   if (concept.L5) {
     var examContent = document.getElementById('exam-answer-content-' + concept.id);
-    if (examContent) examContent.textContent = concept.L5;
+    if (examContent) examContent.innerHTML = renderMarkdown(concept.L5);
     var examBtn = document.getElementById('exam-answer-btn-' + concept.id);
     if (examBtn) {
       examBtn.addEventListener('click', function() {
