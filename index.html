@@ -254,6 +254,15 @@
     /* ===== .concept-badge + .concept-topic ===== */
     .concept-header {
       margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .concept-header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
     }
 
     .concept-meta {
@@ -957,6 +966,127 @@
       font-size: 12px;
       color: var(--text);
     }
+
+    /* ===== MCQ PATTERN RECOGNITION ===== */
+    .layers-locked .layer-row .reveal-btn {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .layers-locked .layer-row {
+      position: relative;
+    }
+    .layers-locked .layer-row::after {
+      content: 'Answer MCQ first';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      color: var(--text-secondary);
+      font-style: italic;
+      white-space: nowrap;
+    }
+    .mcq-badge {
+      font-size: 12px;
+      font-weight: 700;
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 1.5px solid var(--border);
+      cursor: default;
+      flex-shrink: 0;
+    }
+    .mcq-badge.mcq-badge-correct { color: #22c55e; border-color: #22c55e; }
+    .mcq-badge.mcq-badge-wrong { color: #ef4444; border-color: #ef4444; }
+    .mcq-btn {
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 14px;
+      font-size: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .mcq-btn:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+    .mcq-container { display: none; margin: 0; }
+    .mcq-container.mcq-open { display: block; }
+    .mcq-widget {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .mcq-question {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .mcq-options { display: flex; flex-direction: column; gap: 8px; }
+    .mcq-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1.5;
+      transition: background 0.12s, border-color 0.12s;
+      position: relative;
+    }
+    .mcq-option:hover:not(.mcq-answered) {
+      background: var(--bg-hover);
+      border-color: var(--accent);
+    }
+    .mcq-option.mcq-correct {
+      border-color: #22c55e;
+      background: color-mix(in srgb, #22c55e 10%, transparent);
+    }
+    .mcq-option.mcq-wrong {
+      border-color: #ef4444;
+      background: color-mix(in srgb, #ef4444 8%, transparent);
+    }
+    .mcq-option.mcq-answered { cursor: default; }
+    .mcq-letter {
+      font-weight: 700;
+      font-size: 13px;
+      min-width: 18px;
+      color: var(--text-secondary);
+    }
+    .mcq-option.mcq-correct .mcq-letter { color: #22c55e; }
+    .mcq-option.mcq-wrong .mcq-letter { color: #ef4444; }
+    .mcq-text { flex: 1; }
+    .mcq-feedback {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .mcq-correct-msg { color: #22c55e; font-weight: 600; }
+    .mcq-wrong-msg { color: #ef4444; }
+    .mcq-actions { margin-top: 12px; }
+    .mcq-check-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .mcq-check-btn:hover:not(:disabled) { opacity: 0.85; }
+    .mcq-check-btn:disabled { opacity: 0.5; cursor: default; }
   </style>
 </head>
 <body>
@@ -1014,6 +1144,23 @@ function saveConfidence(conceptId, level) {
   saveState(state);
 }
 
+// MCQ answer state — stored separately from confidence
+function loadMCQAnswers() {
+  try {
+    return JSON.parse(localStorage.getItem('mcq_answers') || '{}');
+  } catch(e) { return {}; }
+}
+
+function saveMCQAnswer(conceptId, correct) {
+  var answers = loadMCQAnswers();
+  answers[conceptId] = { correct: correct, answered: true, ts: Date.now() };
+  localStorage.setItem('mcq_answers', JSON.stringify(answers));
+}
+
+function getMCQAnswer(conceptId) {
+  return loadMCQAnswers()[conceptId] || null;
+}
+
 // ─── Module List ──────────────────────────────────────────────────────────────
 function confDotColor(conf) {
   var total = conf.l + conf.m + conf.h;
@@ -1053,6 +1200,127 @@ function renderModuleList() {
       '<span class="module-name">M' + n + ' ' + name + '</span>' +
       '<span class="module-count">' + counts[n] + '</span>';
     container.appendChild(btn);
+  });
+}
+
+// ─── MCQ Pattern Recognition ────────────────────────────────────────────────────
+function renderMCQWidget(concept, containerEl) {
+  var mcq = concept.mcq;
+  if (!mcq) {
+    containerEl.innerHTML = '<p style="color:var(--text-secondary);font-size:13px">No MCQ available.</p>';
+    return;
+  }
+
+  // Seeded shuffle — options array shuffled deterministically per concept id
+  var shuffled = mcq.options.slice();
+  var seed = concept.id.split('').reduce(function(a, c) { return a + c.charCodeAt(0); }, 0);
+  var rng = function(n) { seed = (seed * 9301 + 49297) % 233280; return Math.floor(seed / 233280 * n); };
+  for (var i = shuffled.length - 1; i > 0; i--) {
+    var j = rng(i + 1);
+    var tmp = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = tmp;
+  }
+
+  // Find correct answer position in shuffled array
+  var correctAnswerText = mcq.options[mcq.correct];
+  var correctIdx = shuffled.indexOf(correctAnswerText);
+
+  var existingAnswer = getMCQAnswer(concept.id);
+  var wasAnswered = !!(existingAnswer && existingAnswer.answered);
+
+  var letters = ['A', 'B', 'C', 'D'];
+  var optionsHtml = shuffled.map(function(opt, idx) {
+    var letter = letters[idx];
+    var isCorrectOption = (idx === correctIdx);
+    var extraClass = '';
+    if (wasAnswered) {
+      if (isCorrectOption) extraClass = ' mcq-correct';
+    }
+    return '<label class="mcq-option' + extraClass + '" data-idx="' + idx + '">' +
+      '<input type="radio" name="mcq-' + concept.id + '" value="' + idx + '"' +
+      (wasAnswered ? ' disabled' : '') + '>' +
+      '<span class="mcq-letter">' + letter + '</span>' +
+      '<span class="mcq-text"></span></label>';
+  }).join('');
+
+  // Build structure — textContent used for all user-visible text to prevent XSS
+  containerEl.innerHTML =
+    '<div class="mcq-widget" id="mcq-widget-' + concept.id + '">' +
+      '<div class="mcq-question"></div>' +
+      '<div class="mcq-options"></div>' +
+      '<div class="mcq-feedback hidden" id="mcq-feedback-' + concept.id + '"></div>' +
+      '<div class="mcq-actions">' +
+        '<button class="mcq-check-btn" id="mcq-check-' + concept.id + '"' +
+          (wasAnswered ? ' disabled' : '') + '>' +
+          (wasAnswered ? 'Answered' : 'Check Answer') +
+        '</button>' +
+      '</div>' +
+    '</div>';
+
+  // Set textContent (safe — no innerHTML for user content)
+  containerEl.querySelector('.mcq-question').textContent = mcq.question;
+  containerEl.querySelector('.mcq-options').innerHTML = optionsHtml;
+  var optionEls = containerEl.querySelectorAll('.mcq-option');
+  shuffled.forEach(function(opt, idx) {
+    optionEls[idx].querySelector('.mcq-text').textContent = opt;
+  });
+
+  // Apply answered styles if already done
+  if (wasAnswered) {
+    optionEls.forEach(function(opt) {
+      var idx = parseInt(opt.getAttribute('data-idx'), 10);
+      opt.classList.add('mcq-answered');
+      if (idx === correctIdx) opt.classList.add('mcq-correct');
+      opt.querySelector('input').disabled = true;
+    });
+    var fb = document.getElementById('mcq-feedback-' + concept.id);
+    fb.classList.remove('hidden');
+    fb.innerHTML = existingAnswer && existingAnswer.correct
+      ? '<span class="mcq-correct-msg">Correct!</span> Layers unlocked below.'
+      : '<span class="mcq-wrong-msg">Not quite.</span> Correct answer is highlighted above.';
+  }
+
+  // Check button handler
+  var checkBtn = document.getElementById('mcq-check-' + concept.id);
+  checkBtn.addEventListener('click', function() {
+    var selected = containerEl.querySelector('input[type="radio"]:checked');
+    if (!selected) {
+      var fb = document.getElementById('mcq-feedback-' + concept.id);
+      fb.textContent = 'Please select an answer first.';
+      fb.classList.remove('hidden');
+      return;
+    }
+    var selectedIdx = parseInt(selected.value, 10);
+    var isCorrect = (selectedIdx === correctIdx);
+    saveMCQAnswer(concept.id, isCorrect);
+
+    optionEls.forEach(function(opt) {
+      var idx = parseInt(opt.getAttribute('data-idx'), 10);
+      opt.classList.add('mcq-answered');
+      opt.querySelector('input').disabled = true;
+      if (idx === correctIdx) opt.classList.add('mcq-correct');
+      else if (idx === selectedIdx && !isCorrect) opt.classList.add('mcq-wrong');
+    });
+
+    var fb = document.getElementById('mcq-feedback-' + concept.id);
+    fb.innerHTML = isCorrect
+      ? '<span class="mcq-correct-msg">Correct!</span> Layers unlocked below.'
+      : '<span class="mcq-wrong-msg">Not quite.</span> Correct answer is highlighted above.';
+    fb.classList.remove('hidden');
+    checkBtn.textContent = 'Answered';
+    checkBtn.disabled = true;
+
+    // Update badge
+    var badge = document.getElementById('mcq-badge-' + concept.id);
+    if (badge) {
+      badge.textContent = isCorrect ? '\u2713' : '\u2717';
+      badge.className = 'mcq-badge ' + (isCorrect ? 'mcq-badge-correct' : 'mcq-badge-wrong');
+    }
+
+    // Unlock layers
+    var layersContainer = document.getElementById('layers-' + concept.id);
+    if (layersContainer) layersContainer.classList.remove('layers-locked');
+    var layerBtns = document.querySelectorAll('#layers-' + concept.id + ' .reveal-btn');
+    layerBtns.forEach(function(btn) { btn.disabled = false; btn.style.opacity = ''; });
   });
 }
 
@@ -1107,8 +1375,24 @@ function renderConceptCard(concept) {
         '<span class="concept-badge">' + concept.id + '</span>' +
       '</div>' +
       '<h2 class="concept-topic"></h2>' +
+      '<div class="concept-header-right">' +
+        '<span class="mcq-badge' +
+          (getMCQAnswer(concept.id) && getMCQAnswer(concept.id).answered
+            ? (getMCQAnswer(concept.id).correct ? ' mcq-badge-correct' : ' mcq-badge-wrong')
+            : '') + '"' +
+          ' id="mcq-badge-' + concept.id + '"' +
+          ' title="MCQ Practice">' +
+          (getMCQAnswer(concept.id) && getMCQAnswer(concept.id).answered
+            ? (getMCQAnswer(concept.id).correct ? '\u2713' : '\u2717')
+            : '?') +
+        '</span>' +
+        '<button class="mcq-btn" id="mcq-btn-' + concept.id + '">MCQ Practice</button>' +
+      '</div>' +
     '</div>' +
-    '<div class="layers">' + layersHtml + '</div>' +
+    '<div class="mcq-container" id="mcq-container-' + concept.id + '"></div>' +
+    '<div class="layers' +
+      (getMCQAnswer(concept.id) && getMCQAnswer(concept.id).answered ? '' : ' layers-locked') +
+      '" id="layers-' + concept.id + '">' + layersHtml + '</div>' +
     '<div class="exam-answer-section" id="exam-answer-section-' + concept.id + '">' +
       '<button class="exam-answer-btn" id="exam-answer-btn-' + concept.id + '">[ Show Exam Answer — full Q&amp;A ]</button>' +
       '<div class="exam-answer-content" id="exam-answer-content-' + concept.id + '"></div>' +
@@ -1163,6 +1447,21 @@ function renderConceptCard(concept) {
   attachConfidenceListeners(concept);
   attachNavListeners();
   updateNavButtons();
+
+  // MCQ button — toggle widget visibility
+  var mcqBtn = document.getElementById('mcq-btn-' + concept.id);
+  var mcqContainer = document.getElementById('mcq-container-' + concept.id);
+  mcqBtn.addEventListener('click', function() {
+    if (mcqContainer.classList.contains('mcq-open')) {
+      mcqContainer.classList.remove('mcq-open');
+      mcqContainer.innerHTML = '';
+      mcqBtn.textContent = 'MCQ Practice';
+    } else {
+      renderMCQWidget(concept, mcqContainer);
+      mcqContainer.classList.add('mcq-open');
+      mcqBtn.textContent = 'Hide MCQ';
+    }
+  });
 }
 
 function attachLayerListeners(layerEls) {
@@ -1665,7 +1964,14 @@ document.addEventListener('keydown', function(e) {
     case '3': revealLayerByKey('L3'); break;
     case '4': revealLayerByKey('L4'); break;
     case 'l': case 'L': markCurrentConfidence('low'); break;
-    case 'm': case 'M': markCurrentConfidence('med'); break;
+    case ',': markCurrentConfidence('med'); break;
+    case 'm': case 'M':
+      if (currentConcepts.length > 0) {
+        var target = currentConcepts[conceptIndex];
+        var btn = document.getElementById('mcq-btn-' + target.id);
+        if (btn) btn.click();
+      }
+      break;
     case 'h': case 'H': markCurrentConfidence('high'); break;
     case 'Escape':
       closeQuiz();
