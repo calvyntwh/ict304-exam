@@ -6,6 +6,7 @@
   <title>ICT304 Concept Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bulma.min.css">
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
@@ -17,33 +18,57 @@
 
   <div class="app" id="app" style="display:none">
 
-    <header class="header">
-      <h1 class="app-title">ICT304 Concept Explorer</h1>
-      <div class="header-row-2">
-        <div class="search-wrap">
-          <input type="text" id="search-input" class="search-input"
-            placeholder="Search... (press /)" autocomplete="off" spellcheck="false">
-          <div class="search-results hidden" id="search-results"></div>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" role="navigation" aria-label="main navigation" id="app-navbar">
+      <div class="navbar-brand">
+        <a class="navbar-item app-title" href="#">ICT304 Concept Explorer</a>
+        <button class="navbar-burger" id="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="navbar-menu" id="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item">
+            <div class="search-wrap">
+              <input type="text" id="search-input" class="search-input"
+                placeholder="Search... (press /)" autocomplete="off" spellcheck="false">
+              <div class="search-results hidden" id="search-results"></div>
+            </div>
+          </div>
         </div>
-        <div class="header-actions">
-          <button id="btn-quiz" class="btn btn-primary">Quiz Mode</button>
-          <button id="btn-stats" class="btn btn-ghost">Stats</button>
-          <button id="btn-help" class="btn btn-ghost" title="Keyboard shortcuts">?</button>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="header-actions">
+              <button id="btn-quiz" class="button is-primary is-small">Quiz Mode</button>
+              <button id="btn-stats" class="button is-ghost">Stats</button>
+              <button id="btn-help" class="button is-ghost" title="Keyboard shortcuts">?</button>
+            </div>
+          </div>
         </div>
       </div>
-    </header>
+    </nav>
 
-    <aside class="sidebar">
-      <div class="sidebar-inner">
-        <nav class="module-list" id="module-list"></nav>
-        <div class="sidebar-divider"></div>
-        <div class="progress-section" id="progress-section"></div>
-      </div>
-    </aside>
+    <!-- ===== BODY: SIDEBAR + MAIN ===== -->
+    <div id="app-body">
 
-    <main class="main" id="main">
-      <div id="concept-card"></div>
-    </main>
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="sidebar" id="app-sidebar">
+        <div class="sidebar-inner">
+          <nav class="module-list" id="module-list"></nav>
+          <div class="sidebar-divider"></div>
+          <div class="progress-section" id="progress-section"></div>
+        </div>
+      </aside>
+
+      <!-- ===== MAIN CONTENT ===== -->
+      <main class="main" id="main">
+        <div id="concept-card"></div>
+      </main>
+
+    </div>
 
   </div>
 

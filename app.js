@@ -1108,6 +1108,16 @@ async function initApp() {
       if (searchInput.value) handleSearch(searchInput.value);
     };
 
+    // Navbar burger toggle (Bulma requires JS for mobile menu)
+    var burger = document.getElementById('navbar-burger');
+    var menu = document.getElementById('navbar-menu');
+    if (burger && menu) {
+      burger.addEventListener('click', function() {
+        burger.classList.toggle('is-active');
+        menu.classList.toggle('is-active');
+      });
+    }
+
   } catch (err) {
     document.getElementById('app-loading').innerHTML =
       '<p style="color:var(--danger)">Failed to load: ' + err.message + '</p>';

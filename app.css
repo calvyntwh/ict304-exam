@@ -1,5 +1,20 @@
 /* ===== CSS CUSTOM PROPERTIES ===== */
     :root {
+      /* --- Bulma overrides (must come before Bulma import conceptually,
+           but since Bulma reads these at computation time, set here) --- */
+      --bulma-scheme-main: #0f1117;
+      --bulma-background: #0f1117;
+      --bulma-text: #e8eaf0;
+      --bulma-text-strong: #e8eaf0;
+      --bulma-border: #2a2d3a;
+      --bulma-border-hover: #6c8aff;
+      --bulma-primary: #6c8aff;
+      --bulma-link: #6c8aff;
+      --bulma-body-background-color: #0f1117;
+      --bulma-scheme-main-tertiary: #1a1d27;
+      --bulma-scheme-main-bis: #1a1d27;
+
+      /* --- App-specific vars --- */
       --bg: #0f1117;
       --surface: #1a1d27;
       --border: #2a2d3a;
@@ -19,9 +34,6 @@
       --font-body: 'Inter', system-ui, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       --radius: 12px;
-      --sidebar-width: 220px;
-      --header-height: 56px;
-      --sidebar-width-tablet: 180px;
     }
 
     /* ===== BASE RESET + BODY + HTML ===== */
@@ -74,28 +86,16 @@
       to { transform: rotate(360deg); }
     }
 
-    /* ===== .app GRID LAYOUT ===== */
-    .app {
-      display: grid;
-      grid-template-columns: var(--sidebar-width) 1fr;
-      grid-template-rows: var(--header-height) 1fr;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    /* ===== .header STYLES ===== */
-    .header {
-      grid-column: 1 / -1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      border-bottom: 1px solid var(--border);
+    /* ===== BULMA DARK THEME OVERRIDES ===== */
+    /* Navbar */
+    .navbar {
       background: var(--surface);
-      gap: 16px;
-      height: var(--header-height);
+      border-bottom: 1px solid var(--border);
+      min-height: 56px;
     }
-
+    .navbar-brand {
+      border-bottom: none;
+    }
     .app-title {
       font-family: var(--font-heading);
       font-size: 20px;
@@ -103,17 +103,156 @@
       color: var(--text);
       white-space: nowrap;
     }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .navbar-burger {
+      color: var(--text);
+      background: transparent;
+      border: none;
+    }
+    .navbar-burger:hover {
+      background: transparent;
+      color: var(--primary);
+    }
+    .navbar-menu {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .navbar-item {
+      color: var(--text);
+      background: transparent;
+    }
+    .navbar-item:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--primary);
+    }
+    .navbar-link {
+      color: var(--text);
+    }
+    .navbar-link:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--primary);
+    }
+    /* Buttons — Bulma has .button styles, just tweak for dark theme */
+    .button {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--surface);
+      font-family: var(--font-body);
+      border-radius: 8px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .button:hover {
+      border-color: var(--primary);
+      background: var(--surface);
+      color: var(--text);
+    }
+    .button.is-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .button.is-primary:hover {
+      background: color-mix(in srgb, var(--primary) 85%, white);
+      border-color: color-mix(in srgb, var(--primary) 85%, white);
+    }
+    .button.is-ghost {
+      background: transparent;
+      border-color: transparent;
+      color: var(--text-secondary);
+    }
+    .button.is-ghost:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .button.is-small {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+    /* Inputs */
+    .input, .textarea, .select select {
+      background: var(--bg);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .input::placeholder {
+      color: var(--text-secondary);
+    }
+    .input:focus, .select select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 25%, transparent);
+    }
+    /* Dividers, boxes */
+    .box {
+      background: var(--surface);
+      color: var(--text);
+    }
+    /* Progress bars */
+    .progress {
+      background: var(--bg);
+      border-radius: var(--radius);
+    }
+    .progress::-webkit-progress-value {
+      background: var(--primary);
+    }
+    /* Tags */
+    .tag {
+      border-radius: 4px;
     }
 
-    .header-row-2 {
+    /* ===== .app LAYOUT ===== */
+    .app {
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== #app-body FLEX LAYOUT (replaces old CSS grid) ===== */
+    #app-body {
       display: flex;
+      flex-direction: row;
+      height: calc(100vh - 56px);
+      overflow: hidden;
+    }
+
+    /* ===== .sidebar STYLES ===== */
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      height: 100%;
+      overflow-y: auto;
+      padding: 16px 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-inner {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 12px 0;
+      flex-shrink: 0;
+    }
+
+    /* ===== .main STYLES ===== */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      height: 100%;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 16px;
+    }
+
+    #concept-card {
+      width: 100%;
+      max-width: 720px;
     }
 
     /* ===== .sidebar STYLES ===== */
@@ -147,35 +286,6 @@
     #concept-card {
       width: 100%;
       max-width: 720px;
-    }
-
-    /* ===== .btn BASE + VARIANTS ===== */
-    .btn {
-      border: none;
-      border-radius: 8px;
-      padding: 8px 16px;
-      font-family: var(--font-body);
-      font-size: 14px;
-      cursor: pointer;
-      transition: opacity 0.15s;
-    }
-
-    .btn:hover {
-      opacity: 0.85;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-secondary);
-    }
-
-    .btn-ghost:hover {
-      color: var(--text);
     }
 
     /* ===== .module-btn + .module-dot + .module-count ===== */
@@ -975,160 +1085,90 @@
       justify-content: center;
     }
 
-    /* ===== @media (max-width: 1024px) TABLET RESPONSIVE ===== */
+    /* ===== CUSTOM RESPONSIVE TWEAKS ===== */
     @media (max-width: 1024px) {
-      .app {
-        grid-template-columns: var(--sidebar-width-tablet) 1fr;
+      .sidebar {
+        width: 180px;
       }
-
       .concept-topic {
         font-size: 22px;
       }
-
       .layer-content {
         font-size: 15px;
       }
-
-      .main {
-        padding: 24px 20px;
-      }
     }
 
-    /* ===== @media (max-width: 768px) MOBILE RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .app {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto 1fr;
+      /* Compact navbar on mobile */
+      .navbar {
+        min-height: 52px;
+      }
+      .app-title {
+        font-size: 16px;
       }
 
+      /* App body stacks vertically on mobile */
+      #app-body {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+      }
+
+      /* Sidebar becomes a horizontal strip below navbar */
       .sidebar {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
         overflow-x: auto;
         padding: 8px 16px;
-        position: relative;
-        mask-image: linear-gradient(to right, black 85%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        border-right: none;
+        border-bottom: 1px solid var(--border);
       }
-
       .sidebar-inner {
-        display: flex;
         flex-direction: row;
-        gap: 8px;
         overflow-x: auto;
+        gap: 8px;
+        align-items: center;
       }
-
       .module-list {
-        display: flex;
         flex-direction: row;
-        gap: 8px;
         overflow-x: auto;
+        gap: 8px;
         min-width: 0;
       }
-
       .module-btn {
         width: auto;
         flex-shrink: 0;
         white-space: nowrap;
       }
-
       .sidebar-divider {
         width: 1px;
-        height: auto;
-        margin: 0 12px;
+        height: 32px;
+        margin: 0 8px;
         flex-shrink: 0;
       }
-
       .progress-section {
-        display: flex;
         flex-direction: row;
-        align-items: center;
-        gap: 12px;
+        gap: 8px;
         padding: 0;
         flex-shrink: 0;
+        flex-wrap: nowrap;
       }
 
+      /* Main content takes remaining space */
       .main {
+        flex: 1;
+        height: auto;
         padding: 20px 16px;
+        min-height: 0;
       }
-
       .concept-topic {
-        font-size: 20px !important;
+        font-size: 20px;
       }
 
-      .header {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        justify-content: flex-start !important;
-        height: auto !important;
-        min-height: auto !important;
-        max-height: none !important;
-        padding: 0 !important;
-        gap: 0 !important;
-      }
-
-      .app-title {
-        font-size: 16px !important;
-        font-weight: 600 !important;
-        padding: 14px 16px !important;
-        border-bottom: 1px solid var(--border) !important;
-        white-space: nowrap !important;
-        flex-shrink: 0 !important;
-        width: auto !important;
-        background: linear-gradient(135deg, var(--surface) 0%, color-mix(in srgb, var(--primary) 6%, var(--surface)) 100%) !important;
-        letter-spacing: 0.01em !important;
-      }
-
-      .header-row-2 {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        padding: 10px 16px !important;
-        gap: 10px !important;
-        flex-shrink: 0 !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        background: var(--surface) !important;
-        border-bottom: 1px solid var(--border) !important;
-      }
-
-      .search-wrap {
-        flex: 1 !important;
-        min-width: 0 !important;
-        max-width: none !important;
-      }
-
-      .search-input {
-        width: 100% !important;
-        box-sizing: border-box !important;
-      }
-
-      .header-actions {
-        display: flex !important;
-        align-items: center !important;
-        gap: 6px !important;
-        flex-shrink: 0 !important;
-        flex-wrap: nowrap !important;
-      }
-
-      .btn {
-        padding: 6px 10px !important;
-        font-size: 12px !important;
-        white-space: nowrap !important;
-      }
-
-      .stat-cards {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .shortcuts-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .concept-topic {
-        font-size: 22px;
+      /* Search input spans full width in navbar */
+      .navbar-item .search-wrap {
+        width: 100%;
       }
     }
 
