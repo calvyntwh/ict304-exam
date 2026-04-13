@@ -1,6 +1,4 @@
-# Local development
-# Run: caddy run
-localhost:8080 {
+http://localhost:8080 {
     root * .
     file_server
 }
