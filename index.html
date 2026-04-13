@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICT304 Concept Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS CUSTOM PROPERTIES ===== */
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --primary: #6c8aff;
+      --accent: #f5a623;
+      --success: #4ade80;
+      --danger: #f87171;
+      --text: #e8eaf0;
+      --text-secondary: #8b8fa8;
+      --m1: #ff6b6b;
+      --m2: #ffa94d;
+      --m3: #ffd43b;
+      --m4: #69db7c;
+      --m5: #4dabf7;
+      --m6: #da77f2;
+      --font-heading: 'Crimson Pro', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 12px;
+      --sidebar-width: 220px;
+      --header-height: 56px;
+    }
+
+    /* ===== BASE RESET + BODY + HTML ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ===== .app GRID LAYOUT ===== */
+    .app {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      grid-template-rows: var(--header-height) 1fr;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ===== .header STYLES ===== */
+    .header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      gap: 16px;
+      height: var(--header-height);
+    }
+
+    .app-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ===== .sidebar STYLES ===== */
+    .sidebar {
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 16px 0;
+      background: var(--surface);
+    }
+
+    .sidebar-inner {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 12px 0;
+    }
+
+    /* ===== .main STYLES ===== */
+    .main {
+      overflow-y: auto;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #concept-card {
+      width: 100%;
+      max-width: 720px;
+    }
+
+    /* ===== .btn BASE + VARIANTS ===== */
+    .btn {
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+    }
+
+    /* ===== .module-btn + .module-dot + .module-count ===== */
+    .module-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .module-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 10px 16px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 13px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s;
+    }
+
+    .module-btn:hover {
+      background: var(--bg);
+    }
+
+    .module-btn.active {
+      background: var(--bg);
+      color: var(--primary);
+    }
+
+    .module-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .module-count {
+      margin-left: auto;
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    /* ===== .progress-wrap + PROGRESS BAR STYLES ===== */
+    .progress-section {
+      padding: 12px 16px;
+    }
+
+    .progress-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .progress-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .progress-count {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .progress-pct {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .confidence-summary {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .conf-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* ===== .concept-badge + .concept-topic ===== */
+    .concept-header {
+      margin-bottom: 24px;
+    }
+
+    .concept-meta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .concept-badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .concept-topic {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    /* ===== .layer + .layer-header + .layer-label + .layer-toggle + .layer-content ===== */
+    .layers {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .layer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .layer:hover {
+      border-color: var(--primary);
+    }
+
+    .layer.revealed {
+      border-color: var(--border);
+    }
+
+    .layer.revealed:hover {
+      border-color: var(--border);
+    }
+
+    .layer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .layer-header:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .layer-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .layer-toggle {
+      font-size: 12px;
+      color: var(--primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: var(--font-body);
+    }
+
+    .layer-content {
+      padding: 0 20px 16px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text);
+      display: none;
+    }
+
+    .layer-content.expanded {
+      display: block;
+    }
+
+    .layer-content code {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      background: var(--bg);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    /* ===== .confidence-btn + selected states ===== */
+    .confidence-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      margin-bottom: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .confidence-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-secondary);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: var(--font-body);
+    }
+
+    .confidence-btn:hover {
+      border-color: var(--primary);
+      color: var(--text);
+    }
+
+    .confidence-btn.selected.low {
+      background: #7f1d1d;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .confidence-btn.selected.med {
+      background: #713f12;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .confidence-btn.selected.high {
+      background: #14532d;
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    /* ===== .card-nav + .nav-btn ===== */
+    .card-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: var(--font-body);
+    }
+
+    .nav-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    /* ===== .quiz-overlay + .quiz-overlay.hidden + .quiz-card + .quiz-header ===== */
+    .quiz-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 17, 23, 0.97);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 24px;
+      overflow-y: auto;
+    }
+
+    .quiz-overlay.hidden {
+      display: none;
+    }
+
+    .quiz-card {
+      width: 100%;
+      max-width: 720px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .quiz-header {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .quiz-progress-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .quiz-progress-bar {
+      width: 200px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--primary);
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* ===== .quiz-topic + .quiz-meta + .quiz-reveal-area + .quiz-answer + .quiz-complete ===== */
+    .quiz-topic {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .quiz-meta {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .quiz-reveal-area {
+      text-align: center;
+      padding: 24px 0;
+    }
+
+    .quiz-reveal-btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: opacity 0.15s;
+    }
+
+    .quiz-reveal-btn:hover {
+      opacity: 0.85;
+    }
+
+    .quiz-answer {
+      display: none;
+    }
+
+    .quiz-answer.visible {
+      display: block;
+    }
+
+    .quiz-answer-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .quiz-answer-text hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+
+    .quiz-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .quiz-skip-btn {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 14px;
+      cursor: pointer;
+      font-family: var(--font-body);
+    }
+
+    .quiz-complete {
+      text-align: center;
+      padding: 48px;
+      font-family: var(--font-heading);
+    }
+
+    .quiz-complete h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .quiz-complete p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    /* ===== .stat-* STYLES ===== */
+    .stats-body {
+      width: 100%;
+      max-width: 720px;
+    }
+
+    .stat-modal-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+    }
+
+    .stat-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .stat-card-num {
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    .stat-card-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .stat-modules {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .stat-section-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .stat-module-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .stat-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .stat-module-name {
+      flex: 1;
+    }
+
+    .stat-count {
+      color: var(--text-secondary);
+    }
+
+    .stat-low {
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .stat-weak-spots {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    .stat-weak-item {
+      display: flex;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    .stat-weak-item:last-child {
+      border-bottom: none;
+    }
+
+    .stat-weak-id {
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      min-width: 32px;
+    }
+
+    /* ===== .search-wrap + .search-input + .search-results ===== */
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 300px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px 12px 8px 36px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-secondary);
+    }
+
+    .search-results {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-height: 320px;
+      overflow-y: auto;
+      z-index: 200;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-results.hidden {
+      display: none;
+    }
+
+    .search-result-item {
+      padding: 10px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.1s;
+    }
+
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+
+    .search-result-item:hover,
+    .search-result-item.focused {
+      background: var(--bg);
+    }
+
+    .search-result-topic {
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .search-result-meta {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .search-no-results {
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ===== .shortcuts-grid + .shortcut-row + .shortcut-key + .layer-guide ===== */
+    .shortcuts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .shortcut-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .shortcut-key {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      min-width: 44px;
+      text-align: center;
+      color: var(--text);
+    }
+
+    .shortcut-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .layer-guide {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    .layer-guide-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .layer-guide-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .layer-guide-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== @media (max-width: 768px) RESPONSIVE STYLES ===== */
+    @media (max-width: 768px) {
+      .app {
+        grid-template-columns: 1fr;
+        grid-template-rows: var(--header-height) auto 1fr;
+      }
+
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        overflow-x: auto;
+        padding: 8px 16px;
+      }
+
+      .sidebar-inner {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+      }
+
+      .sidebar-divider {
+        width: 1px;
+        height: auto;
+        margin: 0 12px;
+      }
+
+      .progress-section {
+        padding: 0;
+      }
+
+      .main {
+        padding: 20px 16px;
+      }
+
+      .header {
+        flex-wrap: wrap;
+      }
+
+      .app-title {
+        font-size: 16px;
+      }
+
+      .header-actions {
+        gap: 4px;
+      }
+
+      .btn {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+
+      .stat-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .shortcuts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-topic {
+        font-size: 22px;
+      }
+    }
+
+    /* ===== kbd STYLES ===== */
+    kbd {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1 class="app-title">ICT304 Concept Explorer</h1>
+      <div class="search-wrap">
+        <input type="text" id="search-input" class="search-input"
+          placeholder="Search... (/)" autocomplete="off" spellcheck="false">
+        <div class="search-results hidden" id="search-results"></div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-quiz" class="btn btn-primary">Quiz Mode</button>
+        <button id="btn-stats" class="btn btn-ghost">Stats</button>
+        <button id="btn-help" class="btn btn-ghost" title="Keyboard shortcuts">?</button>
+      </div>
+    </header>
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <nav class="module-list" id="module-list"></nav>
+        <div class="sidebar-divider"></div>
+        <div class="progress-section" id="progress-section"></div>
+      </div>
+    </aside>
+    <main class="main" id="main">
+      <div id="concept-card"></div>
+    </main>
+  </div>
+  <div class="quiz-overlay hidden" id="quiz-overlay"></div>
+
+  <script type="application/json" id="kb">
+  {"concepts": [{"id": "Q1", "module": 1, "topic": "Intelligent Systems Characteristics", "layers": {"L1": "You encounter Intelligent Systems Characteristics in a real project. Here's how to think about it: What are the characteristics of Intelligent Systems?", "L2": "Think of Intelligent Systems Characteristics like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Intelligent Systems Characteristics is that What are the characteristics of Intelligent Systems?", "L4": "The main pitfall with Intelligent Systems Characteristics is when to the AI techniques you have learned."}}, {"id": "Q2", "module": 1, "topic": "AI vs ML vs DL Hierarchy", "layers": {"L1": "You encounter AI vs ML vs DL Hierarchy in a real project. Here's how to think about it: What are the differences between AI, Machine Learning, and Deep Learning?", "L2": "It's like the animal kingdom: all animals are alive (AI), mammals are a subset (ML), and primates are a smaller subset with more complex brains (DL).", "L3": "The core principle behind AI vs ML vs DL Hierarchy is that What are the differences between AI, Machine Learning, and Deep Learning?", "L4": "The main pitfall with AI vs ML vs DL Hierarchy is when ample | |------|-------------|---------| | AI | Makes machines act smart like humans."}}, {"id": "Q3", "module": 1, "topic": "Turing Test", "layers": {"L1": "You encounter Turing Test in a real project. Here's how to think about it: The Turing Test checks if a machine can act like a human in conversation.", "L2": "Like a text-based game of peek-a-boo \u2014 if a person can't tell they're talking to a machine after 5 minutes, the machine passes.", "L3": "The test works because it operationalizes intelligence as behavioral equivalence \u2014 if you can't tell the difference conversationally, the machine is functionally intelligent on that dimension.", "L4": "Machines can pass the Turing Test by using vague language, manipulation, or following scripts rather than genuinely understanding \u2014 passing the test doesn't prove real intelligence."}}, {"id": "Q4", "module": 1, "topic": "Computational Intelligence vs ML", "layers": {"L1": "You encounter Computational Intelligence vs ML in a real project. Here's how to think about it: What are the differences between Computational Intelligence and Machine Learning?", "L2": "CI is like a chef who cooks by instinct and feel; ML is like a chef who follows a recipe calibrated from thousands of past dishes.", "L3": "The core principle behind Computational Intelligence vs ML is that What are the differences between Computational Intelligence and Machine Learning?", "L4": "CI needs less data but requires good problem framing. ML needs lots of data but can discover patterns humans wouldn't think to look for. Both can fail when the problem doesn't fit their assumption."}}, {"id": "Q5", "module": 1, "topic": "Rationality Concepts", "layers": {"L1": "You encounter Rationality Concepts in a real project. Here's how to think about it: - Rationality: Making the best decision based on available knowledge and goals.", "L2": "Thinking rationally is solving a puzzle with formal logic. Acting rationally is choosing the fastest route home using everything you know right now.", "L3": "Rationality requires both the knowledge base AND a decision mechanism. Think rationally uses logic on known facts; act rationally uses logic plus real-time sensing to choose the best action.", "L4": "The main pitfall with Rationality Concepts is when e best decision based on available knowledge and goals."}}, {"id": "Q6", "module": 1, "topic": "DIKI Pyramid", "layers": {"L1": "You encounter DIKI Pyramid in a real project. Here's how to think about it: Describe the steps/stages of going from Data, Information, Knowledge, Intelligence.", "L2": "Data is scattered letters; information is those letters forming readable words; knowledge is understanding what those words mean in context; intelligence is using that understanding to make good decisions.", "L3": "Each level adds interpretation: data is meaningless numbers, information connects numbers to meaning, knowledge recognizes patterns in that meaning, intelligence acts on those patterns to achieve goals.", "L4": "The main pitfall with DIKI Pyramid is when Information \u2013 Data with meaning (e.g., \"Room temperature is 30\u00b0C\") 3."}}, {"id": "Q7", "module": 1, "topic": "Case-based Reasoning", "layers": {"L1": "You encounter Case-based Reasoning in a real project. Here's how to think about it: - Case-Based Reasoning (CBR): Solving new problems by finding solutions from similar past cases.", "L2": "Like a doctor who recalls a similar past patient's case to diagnose a new patient, adapting the old treatment as needed.", "L3": "CBR works because the world is full of similar situations. Instead of deriving a solution from first principles every time, you retrieve a past case and adapt it \u2014 faster and leverages hard-won experience.", "L4": "CBR fails when no past case is similar enough \u2014 the retrieval step is critical. If the case base is small or poorly indexed, revision dominates and accuracy suffers."}}, {"id": "Q8", "module": 1, "topic": "LLM and Generative AI", "layers": {"L1": "You encounter LLM and Generative AI in a real project. Here's how to think about it: What is a Large Language Model (LLM)?", "L2": "An LLM is like a library that has read millions of books and can discuss any of them \u2014 generative AI is the library that can also write new books in those styles.", "L3": "The core principle behind LLM and Generative AI is that What is a Large Language Model (LLM)?", "L4": "LLMs hallucinate \u2014 they generate fluent, confident-sounding text that's factually wrong. They also absorb biases present in their training data and can reveal private information."}}, {"id": "Q9", "module": 1, "topic": "AI Fields Overview", "layers": {"L1": "You encounter AI Fields Overview in a real project. Here's how to think about it: Provide an overview of the field of AI and how each area is different from others.", "L2": "Think of AI Fields Overview like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind AI Fields Overview is that Provide an overview of the field of AI and how each area is different from others.", "L4": "The main pitfall with AI Fields Overview is when ntelligence) is a broad field aiming to create machines smart."}}, {"id": "Q10", "module": 1, "topic": "Data Mining vs Knowledge Engineering", "layers": {"L1": "You encounter Data Mining vs Knowledge Engineering in a real project. Here's how to think about it: What are the differences between them?", "L2": "Think of Data Mining vs Knowledge Engineering like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Data Mining vs Knowledge Engineering is that What are the differences between them?", "L4": "The main pitfall with Data Mining vs Knowledge Engineering is when Mining**: Process of discovering patterns or useful information from large data sets."}}, {"id": "Q11", "module": 1, "topic": "Data Mining Process Steps", "layers": {"L1": "You encounter Data Mining Process Steps in a real project. Here's how to think about it: List and explain the Data Mining Process.", "L2": "Think of Data Mining Process Steps like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Data Mining Process Steps is that List and explain the Data Mining Process.", "L4": "The main pitfall with Data Mining Process Steps is when Data Cleaning \u2013 Remove errors and missing values."}}, {"id": "Q12", "module": 1, "topic": "AI Technique Categories", "layers": {"L1": "You encounter AI Technique Categories in a real project. Here's how to think about it: What is the difference between Data-Driven, Model-Driven, and Knowledge-Driven AI techniques?", "L2": "Think of AI Technique Categories like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind AI Technique Categories is that What is the difference between Data-Driven, Model-Driven, and Knowledge-Driven AI techniques?", "L4": "The main pitfall with AI Technique Categories is when hnique | Description | Example | |-----------|-------------|---------| | Data-Driven | Learns from data using patterns/statistics | Machine learning (..."}}, {"id": "Q13", "module": 1, "topic": "Directed vs Undirected Data Mining", "layers": {"L1": "You encounter Directed vs Undirected Data Mining in a real project. Here's how to think about it: What are Directed and Undirected Data Mining?", "L2": "Think of Directed vs Undirected Data Mining like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Directed vs Undirected Data Mining is that What are Directed and Undirected Data Mining?", "L4": "The main pitfall with Directed vs Undirected Data Mining is when (Supervised): Has a specific goal or target (e.g., prediction)."}}, {"id": "Q14", "module": 1, "topic": "Computational Intelligence Characteristics", "layers": {"L1": "You encounter Computational Intelligence Characteristics in a real project. Here's how to think about it: What is Computational Intelligence?", "L2": "Think of Computational Intelligence Characteristics like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Computational Intelligence Characteristics is that What is Computational Intelligence?", "L4": "The main pitfall with Computational Intelligence Characteristics is when Computational Intelligence (CI)*: A set of AI methods inspired by nature to solve complex problems without using exact models."}}, {"id": "Q15", "module": 2, "topic": "Types of Machine Learning", "layers": {"L1": "You encounter Types of Machine Learning in a real project. Here's how to think about it: In Machine Learning, what are the different types of learning?", "L2": "Think of Types of Machine Learning like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Types of Machine Learning is that In Machine Learning, what are the different types of learning?", "L4": "The main pitfall with Types of Machine Learning is when Supervised Learning \u2013 Learns from labeled data."}}, {"id": "Q16", "module": 2, "topic": "ML Research vs Production", "layers": {"L1": "You encounter ML Research vs Production in a real project. Here's how to think about it: What are the differences between Machine Learning in Production and Research?", "L2": "Think of ML Research vs Production like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind ML Research vs Production is that What are the differences between Machine Learning in Production and Research?", "L4": "The main pitfall with ML Research vs Production is when Production | |--------|----------|------------| | Goal | Explore new ideas, improve accuracy | Deliver stable, usable products | | Data | Clean, curat..."}}, {"id": "Q17", "module": 2, "topic": "AI Production Stakeholders", "layers": {"L1": "You encounter AI Production Stakeholders in a real project. Here's how to think about it: Identify the different stakeholders involved in bringing an AI system to production.", "L2": "Think of AI Production Stakeholders like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind AI Production Stakeholders is that Identify the different stakeholders involved in bringing an AI system to production.", "L4": "The main pitfall with AI Production Stakeholders is when of objectives of each stakeholder."}}, {"id": "Q18", "module": 2, "topic": "Research vs Production Computational Priority", "layers": {"L1": "You encounter Research vs Production Computational Priority in a real project. Here's how to think about it: In Computational Priority, what are the main differences between Research and Production stage?", "L2": "Think of Research vs Production Computational Priority like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Research vs Production Computational Priority is that In Computational Priority, what are the main differences between Research and Production stage?", "L4": "The main pitfall with Research vs Production Computational Priority is when spect | Research Stage | Production Stage | |--------|---------------|-----------------| | Goal | Accuracy, exploring, testing new models | Efficiency..."}}, {"id": "Q19", "module": 2, "topic": "Research vs Production Data", "layers": {"L1": "You encounter Research vs Production Data in a real project. Here's how to think about it: What are the main differences between the Data used in Research and Production?", "L2": "Think of Research vs Production Data like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Research vs Production Data is that What are the main differences between the Data used in Research and Production?", "L4": "The main pitfall with Research vs Production Data is when Data | Production Data | |--------|-------------|----------------| | Source | Historical or sample datasets | Live, real-time data | | Cleanliness | O..."}}, {"id": "Q20", "module": 2, "topic": "7 Main AI Problem Types", "layers": {"L1": "You encounter 7 Main AI Problem Types in a real project. Here's how to think about it: What are 7 main typical problems that can be addressed by AI systems?", "L2": "Think of 7 Main AI Problem Types like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind 7 Main AI Problem Types is that What are 7 main typical problems that can be addressed by AI systems?", "L4": "The main pitfall with 7 Main AI Problem Types is when I technique used to solve such problems."}}, {"id": "Q21", "module": 3, "topic": "AI Project Considerations", "layers": {"L1": "You encounter AI Project Considerations in a real project. Here's how to think about it: When developing an AI system, the following are some project consideration factors: 1.", "L2": "Think of AI Project Considerations like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind AI Project Considerations is that When developing an AI system, the following are some project consideration factors: 1.", "L4": "The main pitfall with AI Project Considerations is when Provide discussions for each of them."}}, {"id": "Q22", "module": 3, "topic": "Systems Elements Results", "layers": {"L1": "You encounter Systems Elements Results in a real project. Here's how to think about it: What are systems, elements, and results?", "L2": "Think of Systems Elements Results like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Systems Elements Results is that What are systems, elements, and results?", "L4": "The main pitfall with Systems Elements Results is when - Elements: The individual parts that make up a system."}}, {"id": "Q23", "module": 3, "topic": "System Hierarchy Terms", "layers": {"L1": "You encounter System Hierarchy Terms in a real project. Here's how to think about it: What are systems, elements, sub-systems, components, parts?", "L2": "Think of System Hierarchy Terms like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind System Hierarchy Terms is that What are systems, elements, sub-systems, components, parts?", "L4": "The main pitfall with System Hierarchy Terms is when - Sub-System: A smaller system within a system."}}, {"id": "Q24", "module": 3, "topic": "Engineering Design Process Stages", "layers": {"L1": "You encounter Engineering Design Process Stages in a real project. Here's how to think about it: What are the stages in EDP (Engineering Design Process)?", "L2": "Think of Engineering Design Process Stages like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Engineering Design Process Stages is that What are the stages in EDP (Engineering Design Process)?", "L4": "The main pitfall with Engineering Design Process Stages is when ncludes the following stages: 1."}}, {"id": "Q25", "module": 3, "topic": "Three Main System Engineering Processes", "layers": {"L1": "You encounter Three Main System Engineering Processes in a real project. Here's how to think about it: What are three main processes in system engineering?", "L2": "Think of Three Main System Engineering Processes like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Three Main System Engineering Processes is that What are three main processes in system engineering?", "L4": "The main pitfall with Three Main System Engineering Processes is when rocesses in system engineering are: 1."}}, {"id": "Q26", "module": 3, "topic": "Four System Design Processes", "layers": {"L1": "You encounter Four System Design Processes in a real project. Here's how to think about it: What are the four system design processes?", "L2": "Think of Four System Design Processes like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Four System Design Processes is that What are the four system design processes?", "L4": "The main pitfall with Four System Design Processes is when Define and Baseline Stakeholder Expectations - Understand what stakeholders need and expect from the system."}}, {"id": "Q27", "module": 3, "topic": "Product Life Cycle Phases", "layers": {"L1": "You encounter Product Life Cycle Phases in a real project. Here's how to think about it: What are the Product Life Cycle Phases?", "L2": "Think of Product Life Cycle Phases like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Product Life Cycle Phases is that What are the Product Life Cycle Phases?", "L4": "The main pitfall with Product Life Cycle Phases is when idea to deployment of a system or product."}}, {"id": "Q28", "module": 3, "topic": "Architectural Design", "layers": {"L1": "You encounter Architectural Design in a real project. Here's how to think about it: What is an Architectural Design?", "L2": "Think of Architectural Design like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Architectural Design is that What is an Architectural Design?", "L4": "The main pitfall with Architectural Design is when main elements, their interfaces, and their logical and physical layout."}}, {"id": "Q29", "module": 3, "topic": "ConOps Purpose", "layers": {"L1": "You encounter ConOps Purpose in a real project. Here's how to think about it: - ConOps (Concept of Operations): A document that describes how a system will be used from the user's perspective.", "L2": "Think of ConOps Purpose like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind ConOps Purpose is that - ConOps (Concept of Operations): A document that describes how a system will be used from the user's perspective.", "L4": "The main pitfall with ConOps Purpose is when scribes how a system will be used from the user's perspective."}}, {"id": "Q30", "module": 3, "topic": "Interface Control Document", "layers": {"L1": "You encounter Interface Control Document in a real project. Here's how to think about it: - ICD (Interface Control Document): Defines how different systems or components interact (data, format, etc).", "L2": "Think of Interface Control Document like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Interface Control Document is that - ICD (Interface Control Document): Defines how different systems or components interact (data, format, etc).", "L4": "The main pitfall with Interface Control Document is when onents interact (data, format, etc)."}}, {"id": "Q31", "module": 3, "topic": "Hashed Feature Design Pattern", "layers": {"L1": "You encounter Hashed Feature Design Pattern in a real project. Here's how to think about it: What is Hashed Feature Design Pattern and how can this be used?", "L2": "Like assigning lockers at a gym using a name tag system \u2014 everyone with the same locker number shares a space, even if they didn't mean to.", "L3": "Hashing solves the memory problem for high-cardinality features (e.g., millions of product IDs) by mapping them to a fixed number of buckets. The hash function is deterministic so the same input always maps to the same bucket. Binary encoding bits: bits = ceil(log2 N) where N = number of categories.", "L4": "Hash collisions: two different categories map to the same bucket, creating noisy features. Hash functions can also be reversible if not using cryptographic hashing, leaking category information."}}, {"id": "Q32", "module": 3, "topic": "Hashed Feature Disadvantages", "layers": {"L1": "You encounter Hashed Feature Disadvantages in a real project. Here's how to think about it: What are the disadvantages of using Hashed Feature?", "L2": "It's like two different people accidentally getting the same phone number \u2014 calls get mixed up and nobody knows which person the call was really for.", "L3": "Hash collisions mean two different categories land in the same bucket \u2014 the model gets noisy mixed signals. And you can never reverse the hash to see what the original category was.", "L4": "Irreversible: you can never recover the original categories from the hash. Collisions corrupt feature representations. Fixed bucket count limits scalability \u2014 too few buckets means too many collisions."}}, {"id": "Q33", "module": 3, "topic": "Embedding Design Pattern", "layers": {"L1": "You encounter Embedding Design Pattern in a real project. Here's how to think about it: What is the purpose of using Embedding Design Pattern?", "L2": "It's like giving every word in a language its own GPS coordinate \u2014 similar words end up near each other on the map, so the model can navigate meaning.", "L3": "Embeddings are learned representations where geometric distance captures semantic similarity. Words appearing in similar contexts get similar vectors \u2014 'king' and 'queen' cluster together because they appear in similar sentence patterns.", "L4": "Embeddings require large amounts of training data to learn meaningful geometry. Out-of-vocabulary words at inference time have no representation. The geometry may not transfer across languages."}}, {"id": "Q34", "module": 4, "topic": "ML Data Considerations", "layers": {"L1": "You encounter ML Data Considerations in a real project. Here's how to think about it: What are the considerations of using data for machine learning?", "L2": "Think of ML Data Considerations like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind ML Data Considerations is that What are the considerations of using data for machine learning?", "L4": "The main pitfall with ML Data Considerations is when - Quantity: Enough data to train the model without overfitting."}}, {"id": "Q35", "module": 4, "topic": "Model Selection Baselines", "layers": {"L1": "You encounter Model Selection Baselines in a real project. Here's how to think about it: One of the strategies of model selection is the use of baseline.", "L2": "It's like setting a baseline time for a race \u2014 ZeroR always finishes in the same slow time, Random just guesses, Previous Best is your personal record to beat.", "L3": "ZeroR sets a minimum performance bar \u2014 any useful model must beat it. Random shows whether the model is better than guessing. Previous Best is what you're actually trying to improve on.", "L4": "Wrong baseline choice misleads development. Always predict majority class is a trivially beatable baseline. Previous Best requires careful version tracking to ensure fair comparison."}}, {"id": "Q36", "module": 4, "topic": "Data Serialization Formats", "layers": {"L1": "You encounter Data Serialization Formats in a real project. Here's how to think about it: Explain the different formats and how they fit into the characteristics of Data Serialization.", "L2": "It's like packing a suitcase: JSON puts everything in labelled plastic bags (readable but bulky), Protocol Buffers vacuum-seal everything (compact but needs a key), CSV throws everything in loosely (simple but messy).", "L3": "The core principle behind Data Serialization Formats is that Explain the different formats and how they fit into the characteristics of Data Serialization.", "L4": "JSON is human-readable but verbose and slow to parse for large data. XML is self-descriptive but verbose. CSV is simple but can't represent nested structures. Protobuf is fast and compact but requires schema. Pickle is Python-only and unsafe with untrusted data."}}, {"id": "Q37", "module": 4, "topic": "Row-Major vs Column-Major Format", "layers": {"L1": "You encounter Row-Major vs Column-Major Format in a real project. Here's how to think about it: Explain the differences between Row-Major Versus Column-Major Format.", "L2": "Think of Row-Major vs Column-Major Format like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Row-Major vs Column-Major Format is that Explain the differences between Row-Major Versus Column-Major Format.", "L4": "The main pitfall with Row-Major vs Column-Major Format is when Column-Major Format | |--------|-----------------|-------------------| | Storage | Stores row by row (e.g., CSV) | Stores column by column (e.g., Parq..."}}, {"id": "Q38", "module": 4, "topic": "Three Data Models", "layers": {"L1": "You encounter Three Data Models in a real project. Here's how to think about it: What are the 3 different types of data models?", "L2": "Think of Three Data Models like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Three Data Models is that What are the 3 different types of data models?", "L4": "The main pitfall with Three Data Models is when cal Model** \u2013 Data is organized in a tree-like structure."}}, {"id": "Q39", "module": 4, "topic": "Structured vs Unstructured Data", "layers": {"L1": "You encounter Structured vs Unstructured Data in a real project. Here's how to think about it: What are the differences between Structured and Unstructured Data?", "L2": "Think of Structured vs Unstructured Data like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Structured vs Unstructured Data is that What are the differences between Structured and Unstructured Data?", "L4": "The main pitfall with Structured vs Unstructured Data is when tructured Data | |-----------------|-------------------| | Organized in tables or schemas | No fixed format or schema | | Easy to query (SQL) | Harder..."}}, {"id": "Q40", "module": 4, "topic": "Data Warehouse vs Data Lake", "layers": {"L1": "You encounter Data Warehouse vs Data Lake in a real project. Here's how to think about it: What is Data Warehouse and Data Lake?", "L2": "A data lake is a giant pile of raw ingredients in a warehouse. A data warehouse is a fridge full of pre-prepared, labelled meals ready to serve.", "L3": "The core principle behind Data Warehouse vs Data Lake is that What is Data Warehouse and Data Lake?", "L4": "Data lakes can become data swamps \u2014 raw data stored without organization, quality control, or clear governance. Data warehouses requires expensive preprocessing before analysis."}}, {"id": "Q41", "module": 4, "topic": "Transactional Processing and ACID", "layers": {"L1": "You encounter Transactional Processing and ACID in a real project. Here's how to think about it: What is Transactional Processing?", "L2": "Think of Transactional Processing and ACID like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Transactional Processing and ACID is that What is Transactional Processing?", "L4": "The main pitfall with Transactional Processing and ACID is when operations (insert, update, delete) in databases."}}, {"id": "Q42", "module": 4, "topic": "Analytical Processing", "layers": {"L1": "You encounter Analytical Processing in a real project. Here's how to think about it: - Analytical Processing (OLAP): Used to analyze large volumes of historical data for decision-making.", "L2": "Think of Analytical Processing like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Analytical Processing is that - Analytical Processing (OLAP): Used to analyze large volumes of historical data for decision-making.", "L4": "The main pitfall with Analytical Processing is when historical data for decision-making."}}, {"id": "Q43", "module": 4, "topic": "Batch vs Stream Processing", "layers": {"L1": "You encounter Batch vs Stream Processing in a real project. Here's how to think about it: What are the differences between Batch Processing and Stream Processing?", "L2": "Batch processing is doing your laundry once a week in a big pile. Stream processing is washing each item the moment it gets dirty.", "L3": "The core principle behind Batch vs Stream Processing is that What are the differences between Batch Processing and Stream Processing?", "L4": "Batch processing has high latency (wait for full batch). Stream processing has high infrastructure complexity (Kafka, Flink) and can't do batch analytics easily."}}, {"id": "Q44", "module": 4, "topic": "Training Validation Testing Datasets", "layers": {"L1": "You encounter Training Validation Testing Datasets in a real project. Here's how to think about it: What are training, validation and testing data sets?", "L2": "Training is practicing with a textbook. Validation is doing the exercises in the book. Testing is the actual exam you haven't seen.", "L3": "The core principle behind Training Validation Testing Datasets is that What are training, validation and testing data sets?", "L4": "If train/test split isn't random (e.g., time-based data split randomly), you'll train on future data and appear more accurate than you are. Always stratified split when classes are imbalanced."}}, {"id": "Q45", "module": 4, "topic": "Two Families of Sampling", "layers": {"L1": "You encounter Two Families of Sampling in a real project. Here's how to think about it: What are the two families of sampling?", "L2": "Think of Two Families of Sampling like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Two Families of Sampling is that What are the two families of sampling?", "L4": "The main pitfall with Two Families of Sampling is when as a known chance of being selected."}}, {"id": "Q46", "module": 4, "topic": "Sampling Techniques", "layers": {"L1": "You encounter Sampling Techniques in a real project. Here's how to think about it: What are the sampling techniques under Non-Probability Sampling and Random Sampling?", "L2": "Think of Sampling Techniques like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Sampling Techniques is that What are the sampling techniques under Non-Probability Sampling and Random Sampling?", "L4": "The main pitfall with Sampling Techniques is when | Sampling Type | Techniques | When to Use | |---------------|-----------|-------------| | Random (Probability) | Simple random, stratified, cluster, ..."}}, {"id": "Q47", "module": 4, "topic": "Data Labelling", "layers": {"L1": "You encounter Data Labelling in a real project. Here's how to think about it: What is Data Labelling and what is the purpose of data labelling?", "L2": "Think of Data Labelling like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Data Labelling is that What is Data Labelling and what is the purpose of data labelling?", "L4": "The main pitfall with Data Labelling is when data (e.g., images, text) with meaningful information like categories or values."}}, {"id": "Q48", "module": 4, "topic": "Data Labelling Methods", "layers": {"L1": "You encounter Data Labelling Methods in a real project. Here's how to think about it: Describe the different methods of doing Data Labelling.", "L2": "Think of Data Labelling Methods like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Data Labelling Methods is that Describe the different methods of doing Data Labelling.", "L4": "The main pitfall with Data Labelling Methods is when by hand (accurate but time-consuming)."}}, {"id": "Q49", "module": 4, "topic": "Data Lineage", "layers": {"L1": "You encounter Data Lineage in a real project. Here's how to think about it: - Data Lineage: Describes the origin, movement, and transformation of data through the system.", "L2": "Think of Data Lineage like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Data Lineage is that - Data Lineage: Describes the origin, movement, and transformation of data through the system.", "L4": "The main pitfall with Data Lineage is when - Purpose: Helps in tracing data sources, understanding data flow, and ensuring data quality and compliance."}}, {"id": "Q50", "module": 4, "topic": "Class Imbalance", "layers": {"L1": "You encounter Class Imbalance in a real project. Here's how to think about it: - Class Imbalance: When one class appears much more frequently than others in classification problems.", "L2": "Imagine a fire alarm that only goes off for 1 in 1000 fires \u2014 technically it detects fires, but it would miss real emergencies.", "L3": "Models optimize for what they can measure. If 99% of cases are negative, the model minimizes error by always predicting negative \u2014 without being told this is wrong, it never learns the rare positive patterns.", "L4": "Naive models achieve high accuracy by always predicting the majority class. SMOTE can create synthetic samples in feature space that don't represent real cases. Class weights require careful tuning."}}, {"id": "Q51", "module": 4, "topic": "Data Augmentation", "layers": {"L1": "You encounter Data Augmentation in a real project. Here's how to think about it: Why do you need data augmentation?", "L2": "Like photocopying a photo at different angles and lighting conditions to teach someone to recognize the same subject anywhere.", "L3": "The core principle behind Data Augmentation is that Why do you need data augmentation?", "L4": "Augmentation that changes the label (e.g., flipping '6' and '9' in digit recognition without relabeling) corrupts training. Too much augmentation can teach the model to rely on the augmentation artifacts."}}, {"id": "Q52", "module": 4, "topic": "Learned vs Engineered Features", "layers": {"L1": "You encounter Learned vs Engineered Features in a real project. Here's how to think about it: What are the differences between Learned Features and Engineered Features?", "L2": "Think of Learned vs Engineered Features like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Learned vs Engineered Features is that What are the differences between Learned Features and Engineered Features?", "L4": "The main pitfall with Learned vs Engineered Features is when ion | Example | |-------------|-----------|---------| | Engineered | Manually created using domain knowledge | Computing \"age group\" from date of birt..."}}, {"id": "Q53", "module": 4, "topic": "Types of Missing Values", "layers": {"L1": "You encounter Types of Missing Values in a real project. Here's how to think about it: What are three main types of missing values?", "L2": "MCAR is pages randomly torn from a book. MAR is skipping the boring chapters. MNAR is skipping the chapters that would have corrected your wrong assumptions.", "L3": "MCAR can be safely dropped without biasing results. MAR allows modelling the missingness pattern using other features. MNAR is systematically biased \u2014 the missing values differ from observed values in ways you can't correct without the missing data itself.", "L4": "Treating MNAR as MCAR and dropping missing values introduces systematic bias \u2014 the missing values are systematically different and dropping them changes the learned distribution."}}, {"id": "Q54", "module": 4, "topic": "Feature Scaling", "layers": {"L1": "You encounter Feature Scaling in a real project. Here's how to think about it: What are the common methods of performing feature scaling?", "L2": "Scaling features is like making sure all ingredients in a recipe are measured in the same unit \u2014 otherwise salt (tiny amount) gets lost next to flour (cups).", "L3": "Min-Max: X_norm = (X - X_min) / (X_max - X_min). Z-Score: X_z = (X - mean) / std. Normalization is essential for distance-based models (k-NN, SVM) and neural networks \u2014 large-magnitude features would otherwise dominate the learning. Min-Max: X_norm = (X - X_min) / (X_max - X_min). Z-Score: X_z = (X - mean) / std.", "L4": "Outliers compress most values into a tiny range in Min-Max scaling. Z-Score assumes normal distribution \u2014 skewed data misleads. Robust scaling uses median and IQR instead."}}, {"id": "Q55", "module": 4, "topic": "Discretization", "layers": {"L1": "You encounter Discretization in a real project. Here's how to think about it: - Discretization: Converting continuous features into categories or bins.", "L2": "Grouping ages into brackets (18-25, 26-35) instead of exact ages \u2014 like grouping people by life stage rather than birthday.", "L3": "Equal-width binning divides the range into N intervals of equal size. Equal-frequency puts equal numbers of samples in each bin. Decision tree binning finds optimal split points that best separate the target class.", "L4": "Bins at the wrong boundaries split genuinely similar values into different categories. Too few bins lose information; too many overfit to noise."}}, {"id": "Q56", "module": 4, "topic": "Categorical Feature Encoding", "layers": {"L1": "You encounter Categorical Feature Encoding in a real project. Here's how to think about it: How do you encode Categorical Features?", "L2": "Think of Categorical Feature Encoding like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Categorical Feature Encoding is that How do you encode Categorical Features?", "L4": "The main pitfall with Categorical Feature Encoding is when Use when number of categories is small."}}, {"id": "Q57", "module": 4, "topic": "Feature Crossing", "layers": {"L1": "You encounter Feature Crossing in a real project. Here's how to think about it: What could be the problem of Feature Crossing?", "L2": "Think of Feature Crossing like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Feature Crossing is that What could be the problem of Feature Crossing?", "L4": "The main pitfall with Feature Crossing is when Feature Crossing**: Creating new features by combining two or more existing features."}}, {"id": "Q58", "module": 5, "topic": "Data Leakage Problem", "layers": {"L1": "You encounter Data Leakage Problem in a real project. Here's how to think about it: What could be the cause of this problem and how can you deal with this problem?", "L2": "Like studying with the answer key taped under your exam paper \u2014 you seem brilliant in practice, but fail completely when the real questions arrive.", "L3": "If the model learns from information it shouldn't have access to during training (future data, test data, target information), it exploits those correlations at evaluation time. Since those correlations don't exist in real new data, performance collapses.", "L4": "Most dangerous because it's invisible \u2014 validation metrics look great. Common sources: including test data in training, target encoding before splitting, using future information as features. Must build any joins on the full dataset before splitting."}}, {"id": "Q59", "module": 5, "topic": "Feature Importance", "layers": {"L1": "You encounter Feature Importance in a real project. Here's how to think about it: Why is knowing the Feature Importance useful?", "L2": "Think of Feature Importance like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Feature Importance is that Why is knowing the Feature Importance useful?", "L4": "The main pitfall with Feature Importance is when - Improves interpretability and trust in models."}}, {"id": "Q60", "module": 5, "topic": "Model Deployment Design Considerations", "layers": {"L1": "You encounter Model Deployment Design Considerations in a real project. Here's how to think about it: In model deployment, what are the system design key considerations that need to be taken care of?", "L2": "Think of Model Deployment Design Considerations like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Model Deployment Design Considerations is that In model deployment, what are the system design key considerations that need to be taken care of?", "L4": "The main pitfall with Model Deployment Design Considerations is when Scalability: Can the model handle large-scale/more loads?"}}, {"id": "Q61", "module": 5, "topic": "Technical Requirements for Deployment", "layers": {"L1": "You encounter Technical Requirements for Deployment in a real project. Here's how to think about it: Why is technical requirements important to be taken care of in deployment?", "L2": "Think of Technical Requirements for Deployment like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Technical Requirements for Deployment is that Why is technical requirements important to be taken care of in deployment?", "L4": "The main pitfall with Technical Requirements for Deployment is when ks in the real-world environment."}}, {"id": "Q62", "module": 5, "topic": "Human Systems Function Allocation", "layers": {"L1": "You encounter Human Systems Function Allocation in a real project. Here's how to think about it: What is Human/Systems Function Allocation?", "L2": "Think of Human Systems Function Allocation like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Human Systems Function Allocation is that What is Human/Systems Function Allocation?", "L4": "The main pitfall with Human Systems Function Allocation is when **: Deciding which tasks will be done by humans and which by the AI system."}}, {"id": "Q63", "module": 5, "topic": "Validation of Requirements", "layers": {"L1": "You encounter Validation of Requirements in a real project. Here's how to think about it: What is validation in this stage?", "L2": "It's like getting the blueprint inspected before building: does this design match what the customer actually asked for?", "L3": "Validation checks whether the final system meets the user's needs described in the ConOps document \u2014 focus on 'are we building the right system?' The 6 steps (Review \u2192 Test Scenarios \u2192 Success Criteria \u2192 Conduct Tests \u2192 Analyze \u2192 Document) ensure systematic coverage. Six steps: Review Requirements \u2192 Define Test Scenarios \u2192 Establish Success Criteria \u2192 Conduct Tests \u2192 Analyze Results \u2192 Document.", "L4": "If ConOps doesn't reflect actual user needs, validation passes for the wrong system. Success criteria must be measurable and agreed upfront \u2014 vague criteria lead to arguments at the end."}}, {"id": "Q64", "module": 5, "topic": "ML Model Selection Tips", "layers": {"L1": "You encounter ML Model Selection Tips in a real project. Here's how to think about it: What are the 6 tips on ML model selection?", "L2": "Think of ML Model Selection Tips like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind ML Model Selection Tips is that What are the 6 tips on ML model selection?", "L4": "The main pitfall with ML Model Selection Tips is when em Type** \u2013 Classification, regression, clustering, etc."}}, {"id": "Q65", "module": 5, "topic": "Ensemble ML Methods", "layers": {"L1": "You encounter Ensemble ML Methods in a real project. Here's how to think about it: Explain the differences between Bagging, Boosting, and Stacking.", "L2": "A jury of 12 people debating a verdict \u2014 each sees different evidence, makes different reasoning errors, and the majority vote cancels out individual mistakes.", "L3": "Bagging reduces variance by training diverse models on random subsets and averaging \u2014 the errors cancel out. Boosting reduces bias by training models sequentially that fix predecessor errors. Stacking uses a meta-learner to optimally combine diverse base models.", "L4": "If base models are too similar (all Decision Trees), ensembling provides little benefit. Boosting can overfit noisy data by repeatedly correcting outliers. Stacking can overfit if the meta-learner is too complex."}}, {"id": "Q66", "module": 5, "topic": "Product Evaluation Processes", "layers": {"L1": "You encounter Product Evaluation Processes in a real project. Here's how to think about it: What are two main processes in product evaluation?", "L2": "Verification is checking every ingredient and cooking step. Validation is whether the dish tastes good to the customer.", "L3": "Verification checks the product was built correctly (specs, engineering standards). Validation checks the right product was built for user needs. Both are necessary \u2014 you can build the wrong thing perfectly or the right thing badly.", "L4": "The main pitfall with Product Evaluation Processes is when built correctly (meets specifications)."}}, {"id": "Q67", "module": 5, "topic": "Verification vs Validation", "layers": {"L1": "You encounter Verification vs Validation in a real project. Here's how to think about it: What are the differences between Verification and Validation?", "L2": "Verification asks 'did we build it right?' Validation asks 'did we build the right thing?'", "L3": "Verification answers 'are we building the product right?' \u2014 technical correctness. Validation answers 'are we building the right product?' \u2014 user satisfaction and mission alignment.", "L4": "Verification without validation: all specs met but nobody wants the product. Validation without verification: works for users but crashes under load. Both are needed, and controlled testing environments may not reflect real production conditions."}}, {"id": "Q68", "module": 5, "topic": "Controlled Environment", "layers": {"L1": "You encounter Controlled Environment in a real project. Here's how to think about it: What is Controlled Environment?", "L2": "A crash-test dummy in a controlled lab \u2014 you control every variable so results are reliable and repeatable.", "L3": "The core principle behind Controlled Environment is that What is Controlled Environment?", "L4": "Controlled environments don't reflect the chaos of real-world data: edge cases, adversarial inputs, hardware failures, and unusual user behaviors all appear in production but not in testing."}}, {"id": "Q69", "module": 5, "topic": "Product Verification Approaches", "layers": {"L1": "You encounter Product Verification Approaches in a real project. Here's how to think about it: What are the different approaches in Product Verification?", "L2": "Think of Product Verification Approaches like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Product Verification Approaches is that What are the different approaches in Product Verification?", "L4": "The main pitfall with Product Verification Approaches is when Inspections \u2013 Formal evaluation of design/development."}}, {"id": "Q70", "module": 5, "topic": "Software Testing Types", "layers": {"L1": "You encounter Software Testing Types in a real project. Here's how to think about it: Explain the different types of testing in Software Engineering.", "L2": "Think of Software Testing Types like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Software Testing Types is that Explain the different types of testing in Software Engineering.", "L4": "The main pitfall with Software Testing Types is when - Integration Testing \u2013 Tests interactions between modules."}}, {"id": "Q71", "module": 5, "topic": "ML Model Evaluation Baselines", "layers": {"L1": "You encounter ML Model Evaluation Baselines in a real project. Here's how to think about it: For ML Model Evaluation, what are the different types of baselines?", "L2": "Think of ML Model Evaluation Baselines like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind ML Model Evaluation Baselines is that For ML Model Evaluation, what are the different types of baselines?", "L4": "The main pitfall with ML Model Evaluation Baselines is when ys predicts the most common class or mean."}}, {"id": "Q72", "module": 5, "topic": "ML Evaluation Methods", "layers": {"L1": "You encounter ML Evaluation Methods in a real project. Here's how to think about it: Explain the different evaluation methods.", "L2": "Think of ML Evaluation Methods like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "Perturbation tests check robustness \u2014 small input changes shouldn't cause dramatic prediction swings. Invariance tests check the model ignores irrelevant changes. Directional expectation tests check the model responds correctly to meaningful changes.", "L4": "Perturbation thresholds are arbitrary \u2014 too sensitive and everything fails, too lenient and real problems are missed. Some perturbations are natural variation, not failures."}}, {"id": "Q73", "module": 5, "topic": "Click Through Rate", "layers": {"L1": "You encounter Click Through Rate in a real project. Here's how to think about it: What is Click Through Rate (CTR)?", "L2": "Like a dating app showing your profile to 100 people and 7 actually swipe right \u2014 your CTR is 7%.", "L3": "CTR = (Number of Clicks / Number of Impressions) \u00d7 100. Higher CTR means more users are engaging with the recommended content. Used to optimize recommendation systems, ads, and search rankings. Formula: CTR = (Clicks / Impressions) \u00d7 100.", "L4": "High CTR can mean users are clicking on misleading content. Always pair CTR with engagement quality and satisfaction metrics \u2014 users might click out of curiosity but regret it."}}, {"id": "Q74", "module": 5, "topic": "Slice-Based Testing for Imbalanced Data", "layers": {"L1": "You encounter Slice-Based Testing for Imbalanced Data in a real project. Here's how to think about it: How does Slice-Based Testing help to deal with imbalanced data and data with many subgroups?", "L2": "Think of Slice-Based Testing for Imbalanced Data like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Slice-Based Testing for Imbalanced Data is that How does Slice-Based Testing help to deal with imbalanced data and data with many subgroups?", "L4": "The main pitfall with Slice-Based Testing for Imbalanced Data is when ice-Based Testing evaluates model performance on specific subgroups** (slices) of the data (e.g., gender, age, location)."}}, {"id": "Q75", "module": 5, "topic": "Slice Identification Methods", "layers": {"L1": "You encounter Slice Identification Methods in a real project. Here's how to think about it: What are the methods that can help to identify the slices in Slice-Based Testing?", "L2": "Think of Slice Identification Methods like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Slice Identification Methods is that What are the methods that can help to identify the slices in Slice-Based Testing?", "L4": "The main pitfall with Slice Identification Methods is when ng** \u2013 Use domain knowledge to define groups (e.g., age range)."}}, {"id": "Q76", "module": 6, "topic": "Model Deployment Steps", "layers": {"L1": "You encounter Model Deployment Steps in a real project. Here's how to think about it: What are the four main steps in model deployment?", "L2": "Pack the model like catering food, ship it like a shipping container via Docker, expose it like a restaurant buffet via API, automate like a catering company with MLOps.", "L3": "Package (Docker + ONNX) \u2192 Deploy to cloud (Kubernetes) \u2192 Serve via API (REST/GRPC) \u2192 Automate with MLOps (monitoring, retraining, scaling). Each step enables the next.", "L4": "Missing dependency versions cause silent accuracy drops (different library versions produce slightly different model behavior). Environment must exactly match between training and serving."}}, {"id": "Q77", "module": 6, "topic": "Model-in-Service Architecture", "layers": {"L1": "You encounter Model-in-Service Architecture in a real project. Here's how to think about it: What is Model-in-Service Architecture?", "L2": "Like a chef who works inside the restaurant kitchen. Simple, but if the chef gets sick the whole restaurant closes.", "L3": "Embedding the model in the main app is simple and low-latency but makes the model hard to update independently and it can't scale separately from the app.", "L4": "Can't scale model independently from the app. Updating the model requires redeploying the entire application. All serving infrastructure must match the main app's technology stack."}}, {"id": "Q78", "module": 6, "topic": "Separating UI and Model", "layers": {"L1": "You encounter Separating UI and Model in a real project. Here's how to think about it: Why is it good to separate the UI and the model?", "L2": "Think of Separating UI and Model like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Separating UI and Model is that Why is it good to separate the UI and the model?", "L4": "The main pitfall with Separating UI and Model is when - Improves scalability (each part can scale independently)."}}, {"id": "Q79", "module": 6, "topic": "Model-as-a-Service", "layers": {"L1": "You encounter Model-as-a-Service in a real project. Here's how to think about it: And how is it different from Model-in-Service?", "L2": "Like a catering company that delivers food to many restaurants \u2014 the model can serve multiple apps from one kitchen, and can be updated without closing any restaurant.", "L3": "MaaS separates the model as its own service via API, enabling independent scaling, versioning, and reuse across multiple applications \u2014 but adds network latency.", "L4": "Network latency between the API and the model service adds overhead. Requires robust API design, authentication, and rate limiting. More complex than in-service deployment."}}, {"id": "Q80", "module": 6, "topic": "Model-as-a-Service Pros Cons", "layers": {"L1": "You encounter Model-as-a-Service Pros Cons in a real project. Here's how to think about it: What are the advantages and disadvantages of Model-as-a-Service?", "L2": "Think of Model-as-a-Service Pros Cons like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Model-as-a-Service Pros Cons is that What are the advantages and disadvantages of Model-as-a-Service?", "L4": "The main pitfall with Model-as-a-Service Pros Cons is when - Supports scalable, modular architecture."}}, {"id": "Q81", "module": 6, "topic": "Dependency Management for Model Servers", "layers": {"L1": "You encounter Dependency Management for Model Servers in a real project. Here's how to think about it: What are the factors that need to be considered for dependency management for model servers?", "L2": "Think of Dependency Management for Model Servers like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Dependency Management for Model Servers is that What are the factors that need to be considered for dependency management for model servers?", "L4": "The main pitfall with Dependency Management for Model Servers is when ibrary Versions** \u2013 Ensure consistent versions of ML libraries (e.g., TensorFlow, PyTorch)."}}, {"id": "Q82", "module": 6, "topic": "Dependency Strategies", "layers": {"L1": "You encounter Dependency Strategies in a real project. Here's how to think about it: What are two strategies to deal with dependencies?", "L2": "Think of Dependency Strategies like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind Dependency Strategies is that What are two strategies to deal with dependencies?", "L4": "The main pitfall with Dependency Strategies is when v or conda to isolate Python libraries for each project."}}, {"id": "Q83", "module": 6, "topic": "VM vs Docker", "layers": {"L1": "You encounter VM vs Docker in a real project. Here's how to think about it: What are the differences between VM and Docker (Container)?", "L2": "VMs are separate houses on separate plots of land \u2014 fully independent but expensive. Docker containers are apartments sharing the building's infrastructure \u2014 efficient but less isolated.", "L3": "Docker containers share the host OS kernel so they start in seconds and use less memory. VMs include a full guest OS so they're slower to start but provide complete isolation \u2014 useful when you need strict security boundaries.", "L4": "Docker containers share the host kernel \u2014 a kernel vulnerability affects all containers. VMs provide complete isolation at the cost of higher resource overhead and slower startup."}}, {"id": "Q84", "module": 6, "topic": "Model Deployment Optimization", "layers": {"L1": "You encounter Model Deployment Optimization in a real project. Here's how to think about it: In model deployment, how do you optimize the performance?", "L2": "Quantization is compressing a high-resolution photo into a smaller file \u2014 some quality is lost but it's much faster to send.", "L3": "Quantization reduces weights from 32-bit float to 8-bit integers, dramatically reducing model size and inference time. Pruning removes low-importance weights entirely. Both trade some accuracy for speed.", "L4": "Aggressive quantization causes significant accuracy drops for some model architectures. Pruning without careful validation destroys important weights. Compression must preserve the model's decision boundaries."}}, {"id": "Q85", "module": 6, "topic": "Horizontal Scaling", "layers": {"L1": "You encounter Horizontal Scaling in a real project. Here's how to think about it: - Horizontal Scaling: Adding more machines/instances to handle increased load.", "L2": "Adding more delivery trucks to your fleet instead of making each truck drive faster.", "L3": "Horizontal scaling adds more instances behind a load balancer \u2014 each handles a fraction of requests simultaneously. This handles increased traffic linearly and provides fault tolerance.", "L4": "Stateless serving is required for horizontal scaling \u2014 if each request needs session state, that state must be stored externally (Redis, database), adding complexity and latency."}}, {"id": "Q86", "module": 6, "topic": "Cloud vs Edge Computing", "layers": {"L1": "You encounter Cloud vs Edge Computing in a real project. Here's how to think about it: What are the differences between Cloud Computing and Edge Computing?", "L2": "Cloud computing is a restaurant that cooks food in a central kitchen and delivers it. Edge computing is a food truck that cooks right at the event venue.", "L3": "Cloud has virtually unlimited compute but network latency. Edge processes locally near the data source \u2014 near-zero latency and works offline \u2014 but has limited compute and is harder to update.", "L4": "Edge devices have limited compute \u2014 large models can't run on IoT sensors. Harder to update models on thousands of distributed devices. Security at the device level is harder to manage."}}, {"id": "Q87", "module": 6, "topic": "Operational vs ML Metrics", "layers": {"L1": "You encounter Operational vs ML Metrics in a real project. Here's how to think about it: Explain the differences between operational metrics and ML metrics when used to determine the success of a ML system.", "L2": "Operational metrics are whether the delivery driver arrives on time. ML metrics are whether the food is actually what you ordered.", "L3": "Operational metrics (latency, throughput, uptime) measure system health. ML metrics (accuracy, F1, RMSE) measure prediction quality. Both are needed \u2014 a system can be healthy but make terrible predictions, or accurate but crawl.", "L4": "Optimizing ML metrics without tracking operational metrics means you can deploy an accurate model that's too slow or crashes constantly. Optimizing operational metrics without ML metrics means a fast system that makes terrible predictions."}}, {"id": "Q88", "module": 6, "topic": "Dependency and Deployment Failures", "layers": {"L1": "You encounter Dependency and Deployment Failures in a real project. Here's how to think about it: What are Dependency Failures and Deployment Failures?", "L2": "Dependency failure is the delivery truck's engine breaking down. Deployment failure is sending the food to the wrong address.", "L3": "Dependency failures happen when external packages, libraries, or services are missing, outdated, or incompatible. Deployment failures happen when the deployment environment (OS, drivers, configs) doesn't match the training environment.", "L4": "Missing library versions cause import errors. Deprecated API calls silently use fallback behavior. Deployment to wrong environment (e.g., GPU machine vs CPU) causes crashes."}}, {"id": "Q89", "module": 6, "topic": "Operational Failure Causes", "layers": {"L1": "You encounter Operational Failure Causes in a real project. Here's how to think about it: What are the causes for Operational Failures?", "L2": "Think of Operational Failure Causes like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "Operational failures stem from hardware (disk full, GPU crash), infrastructure (network outage), or configuration (wrong environment variables) \u2014 the software stack itself has a problem.", "L4": "Single points of failure in infrastructure (database, load balancer). Hardware failures (disk full, RAM exhausted). Configuration errors (wrong environment variables)."}}, {"id": "Q90", "module": 6, "topic": "ML-Specific Failures", "layers": {"L1": "You encounter ML-Specific Failures in a real project. Here's how to think about it: What are the causes for ML-Specific Failures?", "L2": "Like training a dog for a specific scent in a clean training room, then deploying it in a busy city \u2014 the real world has too many new smells.", "L3": "ML failures happen even when the system is technically running correctly \u2014 the model encounters patterns (covariate shift, label shift, concept drift) it wasn't trained on. Unlike software bugs, no error is thrown \u2014 predictions are silently wrong.", "L4": "Production data differs from training in ways not seen in development. Edge cases in safety-critical systems (autonomous vehicles, medical AI). Feedback loops where model predictions influence future training data."}}, {"id": "Q91", "module": 6, "topic": "Edge Case vs Outlier", "layers": {"L1": "You encounter Edge Case vs Outlier in a real project. Here's how to think about it: What is Edge Case and how is this different from Outlier?", "L2": "An edge case is a valid input the model handles poorly but should handle (a self-driving car encountering an unusual road sign). An outlier is a data entry error (age=500) that's simply wrong.", "L3": "Edge cases are valid inputs that a model handles poorly but should handle \u2014 critical for safety systems. Outliers are anomalous data points that may indicate measurement errors or genuinely rare events.", "L4": "Edge cases in safety-critical systems can cause catastrophic failures \u2014 always test with real-world conditions. Outliers may be data entry errors that should be corrected rather than modelled."}}, {"id": "Q92", "module": 6, "topic": "Degenerate Feedback", "layers": {"L1": "You encounter Degenerate Feedback in a real project. Here's how to think about it: What is Degenerate Feedback and how can you deal with this?", "L2": "A music app that keeps recommending pop music because that's what everyone clicked before \u2014 the recommendations create the data that confirms the recommendations.", "L3": "When model predictions influence what data is collected for future training, a feedback loop forms \u2014 the model becomes increasingly biased toward its own predictions, reinforcing its existing beliefs and reducing diversity.", "L4": "Rich-get-richer loops: popular content gets recommended, gets clicked, gets more data, gets recommended more. Niche content never gets shown so never gets clicks so never gets recommended. Gradually destroys recommendation diversity."}}, {"id": "Q93", "module": 6, "topic": "Data Distribution Shifts", "layers": {"L1": "You encounter Data Distribution Shifts in a real project. Here's how to think about it: What are the 3 types of data distribution shifts?", "L2": "Covariate shift: everyone starts speaking with an accent you don't recognize. Label shift: the topics people ask about change. Concept shift: the language itself changes \u2014 words that meant one thing now mean another.", "L3": "Covariate shift: input distribution changes (older spam formats). Label shift: outcome distribution changes (new disease prevalence). Concept shift: the mapping itself changes (economic patterns shift after regulation).", "L4": "Covariate shift: model processes novel patterns it wasn't trained on. Label shift: model predicts outdated label distributions. Concept shift: the fundamental relationship between inputs and outputs changes \u2014 model is solving yesterday's problem."}}, {"id": "Q94", "module": 6, "topic": "Distribution Shift Detection", "layers": {"L1": "You encounter Distribution Shift Detection in a real project. Here's how to think about it: What are the two methods used to detect distribution shifts?", "L2": "Think of Distribution Shift Detection like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "Statistical tests (KL divergence, KS test) compare the distribution of production data against training data. Monitoring model metrics for drops catches the consequence \u2014 statistical tests catch the cause.", "L4": "Statistical tests detect distributional differences but can't tell you whether those differences matter for your specific model's predictions. Thresholds for significance are arbitrary."}}, {"id": "Q95", "module": 6, "topic": "Spatial vs Temporal Shifts", "layers": {"L1": "You encounter Spatial vs Temporal Shifts in a real project. Here's how to think about it: What is the difference between Spatial Shifts and Temporal Shifts?", "L2": "Think of Spatial vs Temporal Shifts like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "Spatial shift: a model trained in one geographic region fails in another. Temporal shift: patterns change over time (seasonal shopping, evolving language).", "L4": "Spatial shift can occur when deploying models across different regions, demographics, or device types. Temporal shift is ubiquitous in production \u2014 consumer behavior, language, and economic conditions evolve."}}, {"id": "Q96", "module": 6, "topic": "Monitoring vs Observability", "layers": {"L1": "You encounter Monitoring vs Observability in a real project. Here's how to think about it: What is Monitoring vs Observability?", "L2": "Monitoring is a smoke alarm \u2014 it goes off for known fire patterns. Observability is a detective reconstructing exactly what happened from the crime scene evidence.", "L3": "Monitoring watches known failure modes (latency spike, accuracy drop). Observability understands unknown failures by examining internal state from external outputs \u2014 needed when the failure mode wasn't anticipated.", "L4": "Monitoring without observability can't diagnose novel failures. Observability without monitoring misses obvious known issues. Both operational and ML-specific metrics are needed."}}, {"id": "Q97", "module": 6, "topic": "Logs Dashboards Alerts", "layers": {"L1": "You encounter Logs Dashboards Alerts in a real project. Here's how to think about it: How can you use Logs, Dashboards, and Alerts?", "L2": "Think of Logs Dashboards Alerts like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "Logs record what happened in detail for debugging. Dashboards visualize key metrics in real-time for at-a-glance monitoring. Alerts trigger notifications when metrics cross thresholds.", "L4": "Logs without structure are hard to search. Dashboards without context are misleading. Alerts without clear thresholds cause alert fatigue. Each serves a different purpose."}}, {"id": "Q98", "module": 6, "topic": "Responsible AI", "layers": {"L1": "You encounter Responsible AI in a real project. Here's how to think about it: What is Responsible AI and why is this important to be adopted for developing an AI system?", "L2": "Building a bridge that's safe for everyone to cross, doesn't discriminate against pedestrians vs cyclists, and doesn't collapse after 5 years.", "L3": "AI systems make consequential decisions about people's lives. Without responsibility built in, they can perpetuate biases, invade privacy, and cause harm at scale before anyone notices.", "L4": "Biased training data produces biased models. Black-box models can't explain decisions. Lack of accountability makes it impossible to fix problems when they occur. Privacy breaches expose sensitive data."}}, {"id": "Q99", "module": 6, "topic": "Responsible AI Key Areas", "layers": {"L1": "You encounter Responsible AI Key Areas in a real project. Here's how to think about it: What are the key areas of Responsible AI?", "L2": "Think of Responsible AI Key Areas like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "Fairness prevents discrimination. Transparency enables accountability. Accountability assigns responsibility. Privacy protects individuals. Security prevents attacks. Reliability ensures the system works correctly under varying conditions.", "L4": "Fairness has competing definitions \u2014 optimizing for one may hurt another. What's fair in one context may not be in another. Bias can enter at any stage: data, labels, features, or model architecture."}}, {"id": "Q100", "module": 6, "topic": "Fairness Measurement Stages", "layers": {"L1": "You encounter Fairness Measurement Stages in a real project. Here's how to think about it: Provide the stages of measuring fairness in the AI system.", "L2": "Fairness is measured like a doctor's check-up across three stages: preparation (is the data healthy?), analysis (is the model healthy?), and monitoring (does it stay healthy in production?).", "L3": "Preparation: audit data for bias and representation. Analysis: measure model fairness across subgroups. Monitoring: track fairness metrics continuously in production.", "L4": "Fairness metrics can conflict: demographic parity vs equalized odds vs calibration. Auditing only at deployment misses problems in data preparation and labeling stages."}}, {"id": "Q101", "module": 6, "topic": "AI Safety and Reliability", "layers": {"L1": "You encounter AI Safety and Reliability in a real project. Here's how to think about it: How do you enable safety and reliability of the AI system?", "L2": "Think of AI Safety and Reliability like a well-established practice from everyday life \u2014 once you see the parallel, the concept clicks.", "L3": "The core principle behind AI Safety and Reliability is that How do you enable safety and reliability of the AI system?", "L4": "The main pitfall with AI Safety and Reliability is when - Use fallback mechanisms in case of failure."}}, {"id": "Q102", "module": 6, "topic": "Privacy Security Standards", "layers": {"L1": "You encounter Privacy Security Standards in a real project. Here's how to think about it: How do you ensure privacy and security is taken care of?", "L2": "GDPR is like having a patient's consent before any medical procedure. HIPAA is medical confidentiality laws. ISO 27001 is the hospital's information security protocol.", "L3": "GDPR requires consent before data collection and gives individuals the right to explanation. HIPAA protects health information with strict access controls. ISO 27001 is the international standard for information security management.", "L4": "Encryption at rest only protects stored data \u2014 data in transit needs TLS. Anonymization can be reversed with auxiliary data. Compliance doesn't equal ethics."}}, {"id": "Q103", "module": 6, "topic": "AI Transparency", "layers": {"L1": "You encounter AI Transparency in a real project. Here's how to think about it: Why is transparency important for AI systems?", "L2": "Like a doctor explaining not just what medicine they prescribed but why \u2014 so you understand and can challenge it if needed.", "L3": "Transparency enables affected parties to understand and challenge decisions. Without it, AI systems can perpetuate hidden biases and erode public trust \u2014 especially when decisions affect credit, employment, or healthcare.", "L4": "XAI tools like SHAP and LIME give post-hoc explanations that may not reflect the actual decision mechanism. Explanations can be gamed to appear fair while the model remains biased."}}, {"id": "Q104", "module": 6, "topic": "AI Accountability", "layers": {"L1": "You encounter AI Accountability in a real project. Here's how to think about it: Why is accountability important?", "L2": "If the AI wrongly approves a loan and you get denied, accountability means there's someone you can ask 'why?' and get an answer.", "L3": "Accountability ensures someone is responsible for model outcomes \u2014 critical for regulatory compliance (GDPR, AI Act) and for building trust that AI systems can be corrected when they fail.", "L4": "Without accountability, harmful AI decisions can't be traced to their source. Models trained on third-party data may have no clear owner. Regulation (GDPR, AI Act) increasingly mandates it."}}]}
+  </script>
+  <script>
+// ─── State ───────────────────────────────────────────────────────────────────
+var STORAGE_KEY = 'ict304_study_app_v1';
+var currentModule = null;
+var conceptIndex = 0;
+var currentConcepts = [];
+
+// ─── LocalStorage ─────────────────────────────────────────────────────────────
+function loadState() {
+  try {
+    var raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) { return {}; }
+}
+
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function saveConfidence(conceptId, level) {
+  var state = loadState();
+  state.confidence = state.confidence || {};
+  state.confidence[conceptId] = level;
+  saveState(state);
+}
+
+// ─── Module List ──────────────────────────────────────────────────────────────
+function confDotColor(conf) {
+  var total = conf.l + conf.m + conf.h;
+  if (total === 0) return 'var(--text-secondary)';
+  if (conf.l / total > 0.5) return 'var(--accent)';
+  if (conf.h / total > 0.5) return 'var(--success)';
+  return 'var(--text-secondary)';
+}
+
+function renderModuleList() {
+  var kb = JSON.parse(document.getElementById('kb').textContent);
+  var state = loadState();
+  var moduleNames = ['AI Foundations','ML Systems','System Engineering',
+                     'Model Eval','Deployment','Responsible AI'];
+  var counts = {1:0,2:0,3:0,4:0,5:0,6:0};
+  var confCounts = {1:{l:0,m:0,h:0},2:{l:0,m:0,h:0},3:{l:0,m:0,h:0},
+                     4:{l:0,m:0,h:0},5:{l:0,m:0,h:0},6:{l:0,m:0,h:0}};
+  kb.concepts.forEach(function(c) { counts[c.module]++; });
+  if (state.confidence) {
+    kb.concepts.forEach(function(c) {
+      var lv = state.confidence[c.id];
+      if (lv === 'low') confCounts[c.module].l++;
+      else if (lv === 'med') confCounts[c.module].m++;
+      else if (lv === 'high') confCounts[c.module].h++;
+    });
+  }
+  var container = document.getElementById('module-list');
+  container.innerHTML = '';
+  moduleNames.forEach(function(name, i) {
+    var n = i + 1;
+    var dotColor = confDotColor(confCounts[n]);
+    var btn = document.createElement('button');
+    btn.className = 'module-btn' + (state.lastModule === n ? ' active' : '');
+    btn.dataset.module = n;
+    btn.innerHTML =
+      '<span class="module-dot" style="background:var(--m' + n + ')"></span>' +
+      '<span class="module-name">M' + n + ' ' + name + '</span>' +
+      '<span class="module-count">' + counts[n] + '</span>';
+    container.appendChild(btn);
+  });
+}
+
+// ─── Progress ─────────────────────────────────────────────────────────────────
+function updateProgress() {
+  var kb = JSON.parse(document.getElementById('kb').textContent);
+  var state = loadState();
+  var total = kb.concepts.length;
+  var reviewed = kb.concepts.filter(function(c) { return !!(state.confidence && state.confidence[c.id]); }).length;
+  var low = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'low'; }).length;
+  var med = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'med'; }).length;
+  var high = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'high'; }).length;
+  var pct = total > 0 ? Math.round((reviewed / total) * 100) : 0;
+  var section = document.getElementById('progress-section');
+  if (!section) return;
+  section.innerHTML =
+    '<div class="progress-wrap">' +
+      '<div class="progress-label">Progress</div>' +
+      '<div class="progress-count">' + reviewed + '/' + total + '</div>' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-pct">' + pct + '%</div>' +
+      '<div class="confidence-summary">' +
+        '<span class="conf-dot" style="background:var(--accent)"></span>' + low + ' low ' +
+        '<span class="conf-dot" style="background:var(--text-secondary)"></span>' + med + ' med ' +
+        '<span class="conf-dot" style="background:var(--success)"></span>' + high + ' high' +
+      '</div>' +
+    '</div>';
+}
+
+// ─── Concept Card ─────────────────────────────────────────────────────────────
+function renderConceptCard(concept) {
+  var state = loadState();
+  var conf = (state.confidence || {})[concept.id] || null;
+  var card = document.getElementById('concept-card');
+
+  var layersHtml = ['L1','L2','L3','L4'].map(function(key) {
+    var labels = {'L1':'What is it?','L2':'Real-world analogy','L3':'Because...','L4':'Where it breaks'};
+    var content = concept.layers[key] || 'Not available — check source material.';
+    return '<div class="layer" data-layer="' + key + '">' +
+      '<div class="layer-header">' +
+        '<span class="layer-label">' + labels[key] + '</span>' +
+        '<button class="layer-toggle">[ reveal ]</button>' +
+      '</div>' +
+      '<div class="layer-content"></div>' +
+    '</div>';
+  }).join('');
+
+  card.innerHTML =
+    '<div class="concept-header">' +
+      '<div class="concept-meta">' +
+        '<span class="concept-badge" style="color:var(--m' + concept.module + ')">Module ' + concept.module + '</span>' +
+        '<span class="concept-badge">' + concept.id + '</span>' +
+      '</div>' +
+      '<h2 class="concept-topic"></h2>' +
+    '</div>' +
+    '<div class="layers">' + layersHtml + '</div>' +
+    '<div class="confidence-row" id="conf-row-' + concept.id + '">' +
+      '<span style="font-size:13px;color:var(--text-secondary)">How confident?</span>' +
+      '<button class="confidence-btn" data-cf="low">&#x1F534; Low</button>' +
+      '<button class="confidence-btn" data-cf="med">&#x1F7E1; Med</button>' +
+      '<button class="confidence-btn" data-cf="high">&#x1F7E2; High</button>' +
+    '</div>' +
+    '<div class="card-nav">' +
+      '<button class="nav-btn" id="nav-prev">&larr; Prev</button>' +
+      '<button class="btn btn-primary" id="nav-quiz-this">Quiz This</button>' +
+      '<button class="nav-btn" id="nav-next">Next &rarr;</button>' +
+    '</div>';
+
+  // Use textContent for concept text (XSS security)
+  card.querySelector('.concept-topic').textContent = concept.topic;
+
+  var layerEls = card.querySelectorAll('.layer');
+  ['L1','L2','L3','L4'].forEach(function(key, i) {
+    var content = concept.layers[key] || '';
+    layerEls[i].querySelector('.layer-content').textContent = content;
+  });
+
+  if (conf) {
+    var btn = card.querySelector('[data-cf="' + conf + '"]');
+    if (btn) btn.classList.add('selected', conf);
+  }
+
+  attachLayerListeners(layerEls);
+  attachConfidenceListeners(concept);
+  attachNavListeners();
+  updateNavButtons();
+}
+
+function attachLayerListeners(layerEls) {
+  layerEls.forEach(function(layer) {
+    var header = layer.querySelector('.layer-header');
+    var toggle = layer.querySelector('.layer-toggle');
+    var content = layer.querySelector('.layer-content');
+
+    header.addEventListener('click', function() {
+      if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        toggle.textContent = '[ reveal ]';
+        layer.classList.remove('revealed');
+      } else {
+        content.classList.add('expanded');
+        toggle.textContent = '[ hide ]';
+        layer.classList.add('revealed');
+      }
+    });
+  });
+}
+
+function attachConfidenceListeners(concept) {
+  var row = document.getElementById('conf-row-' + concept.id);
+  if (!row) return;
+  row.querySelectorAll('.confidence-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var level = btn.dataset.cf;
+      saveConfidence(concept.id, level);
+      row.querySelectorAll('.confidence-btn').forEach(function(b) {
+        b.classList.remove('selected','low','med','high');
+      });
+      btn.classList.add('selected', level);
+      renderModuleList();
+      updateProgress();
+    });
+  });
+}
+
+function attachNavListeners() {
+  var prevBtn = document.getElementById('nav-prev');
+  var nextBtn = document.getElementById('nav-next');
+  if (prevBtn) prevBtn.onclick = function() { navigate(-1); };
+  if (nextBtn) nextBtn.onclick = function() { navigate(1); };
+  var quizBtn = document.getElementById('nav-quiz-this');
+  if (quizBtn) {
+    quizBtn.onclick = function() {
+      var state = loadState();
+      var concept = currentConcepts[conceptIndex];
+      state.quiz = { queue: [concept.id], index: 0, sessionSize: 1 };
+      saveState(state);
+      showQuizOverlay();
+      renderQuizCard();
+    };
+  }
+}
+
+function updateNavButtons() {
+  var prev = document.getElementById('nav-prev');
+  var next = document.getElementById('nav-next');
+  if (prev) prev.disabled = conceptIndex <= 0;
+  if (next) next.disabled = conceptIndex >= currentConcepts.length - 1;
+}
+
+function selectModule(moduleNum) {
+  var kb = JSON.parse(document.getElementById('kb').textContent);
+  currentModule = moduleNum;
+  currentConcepts = moduleNum
+    ? kb.concepts.filter(function(c) { return c.module === moduleNum; })
+    : kb.concepts;
+  conceptIndex = 0;
+  var state = loadState();
+  state.lastModule = moduleNum;
+  saveState(state);
+  document.querySelectorAll('.module-btn').forEach(function(btn) {
+    btn.classList.toggle('active', parseInt(btn.dataset.module) === moduleNum);
+  });
+  if (currentConcepts.length > 0) {
+    renderConceptCard(currentConcepts[conceptIndex]);
+  }
+}
+
+function navigate(dir) {
+  conceptIndex = Math.max(0, Math.min(currentConcepts.length - 1, conceptIndex + dir));
+  renderConceptCard(currentConcepts[conceptIndex]);
+  document.getElementById('main').scrollTop = 0;
+}
+
+// ─── Quiz ─────────────────────────────────────────────────────────────────────
+var QUIZ_SESSION_SIZE = 20;
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+  }
+  return a;
+}
+
+function startQuiz() {
+  var kb = JSON.parse(document.getElementById('kb').textContent);
+  var state = loadState();
+  var low = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'low'; });
+  var med = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'med'; });
+  var unvisited = kb.concepts.filter(function(c) { return !(state.confidence && state.confidence[c.id]); });
+  var queue = shuffle(low.concat(med).concat(unvisited)).slice(0, QUIZ_SESSION_SIZE);
+  state.quiz = {
+    queue: queue.map(function(c) { return c.id; }),
+    index: 0,
+    sessionSize: Math.min(QUIZ_SESSION_SIZE, queue.length)
+  };
+  saveState(state);
+  document.getElementById('quiz-overlay').classList.remove('hidden');
+  renderQuizCard();
+}
+
+function showQuizOverlay() {
+  document.getElementById('quiz-overlay').classList.remove('hidden');
+}
+
+function renderQuizCard() {
+  var state = loadState();
+  var kb = JSON.parse(document.getElementById('kb').textContent);
+  var overlay = document.getElementById('quiz-overlay');
+
+  if (!state.quiz || state.quiz.index >= state.quiz.queue.length) {
+    overlay.innerHTML =
+      '<div class="quiz-complete">' +
+        '<h2>Session Complete!</h2>' +
+        '<p>You reviewed ' + (state.quiz ? state.quiz.sessionSize : 0) + ' concepts.</p>' +
+        '<button class="btn btn-primary" id="quiz-done-btn">Back to Explorer</button>' +
+      '</div>';
+    document.getElementById('quiz-done-btn').onclick = closeQuiz;
+    return;
+  }
+
+  var conceptId = state.quiz.queue[state.quiz.index];
+  var concept = kb.concepts.find(function(c) { return c.id === conceptId; });
+  var progress = state.quiz.index;
+  var total = state.quiz.sessionSize;
+
+  overlay.innerHTML =
+    '<div class="quiz-header">' +
+      '<div>' +
+        '<div class="quiz-progress-label">' + progress + ' / ' + total + '</div>' +
+        '<div class="quiz-progress-bar">' +
+          '<div class="quiz-progress-fill" style="width:' + ((progress / total) * 100) + '%"></div>' +
+        '</div>' +
+      '</div>' +
+      '<button class="nav-btn" id="quiz-close-btn">&#x2715; Close</button>' +
+    '</div>' +
+    '<div class="quiz-card">' +
+      '<div class="quiz-topic"></div>' +
+      '<div class="quiz-meta">Module ' + concept.module + ' &middot; ' + concept.id + '</div>' +
+      '<div class="quiz-reveal-area" id="quiz-reveal-area">' +
+        '<button class="quiz-reveal-btn" id="quiz-reveal-btn">Try to recall before revealing!</button>' +
+      '</div>' +
+      '<div class="quiz-answer" id="quiz-answer">' +
+        '<div class="quiz-answer-text" id="quiz-answer-text"></div>' +
+        '<div class="confidence-row">' +
+          '<span style="font-size:13px;color:var(--text-secondary)">Your confidence:</span>' +
+          '<button class="confidence-btn" data-qcf="low">&#x1F534; Low</button>' +
+          '<button class="confidence-btn" data-qcf="med">&#x1F7E1; Med</button>' +
+          '<button class="confidence-btn" data-qcf="high">&#x1F7E2; High</button>' +
+        '</div>' +
+        '<div class="quiz-actions">' +
+          '<button class="quiz-reveal-btn" id="quiz-next-btn">Next &rarr;</button>' +
+          '<button class="quiz-skip-btn" id="quiz-skip-btn">Skip</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  overlay.querySelector('.quiz-topic').textContent = concept.topic;
+
+  var answerText = [concept.layers.L1, concept.layers.L2, concept.layers.L3, concept.layers.L4]
+    .filter(Boolean)
+    .join('\n---\n');
+  overlay.querySelector('.quiz-answer-text').textContent = answerText;
+
+  document.getElementById('quiz-close-btn').onclick = closeQuiz;
+  document.getElementById('quiz-reveal-btn').onclick = function() {
+    document.getElementById('quiz-reveal-area').style.display = 'none';
+    document.getElementById('quiz-answer').classList.add('visible');
+  };
+  document.getElementById('quiz-next-btn').onclick = function() {
+    var selected = overlay.querySelector('[data-qcf].selected');
+    if (selected) {
+      saveConfidence(concept.id, selected.dataset.qcf);
+    }
+    advanceQuiz();
+  };
+  document.getElementById('quiz-skip-btn').onclick = advanceQuiz;
+  overlay.querySelectorAll('[data-qcf]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      overlay.querySelectorAll('[data-qcf]').forEach(function(b) {
+        b.classList.remove('selected','low','med','high');
+      });
+      btn.classList.add('selected', btn.dataset.qcf);
+    });
+  });
+}
+
+function advanceQuiz() {
+  var state = loadState();
+  state.quiz.index++;
+  saveState(state);
+  renderQuizCard();
+}
+
+function closeQuiz() {
+  document.getElementById('quiz-overlay').classList.add('hidden');
+  renderModuleList();
+  updateProgress();
+}
+
+// ─── Stats Modal ───────────────────────────────────────────────────────────────
+function renderStatsModal() {
+  var kb = JSON.parse(document.getElementById('kb').textContent);
+  var state = loadState();
+  var total = kb.concepts.length;
+  var reviewed = kb.concepts.filter(function(c) { return !!(state.confidence && state.confidence[c.id]); }).length;
+  var low = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'low'; }).length;
+  var med = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'med'; }).length;
+  var high = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'high'; }).length;
+  var weakSpots = kb.concepts.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'low'; });
+  var retentionPct = reviewed > 0 ? Math.round(((reviewed - low) / reviewed) * 100) : 0;
+
+  var moduleNames = ['AI Foundations','ML Systems','System Engineering',
+                     'Model Eval','Deployment','Responsible AI'];
+  var moduleRows = [1,2,3,4,5,6].map(function(n) {
+    var mods = kb.concepts.filter(function(c) { return c.module === n; });
+    var rev = mods.filter(function(c) { return !!(state.confidence && state.confidence[c.id]); });
+    var lowN = mods.filter(function(c) { return (state.confidence && state.confidence[c.id]) === 'low'; }).length;
+    return '<div class="stat-module-row">' +
+      '<span class="stat-dot" style="background:var(--m' + n + ')"></span>' +
+      '<span class="stat-module-name">M' + n + ' ' + moduleNames[n-1] + '</span>' +
+      '<span class="stat-count">' + rev.length + '/' + mods.length + '</span>' +
+      (lowN > 0 ? '<span class="stat-low">' + lowN + ' low</span>' : '') +
+    '</div>';
+  }).join('');
+
+  var weakHtml = weakSpots.length > 0
+    ? '<div class="stat-weak-spots">' +
+        '<div class="stat-section-label">Weak spots — prioritize in quiz</div>' +
+        weakSpots.slice(0, 12).map(function(c) {
+          return '<div class="stat-weak-item" data-jump="' + c.id + '">' +
+            '<span class="stat-weak-id">' + c.id + '</span>' +
+            '<span class="stat-weak-topic"></span></div>';
+        }).join('') + '</div>'
+    : '<div style="font-size:13px;color:var(--text-secondary);padding:12px 0">No weak spots yet — keep studying!</div>';
+
+  var modal = document.createElement('div');
+  modal.className = 'quiz-overlay';
+  modal.id = 'stats-overlay';
+  modal.innerHTML =
+    '<div class="quiz-header">' +
+      '<h2 class="stat-modal-title">Study Stats</h2>' +
+      '<button class="nav-btn" id="stats-close-btn">&#x2715;</button>' +
+    '</div>' +
+    '<div class="stats-body">' +
+      '<div class="stat-cards">' +
+        '<div class="stat-card"><div class="stat-card-num">' + reviewed + '</div><div class="stat-card-label">Reviewed</div></div>' +
+        '<div class="stat-card"><div class="stat-card-num">' + (total - reviewed) + '</div><div class="stat-card-label">Remaining</div></div>' +
+        '<div class="stat-card"><div class="stat-card-num" style="color:var(--success)">' + retentionPct + '%</div><div class="stat-card-label">Retention</div></div>' +
+      '</div>' +
+      '<div class="stat-modules">' +
+        '<div class="stat-section-label">By Module</div>' +
+        moduleRows +
+      '</div>' +
+      weakHtml +
+    '</div>';
+  document.body.appendChild(modal);
+
+  // textContent for weak spot topics (security)
+  modal.querySelectorAll('.stat-weak-topic').forEach(function(el, i) {
+    el.textContent = weakSpots[i] ? weakSpots[i].topic : '';
+  });
+
+  modal.querySelector('#stats-close-btn').onclick = closeStatsModal;
+  modal.querySelectorAll('.stat-weak-item').forEach(function(item) {
+    item.onclick = function() {
+      closeStatsModal();
+      jumpToConcept(item.dataset.jump);
+    };
+  });
+}
+
+function closeStatsModal() {
+  var el = document.getElementById('stats-overlay');
+  if (el) el.remove();
+}
+
+function jumpToConcept(id) {
+  var kb = JSON.parse(document.getElementById('kb').textContent);
+  var concept = kb.concepts.find(function(c) { return c.id === id; });
+  if (concept) {
+    selectModule(concept.module);
+    conceptIndex = currentConcepts.findIndex(function(c) { return c.id === id; });
+    renderConceptCard(concept);
+    document.getElementById('main').scrollTop = 0;
+  }
+}
+
+// ─── Help Modal ────────────────────────────────────────────────────────────────
+function renderHelpModal() {
+  var shortcuts = [
+    ['/', 'Focus search'],
+    ['Q', 'Start quiz mode'],
+    ['← / →', 'Prev / next concept'],
+    ['1-4', 'Reveal layer 1-4'],
+    ['H / M / L', 'Mark confidence'],
+    ['Esc', 'Close modal'],
+  ];
+  var html = shortcuts.map(function(row) {
+    return '<div class="shortcut-row">' +
+      '<kbd class="shortcut-key">' + row[0] + '</kbd>' +
+      '<span class="shortcut-desc">' + row[1] + '</span>' +
+    '</div>';
+  }).join('');
+
+  var modal = document.createElement('div');
+  modal.className = 'quiz-overlay';
+  modal.id = 'help-overlay';
+  modal.innerHTML =
+    '<div style="width:100%;max-width:520px">' +
+      '<div class="quiz-header">' +
+        '<h2 class="stat-modal-title">Keyboard Shortcuts</h2>' +
+        '<button class="nav-btn" id="help-close-btn">&#x2715;</button>' +
+      '</div>' +
+      '<div class="shortcuts-grid">' + html + '</div>' +
+      '<div class="layer-guide">' +
+        '<div class="stat-section-label">4-Layer Understanding</div>' +
+        '<div class="layer-guide-row"><span class="layer-guide-num">1</span><span>What is it? — vivid story</span></div>' +
+        '<div class="layer-guide-row"><span class="layer-guide-num">2</span><span>Analogy — everyday comparison</span></div>' +
+        '<div class="layer-guide-row"><span class="layer-guide-num">3</span><span>Because — causal chain</span></div>' +
+        '<div class="layer-guide-row"><span class="layer-guide-num">4</span><span>Breaks — failure modes</span></div>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(modal);
+  modal.querySelector('#help-close-btn').onclick = function() { modal.remove(); };
+}
+
+// ─── Search ───────────────────────────────────────────────────────────────────
+function handleSearch(query) {
+  var kb = JSON.parse(document.getElementById('kb').textContent);
+  var results = document.getElementById('search-results');
+  if (!query.trim()) {
+    results.classList.add('hidden');
+    results.innerHTML = '';
+    return;
+  }
+  var q = query.toLowerCase();
+  var matches = kb.concepts.filter(function(c) {
+    return c.topic.toLowerCase().indexOf(q) !== -1 ||
+           c.id.toLowerCase().indexOf(q) !== -1;
+  }).slice(0, 8);
+
+  if (matches.length === 0) {
+    results.innerHTML = '<div class="search-no-results">No matches found</div>';
+    results.classList.remove('hidden');
+    return;
+  }
+
+  var html = matches.map(function(c) {
+    return '<div class="search-result-item" data-id="' + c.id + '">' +
+      '<div class="search-result-topic"></div>' +
+      '<div class="search-result-meta"></div>' +
+    '</div>';
+  }).join('');
+
+  results.innerHTML = html;
+  results.classList.remove('hidden');
+
+  results.querySelectorAll('.search-result-item').forEach(function(item) {
+    var concept = kb.concepts.find(function(c) { return c.id === item.dataset.id; });
+    item.querySelector('.search-result-topic').textContent = concept.topic;
+    item.querySelector('.search-result-meta').textContent = concept.id + ' · Module ' + concept.module;
+    item.onclick = function() {
+      results.classList.add('hidden');
+      document.getElementById('search-input').value = '';
+      jumpToConcept(concept.id);
+    };
+  });
+}
+
+// ─── Keyboard Shortcuts ───────────────────────────────────────────────────────
+function revealLayerByKey(key) {
+  var el = document.querySelector('.layer[data-layer="' + key + '"]');
+  if (el) el.querySelector('.layer-header').click();
+}
+
+function markCurrentConfidence(level) {
+  var concept = currentConcepts[conceptIndex];
+  if (concept) {
+    saveConfidence(concept.id, level);
+    var row = document.getElementById('conf-row-' + concept.id);
+    if (row) {
+      row.querySelectorAll('.confidence-btn').forEach(function(b) {
+        b.classList.remove('selected','low','med','high');
+        if (b.dataset.cf === level) b.classList.add('selected', level);
+      });
+    }
+    renderModuleList();
+    updateProgress();
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  switch (e.key) {
+    case '/':
+      e.preventDefault();
+      document.getElementById('search-input').focus();
+      break;
+    case 'q': case 'Q':
+      startQuiz();
+      break;
+    case 'ArrowLeft':
+      if (!document.getElementById('quiz-overlay').classList.contains('hidden')) return;
+      navigate(-1);
+      break;
+    case 'ArrowRight':
+      if (document.getElementById('quiz-overlay').classList.contains('hidden')) {
+        navigate(1);
+      }
+      break;
+    case '1': revealLayerByKey('L1'); break;
+    case '2': revealLayerByKey('L2'); break;
+    case '3': revealLayerByKey('L3'); break;
+    case '4': revealLayerByKey('L4'); break;
+    case 'l': case 'L': markCurrentConfidence('low'); break;
+    case 'm': case 'M': markCurrentConfidence('med'); break;
+    case 'h': case 'H': markCurrentConfidence('high'); break;
+    case 'Escape':
+      closeQuiz();
+      closeStatsModal();
+      var helpEl = document.getElementById('help-overlay');
+      if (helpEl) helpEl.remove();
+      break;
+  }
+});
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+function initApp() {
+  renderModuleList();
+  updateProgress();
+  var state = loadState();
+  selectModule(state.lastModule || 5);
+
+  document.getElementById('btn-quiz').onclick = startQuiz;
+  document.getElementById('btn-stats').onclick = renderStatsModal;
+  document.getElementById('btn-help').onclick = renderHelpModal;
+
+  var searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.oninput = function() { handleSearch(searchInput.value); };
+    searchInput.onblur = function() {
+      var results = document.getElementById('search-results');
+      setTimeout(function() { results.classList.add('hidden'); }, 200);
+    };
+    searchInput.onfocus = function() {
+      if (searchInput.value) handleSearch(searchInput.value);
+    };
+  }
+
+  document.getElementById('module-list').onclick = function(e) {
+    var btn = e.target.closest('.module-btn');
+    if (btn) selectModule(parseInt(btn.dataset.module));
+  };
+}
+
+document.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
