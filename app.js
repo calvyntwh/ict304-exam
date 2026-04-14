@@ -23,12 +23,15 @@ async function initDB() {
 function renderMarkdown(text) {
   if (!text) return '';
   // Process tables first (they contain | chars that would break other patterns)
-  text = text.replace(/(\|.+\|(?:\r?\n|$)+)/g, function(match) {
+  // Match entire markdown table block (all rows in one unit) before processing
+  // Pattern: a line starting with |, followed by any number of complete table rows (lines starting with |)
+  text = text.replace(/(\|(?:[^\n]*\|[^\n]*)+(?:\r?\n(?=\|)[^\n]*\|[^\n]*)*)(?=\r?\n|$)/g, function(match) {
     var rows = match.trim().split(/\r?\n/);
     var html = '<table class="md-table">';
     rows.forEach(function(row, i) {
       var cells = row.split('|').filter(function(c) { return c.trim(); });
-      if (i === 1 && /^[-:\s|]+$/.test(cells.join(''))) return; // skip separator row |---|---|
+      // Skip separator rows like |---|---|
+      if (i === 1 && cells.length > 0 && cells.every(function(c) { return /^[-:\s|]+$/.test(c); })) return;
       var tag = i === 0 ? 'th' : 'td';
       html += '<tr>';
       cells.forEach(function(cell) { html += '<' + tag + '>' + cell.trim() + '</' + tag + '>'; });
