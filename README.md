@@ -5,12 +5,24 @@ An offline study app for the ICT304 AI System Design exam. Built for ADHD+dyslex
 ## Quick Start
 
 ```bash
-# Serve locally (required for SQLite WASM)
-cd path/to/sqlite-refactor
-caddy file-server --browse --port 8080
+git clone https://github.com/calvyntwh/ict304-exam.git
+cd ict304-exam
+./run.sh
 ```
 
-Then open `http://localhost:8080` in any modern browser.
+Then serve over Tailscale:
+
+```bash
+tailscale serve 8080
+```
+
+Access via your Tailscale domain (e.g. `https://your-vps.tail1234.ts.net/`).
+
+On macOS (no Caddy installed):
+
+```bash
+python3 -m http.server 8080
+```
 
 ## Architecture
 
