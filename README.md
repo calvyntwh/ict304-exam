@@ -14,8 +14,8 @@ Then open `http://localhost:8080` in any modern browser.
 
 ## Architecture
 
-- **Backend**: SQLite via [sql-wasm](https://sql.js.org/) — all 104 concepts stored in `kb_all.db`, built by `build_db.py`
-- **Frontend**: Vanilla HTML/CSS/JS — no build step, no framework
+- **Backend**: SQLite via [sql-wasm](https://sql.js.org/) — all 104 concepts in `kb_all.db`
+- **Frontend**: Vanilla HTML/CSS/JS + Bulma 1.0.4 CSS — no build step, no framework
 - **Persistence**: Confidence ratings stored in `localStorage`
 - **Server**: Any static file server (Caddy, Python http.server, etc.) — needed because WASM requires same-origin
 
@@ -84,20 +84,23 @@ sqlite-refactor/
 ├── index.html          # App shell
 ├── app.css             # All styles
 ├── app.js              # All application logic (SQLite + UI)
+├── bulma.min.css       # Bulma 1.0.4 CSS (local copy)
 ├── sql-wasm/
 │   ├── sql-wasm.js     # sql.js WASM loader
-│   └── sql-wasm.wasm   # SQLite binary (loaded from project root)
-├── kb_all.db           # Knowledge base (built by build_db.py)
-├── build_db.py         # Rebuild kb_all.db from kb_all.json + diagrams/
-└── Caddyfile           # Caddy server config (serves .worktrees/sqlite-refactor)
+│   └── sql-wasm.wasm   # SQLite binary
+├── kb_all.db           # Knowledge base — 104 concepts (source of truth)
+├── diagrams/           # 39 PNG diagrams
+└── Caddyfile           # Caddy server config
 ```
 
-## Rebuilding the Database
+## Editing Content
 
-If `kb_all.json` changes, rebuild the SQLite database:
+`kb_all.db` is the source of truth. To edit a concept, write a Python script:
 
-```bash
-python build_db.py
+```python
+import sqlite3
+conn = sqlite3.connect('kb_all.db')
+cur = conn.cursor()
+cur.execute("UPDATE concepts SET L5 = ? WHERE id = 'Q36'", (new_content,))
+conn.commit()
 ```
-
-This generates `kb_all.db` by importing questions and embedding diagram paths from the `diagrams/` directory.
